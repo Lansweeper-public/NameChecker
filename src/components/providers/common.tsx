@@ -1,4 +1,4 @@
-import { IAssetResource, IAssetResourcesPagination } from "../../types/assets";
+import { IAssetResource, IAssetResourcesPagination } from "../../types";
 import { EPage } from "../../lib/constants";
 
 export interface ITableState {

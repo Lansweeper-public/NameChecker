@@ -1,4 +1,4 @@
-import styled from "../../theme";
+import styled from "../../../theme";
 import { LECButton, LECIcon, LECTag } from "@lansweeper/lecfrontcomponents";
 
 const StyledHeader = styled.div`

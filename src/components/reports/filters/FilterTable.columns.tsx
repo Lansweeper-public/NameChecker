@@ -4,12 +4,8 @@ import {
   ILECTableItem,
   LECIcon,
 } from "@lansweeper/lecfrontcomponents";
-import {
-  IListItem,
-  LECInputWrapper,
-  LECSelectWrapper,
-} from "../common/formCommonComponents";
 import { StyledLECButton, StyledField } from "./FilterTable.styles";
+import { IListItem, InputWrapper, SelectWrapper } from "../../common";
 
 export const attributeColumns: ILECTableColumn[] = [
   {
@@ -75,7 +71,7 @@ export const transformTableItem = (
         <StyledField
           name={`selectOption#${id}`}
           initialValue={BEGINS_WITH}
-          component={LECSelectWrapper}
+          component={SelectWrapper}
           items={selectOptions}
         />
       ),
@@ -85,7 +81,7 @@ export const transformTableItem = (
         <StyledField
           name={`selectOperator#${id}`}
           initialValue={EQUAL_TO}
-          component={LECSelectWrapper}
+          component={SelectWrapper}
           items={operatorOptions}
         />
       ),
@@ -94,7 +90,7 @@ export const transformTableItem = (
       component: (
         <StyledField
           name={`enterText#${id}`}
-          component={LECInputWrapper}
+          component={InputWrapper}
           required={true}
         />
       ),

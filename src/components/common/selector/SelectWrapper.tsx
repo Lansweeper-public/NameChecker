@@ -1,41 +1,11 @@
 import {
   ILECImageIcon,
-  ILECSelect,
   LECFormControl,
   LECFormHelperText,
-  LECIconMaker,
-  LECInput,
-  LECSelect,
   LECSelectOption,
 } from "@lansweeper/lecfrontcomponents";
 import React from "react";
-import styled from "@emotion/styled";
-
-const SelectOptionIcon = styled(LECIconMaker)`
-  position: relative;
-  margin-right: 0.75rem;
-  top: 0.1875rem;
-`;
-
-const StyledLECSelect = styled(LECSelect)<ILECSelect>`
-  .ant-select-selection-selected-value {
-    svg {
-      position: relative;
-      margin-right: 0.75rem;
-      top: 3px;
-    }
-    span {
-      margin-left: 5px;
-      font-size: 15px;
-      font-weight: 500;
-      ${({ disabled }) =>
-        !disabled &&
-        `
-          color: var(--grey);
-        `};
-    }
-  }
-`;
+import { SelectOptionIcon, StyledLECSelect } from "./SelectWrapper.styles";
 
 export interface IListItem {
   id?: string;
@@ -47,18 +17,21 @@ export interface IListItem {
 
 const determineHasError = (meta, showErrors) =>
   !!((meta.modified || showErrors) && meta.error);
+
 const determineRequired = (hasError, required, restInput) =>
   !!(hasError && required && !restInput.value);
+
 const determineShouldBeShowed = (
   hasError,
   isInvalid,
   isMetaErrorAString,
   isShowRequired,
 ) => hasError && isInvalid && isMetaErrorAString && isShowRequired;
+
 const determineShowErrorMessage = (errors, isShowRequired) =>
   errors?.show && errors.message && isShowRequired;
 
-export const LECSelectWrapper = (props) => {
+export const SelectWrapper = (props) => {
   const {
     input: { onChange: onChangeInput, value, ...restInput },
     meta,
@@ -128,75 +101,6 @@ export const LECSelectWrapper = (props) => {
             !showRequired,
           ) && <LECFormHelperText>{errors.message}</LECFormHelperText>) ||
           (determineShowErrorMessage(errors, !showRequired) && (
-            <LECFormHelperText>{errors.message}</LECFormHelperText>
-          ))}
-      </LECFormControl>
-    </>
-  );
-};
-
-const isMetaError = (meta) => meta.error || meta.error?.hasError;
-
-const checkInputError = (showErrors, meta, errors, required, value) => {
-  return (
-    (showErrors && isMetaError(meta)) ||
-    errors?.show ||
-    (meta.modified && required && !value)
-  );
-};
-
-const checkInputValid = (showValid, meta, isError) =>
-  showValid && meta.touched && !meta.pristine && !isError;
-
-const shouldShowErrorText = (errors) => errors?.show && errors.message;
-
-const shouldShowMetaError = (meta, showErrors) =>
-  (meta.modified || showErrors) &&
-  meta.invalid &&
-  typeof meta.error === "string";
-
-export const LECInputWrapper = (props: any) => {
-  const {
-    input: { name, onChange, value, ...restInput },
-    meta,
-    required,
-    showErrors,
-    customOnChange,
-    showValid,
-    errors,
-    ...rest
-  } = props;
-
-  const isError = checkInputError(showErrors, meta, errors, required, value);
-
-  return (
-    <>
-      <LECFormControl error={isError}>
-        <LECInput
-          {...rest}
-          required={required}
-          name={name}
-          valid={checkInputValid(showValid, meta, isError)}
-          error={isError}
-          onChange={(event: any) => {
-            onChange(event);
-            if (customOnChange) {
-              customOnChange(event);
-            }
-          }}
-          value={value ? value : ""}
-          {...restInput}
-        />
-        {(meta.modified || showErrors) &&
-          required &&
-          !value &&
-          meta.touched && (
-            <LECFormHelperText>This field is required</LECFormHelperText>
-          )}
-        {(shouldShowMetaError(meta, showErrors) && (
-          <LECFormHelperText>{meta.error}</LECFormHelperText>
-        )) ||
-          (shouldShowErrorText(errors) && (
             <LECFormHelperText>{errors.message}</LECFormHelperText>
           ))}
       </LECFormControl>

@@ -42,7 +42,7 @@ const StyledDiv = styled.div`
   line-height: 1.25;
 `;
 
-const StyledPage = styled(Page)`
+const StyledSitesPage = styled(Page)`
   flex-direction: column;
   background-color: var(--lighter-grey);
   padding-top: 47px;
@@ -123,7 +123,7 @@ export {
   Styledh2,
   StyledImg,
   StyledDiv,
-  StyledPage,
+  StyledSitesPage,
   StyledParagraph,
   StyledMainHeader,
   StyledMainContent,

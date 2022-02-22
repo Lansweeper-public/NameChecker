@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { IAssetResource, IAssetResourcesPagination } from "../../types/assets";
+import { IAssetResource, IAssetResourcesPagination } from "../../types";
 import { EPage } from "../../lib/constants";
 import { ITableState, INITIAL_STATE } from "./common";
 import { resolvePage } from "../../lib/utils";
@@ -20,7 +20,7 @@ export const MatchedProvider: React.FC = ({ children }) => {
     total: newTotal,
     pagination: { limit: newLimit, current, next, page: newPage },
   }: IAssetResourcesPagination) => {
-    setItems((prev) => newItems);
+    setItems(() => newItems);
     setLimit(newLimit);
     setTotal(newTotal);
     setCurrentPage((prev) => {

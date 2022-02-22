@@ -1,4 +1,4 @@
-import styled from "../theme";
+import styled from "../../theme";
 
 const StyledHeader = styled.header`
   display: flex;

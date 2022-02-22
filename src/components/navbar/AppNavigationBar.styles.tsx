@@ -1,4 +1,4 @@
-import styled from "../theme";
+import styled from "../../theme";
 import { LECButton } from "@lansweeper/lecfrontcomponents";
 
 const StyledNavigationBar = styled.nav`

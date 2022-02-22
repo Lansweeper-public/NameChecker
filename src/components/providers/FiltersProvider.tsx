@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { FormFieldMap } from "../reports/FiltersForm";
+import { FormFieldMap } from "../reports";
 
 interface IFiltersState {
   filterValues: FormFieldMap;

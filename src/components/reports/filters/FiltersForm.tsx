@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Form } from "react-final-form";
 import { v4 } from "uuid";
-import { ConfirmationModal } from "../common/ConfirmationModal";
-import { HelpModal } from "../modals/HelpModal";
 import { FilterTable } from "./FilterTable";
 import { EQUAL_TO } from "./FilterTable.columns";
 import { buildRegExp } from "./RegExp";
@@ -20,6 +18,7 @@ import {
   StyledTagListContainer,
 } from "./FiltersForm.styles";
 import { FormApi } from "final-form";
+import { ConfirmationModal, HelpModal } from "../../modals";
 
 export const generateNewRow = (): string => v4();
 

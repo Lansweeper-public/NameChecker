@@ -1,6 +1,5 @@
 import React from "react";
-import { IAppInfo } from "../types/session";
-import { ISite } from "../types/site";
+import { ISite } from "../../types";
 import {
   StyledNavigationBar,
   StyledBrandContainerWithSite,
@@ -18,13 +17,11 @@ import {
 
 interface IAppNavigationBarProps {
   site: ISite;
-  appInfo: IAppInfo;
   goToSitesPage: () => void;
 }
 
 export const AppNavigationBar: React.FC<IAppNavigationBarProps> = ({
   site,
-  appInfo,
   goToSitesPage,
 }) => {
   return (

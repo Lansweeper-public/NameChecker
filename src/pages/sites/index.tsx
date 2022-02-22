@@ -2,12 +2,10 @@ import React from "react";
 import { LECButton } from "@lansweeper/lecfrontcomponents";
 import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
-import { SiteList } from "../../components/authorizedSites/SiteList";
 import { canAccessAndGetUser } from "../../lib/user";
 import { getMe } from "../../services/me";
 import { ISite } from "../../types/site";
 import { IAppInfo } from "../../types/session";
-import { StyledLogOutAnchor } from "../../components/AppNavigationBar.styles";
 import {
   StyledMainBox,
   Styledh2,
@@ -24,8 +22,10 @@ import {
   StyledActionBox,
   StyledNoStyleLink,
   StyledSiteWrapper,
-} from "../../components/sites/sites.styles";
+  SiteList,
+} from "../../components";
 import { useRouter } from "next/router";
+import { StyledLogOutAnchor } from "../../components/navbar/AppNavigationBar.styles";
 
 interface ISitesProps {
   authorizedSites: {

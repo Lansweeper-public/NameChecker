@@ -1,9 +1,9 @@
 import React from "react";
 import { LSDTable, LECIcon } from "@lansweeper/lecfrontcomponents";
-import { IAssetResource } from "../../types/assets";
-import { ITableState } from "../providers/common";
 import { IFiltersGroupedInput } from "@lansweeper/integrations-dataset";
 import { columns } from "./AssetResourcesTable.columns";
+import { IAssetResource } from "../../../types";
+import { ITableState } from "../../providers";
 
 export interface IAssetResourcesTable {
   items: IAssetResource[];

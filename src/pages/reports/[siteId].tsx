@@ -1,39 +1,34 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { IFiltersGroupedInput } from "@lansweeper/integrations-dataset";
 import { LECEmpty } from "@lansweeper/lecfrontcomponents";
 import { GetServerSideProps, NextPage } from "next";
-import { Head, SimpleTabs, AppNavigationBar } from "../../components";
-import { canAccessAndGetUser } from "../../lib/user";
-import { IAppInfo } from "../../types/session";
-import {
-  StyledPage,
-  StyledFullPageContent,
-  StyledTableContainer,
-} from "../../components/reports/reports.styles";
-import { getSite } from "../../services/sites";
-import { ISite } from "../../types/site";
-import { ChangeSitesModal } from "../../components/modals/ChangeSitesModal";
-import { getMe } from "../../services/me";
-import { buildFilter } from "../../components/reports/RegExp";
 import { useRouter } from "next/router";
-import { AssetResourcesTable } from "../../components/reports/AssetResourcesTable";
-import { EPage } from "../../lib/constants";
-import { usePagination } from "../../hooks/usePagination";
-import { IFiltersGroupedInput } from "@lansweeper/integrations-dataset";
+import React, { useCallback, useEffect, useState } from "react";
 import {
-  useAllAssets,
-  useMatchedAssets,
-  useNoMatchAssets,
-} from "../../components/providers";
-import {
-  IChangePageParams,
-  PaginationTableFooter,
-} from "../../components/reports/PaginationTableFooter";
-import {
+  AppNavigationBar,
+  AssetResourcesTable,
+  buildFilter,
+  ChangeSitesModal,
   FiltersForm,
   FormFieldMap,
-} from "../../components/reports/FiltersForm";
+  Head,
+  IChangePageParams,
+  PaginationTableFooter,
+  SimpleTabs,
+  StyledFullPageContent,
+  StyledPage,
+  StyledTableContainer,
+  useAllAssets,
+  useFilters,
+  useMatchedAssets,
+  useNoMatchAssets,
+} from "../../components";
 import { useCurrentSite } from "../../hooks/useCurrentSite";
-import { useFilters } from "../../components/providers/FiltersProvider";
+import { usePagination } from "../../hooks/usePagination";
+import { EPage } from "../../lib/constants";
+import { canAccessAndGetUser } from "../../lib/user";
+import { getMe } from "../../services/me";
+import { getSite } from "../../services/sites";
+import { ISite } from "../../types/site";
 
 export const pageSizeOptions = [10, 25, 50];
 
@@ -46,11 +41,9 @@ enum TABS {
 interface IReportsPageProps {
   siteSelected: ISite;
   authorizedSites: ISite[];
-  appInfo: IAppInfo;
 }
 
 export const ReportsPage: NextPage<IReportsPageProps> = ({
-  appInfo,
   authorizedSites,
   siteSelected,
 }) => {
@@ -189,7 +182,6 @@ export const ReportsPage: NextPage<IReportsPageProps> = ({
       </Head>
       <AppNavigationBar
         site={currentSite}
-        appInfo={appInfo}
         goToSitesPage={goToSitesPage}
       ></AppNavigationBar>
       <StyledPage>

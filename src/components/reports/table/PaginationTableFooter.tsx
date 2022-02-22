@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { ESizeListOption } from "@lansweeper/lecfrontcomponents";
 import { IFiltersGroupedInput } from "@lansweeper/integrations-dataset";
-import { StyledLECCursorTableFooter } from "./reports.styles";
-import { IAssetResourcesPagination } from "../../types/assets";
-import { EPage } from "../../lib/constants";
-import { ITableState } from "../providers/common";
+import { StyledLECCursorTableFooter } from "./PaginationTableFooter.styles";
+import { IAssetResourcesPagination } from "../../../types";
+import { ITableState } from "../../providers/common";
+import { EPage } from "../../../lib/constants";
 
 export const pageSizeOptions = [10, 25, 50];
 

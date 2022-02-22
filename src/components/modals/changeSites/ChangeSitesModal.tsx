@@ -1,8 +1,8 @@
-import styled from "@emotion/styled";
 import { LECMainModal } from "@lansweeper/lecfrontcomponents";
 import React, { useState } from "react";
-import { SiteList } from "../authorizedSites/SiteList";
-import { ISite } from "../../types/site";
+import { SiteList } from "../../authorizedSites/SiteList";
+import { ISite } from "../../../types";
+import { StyledParagraph } from "./ChangeSitesModal.styles";
 
 interface IChangeSitesModalProps {
   currentSiteId: string;
@@ -12,13 +12,6 @@ interface IChangeSitesModalProps {
   onClose: () => void;
   applyFilters: (siteId: string) => void;
 }
-
-const StyledParagraph = styled.p`
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--grey);
-  margin-bottom: 1.5rem;
-`;
 
 export const ChangeSitesModal: React.FC<IChangeSitesModalProps> = ({
   currentSiteId,

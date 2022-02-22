@@ -6,7 +6,7 @@ import {
   StyledSiteListItemTitle,
   StyledSiteListItemSubtitle,
 } from "./SiteList.styles";
-import { ISite } from "../../types/site";
+import { ISite } from "../../types";
 import { LECAvatar } from "@lansweeper/lecfrontcomponents";
 
 interface ISiteListProps {
