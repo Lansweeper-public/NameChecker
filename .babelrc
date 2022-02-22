@@ -1,0 +1,9 @@
+{
+  "plugins": [
+    ["inline-import", { "extensions": [".css"] }],
+    ["import", { "libraryName": "antd", "style": true }],
+    ["babel-plugin-emotion"]
+  ],
+  "presets": ["next/babel", "@babel/preset-react"],
+  "ignore": []
+}

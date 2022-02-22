@@ -1,0 +1,291 @@
+import React, { useCallback, useEffect, useState } from "react";
+import { LECEmpty } from "@lansweeper/lecfrontcomponents";
+import { GetServerSideProps, NextPage } from "next";
+import { Head, SimpleTabs, AppNavigationBar } from "../../components";
+import { canAccessAndGetUser } from "../../lib/user";
+import { IAppInfo } from "../../types/session";
+import {
+  StyledPage,
+  StyledFullPageContent,
+  StyledTableContainer,
+} from "../../components/reports/reports.styles";
+import { getSite } from "../../services/sites";
+import { ISite } from "../../types/site";
+import { ChangeSitesModal } from "../../components/modals/ChangeSitesModal";
+import { getMe } from "../../services/me";
+import { buildFilter } from "../../components/reports/RegExp";
+import { useRouter } from "next/router";
+import { AssetResourcesTable } from "../../components/reports/AssetResourcesTable";
+import { EPage } from "../../lib/constants";
+import { usePagination } from "../../hooks/usePagination";
+import { IFiltersGroupedInput } from "@lansweeper/integrations-dataset";
+import {
+  useAllAssets,
+  useMatchedAssets,
+  useNoMatchAssets,
+} from "../../components/providers";
+import {
+  IChangePageParams,
+  PaginationTableFooter,
+} from "../../components/reports/PaginationTableFooter";
+import {
+  FiltersForm,
+  FormFieldMap,
+} from "../../components/reports/FiltersForm";
+import { useCurrentSite } from "../../hooks/useCurrentSite";
+import { useFilters } from "../../components/providers/FiltersProvider";
+
+export const pageSizeOptions = [10, 25, 50];
+
+enum TABS {
+  ALL_ASSETS = "All assets",
+  MATCHED = "Matched",
+  NO_MATCH = "No Match",
+}
+
+interface IReportsPageProps {
+  siteSelected: ISite;
+  authorizedSites: ISite[];
+  appInfo: IAppInfo;
+}
+
+export const ReportsPage: NextPage<IReportsPageProps> = ({
+  appInfo,
+  authorizedSites,
+  siteSelected,
+}) => {
+  const router = useRouter();
+  const [currentTab, setCurrentTab] = useState(TABS.ALL_ASSETS);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [showSitesModal, setShowSitesModal] = useState<boolean>(false);
+  const [areFiltersApplied, setAreFiltersApplied] = useState<boolean>(false);
+  const [filters, setFilters] = useState({} as IFiltersGroupedInput);
+  const [noFilters, setNoFilters] = useState({} as IFiltersGroupedInput);
+  const [filtersString, setFiltersString] = useState<string>();
+  const [, setNoFiltersString] = useState<string>();
+  const {
+    regExps,
+    setRegExps,
+    noRegExps,
+    setNoRegExps,
+    filterValues,
+    setFilterValues,
+  } = useFilters();
+  const allAssets = useAllAssets();
+  const noMatchAssets = useNoMatchAssets();
+  const matchedAssets = useMatchedAssets();
+  const { updateAll } = useAllAssets();
+  const { goToPage } = usePagination();
+
+  const {
+    query: { siteId },
+  } = router;
+
+  // Change Sites modal function
+  const onCloseChangeSiteModal = () => setShowSitesModal(false);
+
+  const { data: currentSite } = useCurrentSite(
+    siteSelected,
+    siteId as string,
+    onCloseChangeSiteModal,
+    setLoading,
+  );
+
+  useEffect(() => {
+    goToPage(EPage.FIRST, currentSite.id, pageSizeOptions[0], {}, updateAll);
+  }, [currentSite.id]);
+
+  const onClickApplyChangeSite = (newSiteId: string) => {
+    router.push(`${newSiteId}`, undefined, {
+      shallow: true,
+    });
+  };
+
+  const tabs = Object.values(TABS).map((tab) => ({
+    id: tab,
+    title: tab,
+    to: tab,
+  }));
+
+  const onChangePage = ({
+    page,
+    limit,
+    filtersGrouped,
+    cursor,
+    fnUpdateAll,
+  }: IChangePageParams) => {
+    setLoading(true);
+    goToPage(page, currentSite.id, limit, filtersGrouped, fnUpdateAll, cursor);
+    setLoading(false);
+  };
+
+  const isTabSelectable = (tab) => {
+    return (
+      (tab.id !== TABS.ALL_ASSETS && areFiltersApplied) ||
+      tab.id === TABS.ALL_ASSETS
+    );
+  };
+
+  const resetTabCallback = useCallback(
+    (limit, filtersGrouped, fnUpdateAll) => {
+      goToPage(EPage.FIRST, currentSite.id, limit, filtersGrouped, fnUpdateAll);
+    },
+    [filtersString, currentTab, currentSite.id],
+  );
+
+  const handleOnChangeFilters = (
+    newRegExps: RegExp[],
+    newNoRegExps: RegExp[],
+  ) => {
+    setRegExps(newRegExps);
+    setNoRegExps(newNoRegExps);
+    const filtersGrouped = buildFilter(newRegExps);
+    const noFiltersGrouped = buildFilter(newNoRegExps);
+    setFiltersString(JSON.stringify(filtersGrouped));
+    setNoFiltersString(JSON.stringify(noFiltersGrouped));
+    setFilters(filtersGrouped);
+    setNoFilters(noFiltersGrouped);
+  };
+
+  const handleOnDeleteAllTags = () => {
+    setRegExps([]);
+    setFilters({} as IFiltersGroupedInput);
+    setFilterValues({});
+    setAreFiltersApplied(false);
+    setCurrentTab(TABS.ALL_ASSETS);
+  };
+
+  const handleOnFiltersApplied = (newFilterValues: FormFieldMap) => {
+    setAreFiltersApplied(true);
+    setFilterValues(newFilterValues);
+  };
+
+  const handleOnSelectTab = (tab) => {
+    if (isTabSelectable(tab)) {
+      setCurrentTab(tab.id as TABS);
+    }
+  };
+
+  useEffect(() => {
+    if (regExps.length) {
+      const filtersGrouped = buildFilter(regExps);
+      const noFiltersGrouped = buildFilter(noRegExps);
+      setFiltersString(JSON.stringify(filtersGrouped));
+      setNoFiltersString(JSON.stringify(noFiltersGrouped));
+      setFilters(filtersGrouped);
+      setNoFilters(noFiltersGrouped);
+      setAreFiltersApplied(true);
+    }
+  }, []);
+
+  const goToSitesPage = () => {
+    router.push("/sites");
+  };
+
+  return (
+    <>
+      <Head>
+        <title>Report Site {currentSite.name}</title>
+      </Head>
+      <AppNavigationBar
+        site={currentSite}
+        appInfo={appInfo}
+        goToSitesPage={goToSitesPage}
+      ></AppNavigationBar>
+      <StyledPage>
+        <FiltersForm
+          loading={loading}
+          onFiltersApplied={handleOnFiltersApplied}
+          onDeleteAllTags={handleOnDeleteAllTags}
+          onChangeSite={() => setShowSitesModal(true)}
+          onChangeFilters={handleOnChangeFilters}
+          initialValue={filterValues}
+        ></FiltersForm>
+        <StyledFullPageContent>
+          <StyledTableContainer>
+            <SimpleTabs
+              tabs={tabs}
+              isTabActive={(tab) => tab.id === currentTab}
+              onSelectTab={handleOnSelectTab}
+              isTabDisabled={(tab) => !isTabSelectable(tab)}
+            />
+            {Object.values(TABS).map((tab) => (
+              <AssetResourcesTable
+                key={`${tab}-table`}
+                {...(tab === TABS.ALL_ASSETS
+                  ? { ...allAssets }
+                  : tab === TABS.MATCHED
+                  ? { ...matchedAssets }
+                  : { ...noMatchAssets })}
+                filters={
+                  tab === TABS.ALL_ASSETS
+                    ? {}
+                    : tab === TABS.MATCHED
+                    ? filters
+                    : noFilters
+                }
+                loading={loading}
+                filterValues={filterValues}
+                regExps={regExps}
+                empty={
+                  <LECEmpty
+                    title="Please fill in the filters to find matches"
+                    subTitle=" "
+                    image="no-results"
+                  />
+                }
+                isHidden={currentTab !== tab}
+              />
+            ))}
+          </StyledTableContainer>
+        </StyledFullPageContent>
+      </StyledPage>
+      {Object.values(TABS).map((tab) => (
+        <PaginationTableFooter
+          key={`${tab}-table-footer`}
+          {...(tab === TABS.ALL_ASSETS
+            ? { ...allAssets }
+            : tab === TABS.MATCHED
+            ? { ...matchedAssets }
+            : { ...noMatchAssets })}
+          filters={
+            tab === TABS.ALL_ASSETS
+              ? {}
+              : tab === TABS.MATCHED
+              ? filters
+              : noFilters
+          }
+          resetTabCallback={resetTabCallback}
+          handleChangePage={onChangePage}
+          siteId={currentSite.id}
+          isHidden={currentTab !== tab}
+        />
+      ))}
+      <ChangeSitesModal
+        open={showSitesModal}
+        currentSiteId={currentSite.id}
+        sites={authorizedSites}
+        onClose={onCloseChangeSiteModal}
+        applyFilters={onClickApplyChangeSite}
+        loading={loading}
+      />
+    </>
+  );
+};
+
+export const getServerSideProps: GetServerSideProps<
+  IReportsPageProps
+> = async ({ req, res, query: { siteId } }) => {
+  const session = await canAccessAndGetUser({ req, res });
+  const { authorizedSites } = await getMe(req);
+  const { site } = await getSite(siteId as string, req);
+  return {
+    props: {
+      siteSelected: site,
+      authorizedSites: authorizedSites?.sites,
+      appInfo: session?.appInfo || {},
+    },
+  };
+};
+
+export default ReportsPage;
