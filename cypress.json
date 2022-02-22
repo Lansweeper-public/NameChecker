@@ -1,0 +1,13 @@
+{
+  "animationDistanceThreshold": 20,
+  "defaultCommandTimeout": 15000,
+  "ignoreTestFiles": "*.ts",
+  "video": false,
+  "testFiles": "**/*.{feature,features}",
+  "viewportWidth": 1280,
+  "viewportHeight": 720,
+  "experimentalNetworkStubbing": true,
+  "experimentalFetchPolyfill": false,
+  "retries": 2,
+  "chromeWebSecurity": false
+}
