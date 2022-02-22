@@ -79,10 +79,10 @@ dist.es
 yalc.lock
 .yalc
 
-# Cyrpess
+# Cypress
 cypress/screenshots
 
-# Reporst folders
+# Reports folders
 /reports/
 test-report.xml
 junit.xml
