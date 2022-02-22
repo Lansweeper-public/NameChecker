@@ -4,11 +4,7 @@ import config from "../lib/config";
 import { APPLICATION_JSON_CONTENT_TYPE, EPage } from "../lib/constants";
 import { getSession } from "../lib/session";
 import { isServer } from "../lib/utils";
-import {
-  IAssetsResourceResponse,
-  IStatusExportResponse,
-} from "../types/assets";
-import { from } from "rxjs";
+import { IAssetsResourceResponse } from "../types/assets";
 import { IncomingMessage } from "http";
 import { IFiltersGroupedInput } from "@lansweeper/integrations-dataset";
 
@@ -74,43 +70,3 @@ export const getAssetResources = async (
     ).data;
   }
 };
-
-export const checkExportStatus = async (
-  siteId: string,
-  exportId: string,
-  req?: express.Request,
-): Promise<IStatusExportResponse> => {
-  if (isServer()) {
-    const query = `
-      query {
-        site(id: "${siteId}") {
-          exportStatus(exportId: "${exportId}"){
-            progress
-            url
-            requestedAt
-            completedAt
-            exportId
-          }
-        }
-      }
-    `;
-    const session = getSession(req);
-    const graphQLClient = new GraphQLClient(
-      config.services.INTEGRATIONS_GATEWAY_API_URL,
-    );
-    graphQLClient.setHeader("authorization", `Bearer ${session?.accessToken}`);
-    return graphQLClient.request<IStatusExportResponse>(query);
-  } else {
-    return (
-      await fetch(`api/exports?siteId=${siteId}&exportId=${exportId}`, {
-        headers: {
-          "Content-Type": APPLICATION_JSON_CONTENT_TYPE,
-          Accept: APPLICATION_JSON_CONTENT_TYPE,
-        },
-      })
-    ).json();
-  }
-};
-
-export const getExportStatusObservable = (siteId: string, exportId: string) =>
-  from(checkExportStatus(siteId, exportId));

@@ -1,4 +1,4 @@
-import { getAssetResources } from "../services/exports";
+import { getAssetResources } from "../services/assetResources";
 import { IAssetResourcesPagination } from "../types/assets";
 import { EPage } from "../lib/constants";
 import { IFiltersGroupedInput } from "@lansweeper/integrations-dataset";
