@@ -1,0 +1,81 @@
+name: CI-PR
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build-docker:
+    name: Build docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Hadolint
+        uses: hadolint/hadolint-action@v1.6.0
+        with:
+          dockerfile: Dockerfile
+
+      - name: Build an image from Dockerfile
+        run: |
+          docker build -t ${{ secrets.AWS_ECR_ACCOUNT_URL}}/lec-integrations-namechecker:${{ github.sha }} .
+
+      - name: Install trivy
+        run: |
+          if [[ $EUID == 0 ]]; then export SUDO=""; else export SUDO="sudo"; fi
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | $SUDO sh -s -- -b /usr/local/bin
+
+      - name: Run Trivy vulnerability scanner
+        run: |
+          trivy image --no-progress --exit-code 1 \
+            --severity HIGH,CRITICAL \
+            --vuln-type os,library \
+            --ignore-unfixed true \
+            --ignorefile .trivyignore \
+            ${{ secrets.AWS_ECR_ACCOUNT_URL}}/lec-integrations-namechecker:${{ github.sha }}
+        with:
+          image-ref: "docker.io/my-organization/my-app:${{ github.sha }}"
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
+
+  build-tests-sonar:
+    name: Build, tests and sonar
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14.17"
+
+      - name: Install dependencies
+        run: yarn
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Build
+        run: yarn build
+
+      - name: Tests
+        run: yarn test
+
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: E2E tests install cypress and start server
+        run: yarn cypress:install && yarn run start &
+
+      - name: Run E2E tests
+        run: yarn run start &        
+         
