@@ -74,7 +74,6 @@ export const ReportsPage: NextPage<IReportsPageProps> = ({
     query: { siteId },
   } = router;
 
-  // Change Sites modal function
   const onCloseChangeSiteModal = () => setShowSitesModal(false);
 
   const { data: currentSite } = useCurrentSite(

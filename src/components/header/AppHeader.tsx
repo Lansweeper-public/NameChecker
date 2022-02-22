@@ -7,7 +7,7 @@ import {
   StyledImg,
 } from "./AppHeader.styles";
 
-export const AppHeader = ({ appInfo }) => {
+export const AppHeader = () => {
   return (
     <StyledHeader>
       <StyledBrandContainer>

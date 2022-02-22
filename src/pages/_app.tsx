@@ -71,9 +71,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           <AllAssetsProvider>
             <MatchedProvider>
               <NoMatchProvider>
-                {showNavigationMenu && (
-                  <AppHeader appInfo={pageProps?.appInfo} />
-                )}
+                {showNavigationMenu && <AppHeader />}
                 <Component {...pageProps} />
               </NoMatchProvider>
             </MatchedProvider>

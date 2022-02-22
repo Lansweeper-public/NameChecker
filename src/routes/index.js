@@ -4,7 +4,6 @@ const { GraphQLClient } = require("graphql-request");
 const router = express.Router();
 
 const buildRequestOptions = (req) => {
-  /* eslint-disable */
   const tokeData = {
     grant_type: "authorization_code",
     client_id: process.env.LS_APP_CLIENT_ID,
@@ -12,7 +11,6 @@ const buildRequestOptions = (req) => {
     redirect_uri: process.env.LS_APP_CALLBACK_URI,
     code: req.query.code,
   };
-  /* eslint-enable */
 
   return {
     method: "post",
