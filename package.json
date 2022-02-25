@@ -29,8 +29,6 @@
     "@emotion/babel-preset-css-prop": "^10.0.27",
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27",
-    "@lansweeper/integrations-dataset": "^1.30.2",
-    "@lansweeper/lec-common-lib": "^1.1.26",
     "@lansweeper/lecfrontcomponents": "^7.152.4",
     "@sentry/integrations": "^5.15.5",
     "@sentry/node": "^5.15.5",
@@ -57,6 +55,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-final-form": "^6.4.0",
+    "redis": "^3.1.2",
     "stoppable": "^1.1.0",
     "uuid": "^8.3.1"
   },

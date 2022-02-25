@@ -1,7 +1,7 @@
 import { getAssetResources } from "../services/assetResources";
 import { IAssetResourcesPagination } from "../types/assets";
 import { EPage } from "../lib/constants";
-import { IFiltersGroupedInput } from "@lansweeper/integrations-dataset";
+import { IFiltersGroupedInput } from "../types";
 
 export const pageSizeOptions = [100, 250, 500];
 

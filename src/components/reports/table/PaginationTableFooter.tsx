@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { ESizeListOption } from "@lansweeper/lecfrontcomponents";
-import { IFiltersGroupedInput } from "@lansweeper/integrations-dataset";
 import { StyledLECCursorTableFooter } from "./PaginationTableFooter.styles";
-import { IAssetResourcesPagination } from "../../../types";
+import {
+  IAssetResourcesPagination,
+  IFiltersGroupedInput,
+} from "../../../types";
 import { ITableState } from "../../providers/common";
 import { EPage } from "../../../lib/constants";
 

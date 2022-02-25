@@ -6,7 +6,7 @@ import { getSession } from "../lib/session";
 import { isServer } from "../lib/utils";
 import { IAssetsResourceResponse } from "../types/assets";
 import { IncomingMessage } from "http";
-import { IFiltersGroupedInput } from "@lansweeper/integrations-dataset";
+import { IFiltersGroupedInput } from "../types";
 
 export const getAssetResources = async (
   siteId: string,
