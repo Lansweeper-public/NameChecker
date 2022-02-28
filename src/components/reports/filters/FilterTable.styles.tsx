@@ -1,6 +1,7 @@
 import styled from "../../../theme";
-import { LECButton, LSDTableView } from "@lansweeper/lecfrontcomponents";
+import { LSDTableView } from "@lansweeper/lecfrontcomponents";
 import { Field } from "react-final-form";
+import { Button } from "../../common/button";
 
 const StyledLSDTableView = styled(LSDTableView)`
   margin-bottom: 12px;
@@ -118,7 +119,7 @@ const StyledField = styled(Field)`
   }
 `;
 
-const StyledLECButton = styled(LECButton)`
+const StyledButton = styled(Button)`
   min-height: 40px;
   min-width: 40px;
   align-self: flex-end;
@@ -138,4 +139,4 @@ const StyledLECButton = styled(LECButton)`
   }
 `;
 
-export { StyledLSDTableView, StyledLECButton, StyledField };
+export { StyledLSDTableView, StyledButton, StyledField };

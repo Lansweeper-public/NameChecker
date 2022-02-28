@@ -1,6 +1,6 @@
-import { LECButton } from "@lansweeper/lecfrontcomponents";
 import { IncomingMessage } from "http";
 import React from "react";
+import { Button } from "../components/common/button";
 import styled from "../theme";
 
 const NotFoundWrapper = styled.div`
@@ -20,7 +20,7 @@ const NotFound = () => {
       </h3>
 
       <a style={{ textDecoration: "none" }} href="/api/logout">
-        <LECButton secondary>LOG OUT</LECButton>
+        <Button secondary>LOG OUT</Button>
       </a>
     </NotFoundWrapper>
   );

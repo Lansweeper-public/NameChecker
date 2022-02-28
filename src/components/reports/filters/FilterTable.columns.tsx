@@ -1,11 +1,8 @@
 import React from "react";
-import {
-  ILECTableColumn,
-  ILECTableItem,
-  LECIcon,
-} from "@lansweeper/lecfrontcomponents";
-import { StyledLECButton, StyledField } from "./FilterTable.styles";
+import { ILECTableColumn, ILECTableItem } from "@lansweeper/lecfrontcomponents";
+import { StyledButton, StyledField } from "./FilterTable.styles";
 import { IListItem, InputWrapper, SelectWrapper } from "../../common";
+import { Icon } from "../../common/icon";
 
 export const attributeColumns: ILECTableColumn[] = [
   {
@@ -98,18 +95,18 @@ export const transformTableItem = (
     minus: {
       component:
         numRows > 1 ? (
-          <StyledLECButton onClick={() => handleRemoveRow(id)}>
-            <LECIcon icon="minus" />
-          </StyledLECButton>
+          <StyledButton onClick={() => handleRemoveRow(id)}>
+            <Icon icon="minus" />
+          </StyledButton>
         ) : (
           <div />
         ),
     },
     plus: {
       component: (
-        <StyledLECButton onClick={() => handleAddRow(id)}>
-          <LECIcon icon="plus" />
-        </StyledLECButton>
+        <StyledButton onClick={() => handleAddRow(id)}>
+          <Icon icon="plus" />
+        </StyledButton>
       ),
     },
   },

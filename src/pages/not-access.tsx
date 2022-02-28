@@ -1,5 +1,5 @@
 import React from "react";
-import { LECButton } from "@lansweeper/lecfrontcomponents";
+import { Button } from "../components/common/button";
 import styled from "../theme";
 
 const NotAccessWrapper = styled.div`
@@ -28,7 +28,7 @@ const NotAccess = () => {
       <p>Try to contact with one of the NameChecker Administrators.</p>
 
       <StyledAnchor href="/">
-        <LECButton secondary>HOME</LECButton>
+        <Button secondary>HOME</Button>
       </StyledAnchor>
     </NotAccessWrapper>
   );

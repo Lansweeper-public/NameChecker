@@ -1,8 +1,8 @@
 import React from "react";
-import { LECButton } from "@lansweeper/lecfrontcomponents";
 import { NextPage } from "next";
 import { Head, Page } from "../components";
 import styled from "../theme";
+import { Button } from "../components/common/button";
 
 const StyledPage = styled(Page)`
   display: flex;
@@ -53,7 +53,7 @@ const Index: NextPage<IIndexProps> = ({ lsAuthorizeUrl }) => {
           This app uses the Lansweeper API to query your site assets, and then
           check the name against your chosen naming convention.
         </StyledDescriptionDiv>
-        <LECButton onClick={() => handleClick()}>Check my assets</LECButton>
+        <Button onClick={() => handleClick()}>Check my assets</Button>
       </StyledPage>
     </>
   );

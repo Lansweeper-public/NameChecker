@@ -1,9 +1,6 @@
-import {
-  LECModalBody,
-  LECModalFooter,
-  LECSpin,
-} from "@lansweeper/lecfrontcomponents";
+import { LECModalBody, LECModalFooter } from "@lansweeper/lecfrontcomponents";
 import React, { ReactNode } from "react";
+import { Spin } from "../../common/spin";
 import { ConfirmationButton, StyledLECModal } from "./ConfirmationModal.styles";
 
 interface IConfirmationModalProps {
@@ -57,7 +54,7 @@ export const ConfirmationModal: React.FC<IConfirmationModalProps> = ({
           onClick={onConfirm}
           isConfirmation={isConfirmation}
         >
-          {loading ? <LECSpin type="ellipsis" /> : "Yes"}
+          {loading ? <Spin type="ellipsis" /> : "Yes"}
         </ConfirmationButton>
       </LECModalFooter>
     </StyledLECModal>

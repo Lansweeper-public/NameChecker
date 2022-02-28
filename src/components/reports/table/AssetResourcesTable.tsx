@@ -1,8 +1,9 @@
 import React from "react";
-import { LSDTable, LECIcon } from "@lansweeper/lecfrontcomponents";
+import { LSDTable } from "@lansweeper/lecfrontcomponents";
 import { columns } from "./AssetResourcesTable.columns";
 import { IAssetResource, IFiltersGroupedInput } from "../../../types";
 import { ITableState } from "../../providers";
+import { Icon } from "../../common/icon";
 
 export interface IAssetResourcesTable {
   items: IAssetResource[];
@@ -27,13 +28,13 @@ export const AssetResourcesTable: React.FC<
       attributes: {
         verified: {
           component: Object.keys(filterValues).length ? (
-            <LECIcon
+            <Icon
               icon={
                 regExps.every((regexp) => name?.match(regexp))
                   ? "check"
                   : "close"
               }
-            ></LECIcon>
+            ></Icon>
           ) : (
             ""
           ),
