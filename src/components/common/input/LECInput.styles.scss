@@ -1,0 +1,108 @@
+.lec-input {
+  &__suffix {
+    top: rem(20px);
+    position: absolute;
+    z-index: 2;
+    line-height: 0;
+    transform: translateY(-50%);
+    right: rem(16px);
+  }
+
+  .ant-input-affix-wrapper {
+    .ant-input-suffix {
+      right: rem(16px);
+    }
+  }
+
+  .textarea-wrapper,
+  .input-wrapper {
+    position: relative;
+    .ant-input-group-addon {
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+      border-color: $light-grey;
+      background-color: $lighter-grey;
+      color: $grey;
+      font-size: 20px;
+      font-weight: 500;
+      min-width: 40px;
+    }
+  }
+
+  textarea.ant-input {
+    @extend %lec-input;
+  }
+
+  input.ant-input {
+    @extend %lec-input;
+    height: rem(40px);
+  }
+
+  input.ant-input-disabled:hover {
+    border: 0.0625rem solid $lighter-grey;
+    box-shadow: none;
+  }
+
+  .input-validated > .ant-input {
+    padding-right: 3rem;
+  }
+
+  &-tooltip-icon {
+    color: rgba-to-rgb($grey, 0.5);
+    margin-left: 8px;
+  }
+
+  // This removes the border color when the input has a suffix icon
+  .ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled) {
+    border: solid rem(1px) rgba-to-rgb($grey, 0.4);
+    box-shadow: none;
+  }
+
+  &.lec-input-required {
+    @extend %lec-input-required;
+  }
+
+  > label {
+    @extend %input-label;
+  }
+
+  .lec-input-tooltip-label {
+    display: inline-block;
+  }
+
+  &.lec-input--clearable {
+    .ant-input-suffix {
+      color: rgba-to-rgb($grey, 0.5);
+      cursor: pointer;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        color: $grey;
+      }
+    }
+  }
+
+  &.lec-input--fullwidth {
+    width: 100%;
+  }
+}
+
+.validation-icon {
+  top: rem(12px);
+  right: rem(16px);
+  position: absolute;
+  z-index: 100;
+  font-size: rem(16px);
+  color: lighten($grey, 40%);
+  &--error {
+    color: $red;
+  }
+  &--valid {
+    color: $green;
+  }
+  &--warning {
+    color: $orange;
+  }
+}

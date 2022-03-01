@@ -1,0 +1,25 @@
+.lec-form-control {
+  display: flex;
+  flex-direction: column;
+  &__label {
+    margin-bottom: rem(12px);
+    color: $grey;
+    font-size: rem(15px);
+    font-weight: 500;
+    &--required {
+      font-weight: bold;
+    }
+  }
+
+  &__helper-text {
+    margin: rem(8px) 0 0 0;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgba($grey, 0.8);
+  }
+  &--error {
+    .lec-form-control__helper-text {
+      color: $error;
+    }
+  }
+}

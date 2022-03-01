@@ -10,7 +10,6 @@ import {
   Styledh2,
   StyledImg,
   StyledDiv,
-  StyledPage,
   StyledParagraph,
   StyledMainHeader,
   StyledMainContent,
@@ -22,6 +21,7 @@ import {
   StyledNoStyleLink,
   StyledSiteWrapper,
   SiteList,
+  StyledSitesPage,
 } from "../../components";
 import { useRouter } from "next/router";
 import { StyledLogOutAnchor } from "../../components/navbar/AppNavigationBar.styles";
@@ -49,7 +49,7 @@ export const SitesPage: NextPage<ISitesProps> = ({
       <Head>
         <title>NameChecker - Select Site</title>
       </Head>
-      <StyledPage>
+      <StyledSitesPage>
         <StyledSiteWrapper>
           <StyledMainBoxContainer>
             {authorizedSites && authorizedSites.sites.length > 0 && (
@@ -94,7 +94,7 @@ export const SitesPage: NextPage<ISitesProps> = ({
             </StyledNoStyleLink>
           </StyledActionBox>
         </StyledFooter>
-      </StyledPage>
+      </StyledSitesPage>
     </>
   );
 };

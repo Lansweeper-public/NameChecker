@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import { ILECSelect, LECSelect } from "@lansweeper/lecfrontcomponents";
 import { IconMaker } from "../iconMaker";
+import { ISelect, SelectInput } from "./Select";
 
-export const StyledLECSelect = styled(LECSelect)<ILECSelect>`
+export const StyledLECSelect = styled(SelectInput)<ISelect>`
   .ant-select-selection-selected-value {
     svg {
       position: relative;
