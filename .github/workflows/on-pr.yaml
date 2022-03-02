@@ -33,7 +33,7 @@ jobs:
             --ignorefile .trivyignore \
             ${{ secrets.AWS_ECR_ACCOUNT_URL}}/lec-integrations-namechecker:${{ github.sha }}
 
-  build-tests-sonar:
+  build-tests:
     name: Build, tests and sonar
     runs-on: ubuntu-latest
     steps:
@@ -58,11 +58,6 @@ jobs:
 
       - name: Tests
         run: yarn test
-
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: E2E tests install cypress and start server
         run: yarn cypress:install && yarn run start &
