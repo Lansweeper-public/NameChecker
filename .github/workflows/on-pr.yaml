@@ -1,8 +1,6 @@
 name: CI-PR
 
-on:
-  push:
-    branches: [master]
+on: [pull_request]
 
 jobs:
   build-docker:
@@ -77,5 +75,4 @@ jobs:
         run: yarn cypress:install && yarn run start &
 
       - name: Run E2E tests
-        run: yarn run start &        
-         
+        run: yarn run start &
