@@ -32,13 +32,6 @@ jobs:
             --ignore-unfixed true \
             --ignorefile .trivyignore \
             ${{ secrets.AWS_ECR_ACCOUNT_URL}}/lec-integrations-namechecker:${{ github.sha }}
-        with:
-          image-ref: "docker.io/my-organization/my-app:${{ github.sha }}"
-          format: "table"
-          exit-code: "1"
-          ignore-unfixed: true
-          vuln-type: "os,library"
-          severity: "CRITICAL,HIGH"
 
   build-tests-sonar:
     name: Build, tests and sonar
