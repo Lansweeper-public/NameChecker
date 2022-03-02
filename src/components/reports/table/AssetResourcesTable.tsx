@@ -1,9 +1,9 @@
 import React from "react";
-import { LSDTable } from "@lansweeper/lecfrontcomponents";
 import { columns } from "./AssetResourcesTable.columns";
 import { IAssetResource, IFiltersGroupedInput } from "../../../types";
 import { ITableState } from "../../providers";
 import { Icon } from "../../common/icon";
+import { Table } from "../../common/tableView";
 
 export interface IAssetResourcesTable {
   items: IAssetResource[];
@@ -48,7 +48,7 @@ export const AssetResourcesTable: React.FC<
   });
 
   return (
-    <LSDTable
+    <Table
       columns={columns}
       items={paginatedItems}
       loading={loading}

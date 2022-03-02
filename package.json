@@ -29,7 +29,6 @@
     "@emotion/babel-preset-css-prop": "^10.0.27",
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27",
-    "@lansweeper/lecfrontcomponents": "^7.152.4",
     "@sentry/integrations": "^5.15.5",
     "@sentry/node": "^5.15.5",
     "antd": "^3.26.20",
@@ -56,6 +55,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-final-form": "^6.4.0",
+    "react-resize-detector": "^5.2.0",
     "redis": "^3.1.2",
     "stoppable": "^1.1.0",
     "uuid": "^8.3.1"
@@ -74,6 +74,7 @@
     "@types/node": "^13.11.0",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^16.9.4",
+    "@types/react-resize-detector": "^5.0.0",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",

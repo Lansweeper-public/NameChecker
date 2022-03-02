@@ -1,0 +1,152 @@
+$color-icon: #93969e;
+$color-hover: rgba-to-rgb($primary, 0.75);
+
+.lec-paginator {
+  user-select: none;
+  li {
+    width: auto;
+    min-width: initial;
+    height: 100%;
+  }
+  .ant-pagination-item {
+    position: relative;
+    border: none;
+    background-color: transparent;
+    a {
+      display: block;
+      margin: 0;
+      font-family: $font-primary;
+      font-variant-numeric: tabular-nums;
+      font-weight: 700;
+      font-size: rem(16px);
+      &:hover {
+        color: $grey;
+      }
+    }
+  }
+  .ant-pagination-item-active {
+    z-index: 1;
+    a {
+      margin: 0;
+      color: $white !important; // There is a small bug here with the antd it needs the important
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: rem(3px);
+      width: 100%;
+      height: rem(24px);
+      background-color: $color-hover;
+      border-radius: rem(24px);
+      border: 1px solid $primary;
+      z-index: -1;
+    }
+  }
+  .ant-pagination-prev,
+  .ant-pagination-next {
+    color: $color-icon;
+    font-size: rem(12px);
+    &:hover {
+      color: $grey;
+    }
+    &.ant-pagination-disabled {
+      .lec-icon {
+        color: $disabled;
+      }
+    }
+  }
+  .ant-pagination-jump-next,
+  .ant-pagination-jump-prev {
+    margin-right: rem(16px);
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+.lec-pagination-size {
+    display: flex;
+    align-items: center;
+    font-size: rem(14px);
+    font-weight: bold;
+  
+    &__size-list {
+      margin-left: rem(16px);
+      &__item {
+        position: relative;
+        color: rgba-to-rgb($grey, 0.4);
+        cursor: pointer;
+        user-select: none;
+        &:hover {
+          color: $grey;
+        }
+        &:not(:first-child) {
+          margin-left: rem(12px);
+          &:before {
+            content: "";
+            position: absolute;
+            left: rem(-7px);
+            top: rem(2px);
+            height: rem(14px);
+            width: rem(2px);
+            background-color: $light-grey;
+          }
+        }
+  
+        &--active {
+          color: $grey;
+          &:after {
+            content: "";
+            position: absolute;
+            left: calc(50% - 8px);
+            bottom: rem(-4px);
+            height: rem(2px);
+            width: rem(16px);
+            border-radius: 1px;
+            background-color: $primary;
+          }
+        }
+      }
+    }
+    &__size {
+      margin-left: rem(12px);
+      b {
+        color: $black;
+      }
+    }
+  }
+  
+  .lec-cursor-pagination-wrapper.disabled {
+    cursor: not-allowed;
+  }
+  
+  .lec-cursor-pagination-button {
+    width: rem(40px);
+    height: rem(40px);
+    margin: rem(0px);
+    border: none;
+    background-color: transparent;
+    font-size: rem(16px);
+    color: rgba($grey, 0.6);
+    vertical-align: middle;
+  
+    &:enabled {
+      cursor: pointer;
+    }
+  
+    &:disabled {
+      pointer-events: none;
+      color: rgba($grey, 0.2);
+    }
+  
+    &:focus {
+      outline: none;
+    }
+  
+    &:enabled:hover {
+      background-color: $lighter-grey;
+      border-radius: rem(3px);
+      color: $grey;
+    }
+  }
+  

@@ -1,0 +1,167 @@
+.lec-table-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
+  min-height: 0;
+
+  .ant-table-wrapper {
+    // This fixes a weird separation between the scroll bar and
+    // the footer
+    margin-bottom: rem(-1px);
+  }
+
+  .lec-table-list {
+    // 3.5rem for table-list-footer. This is necessary because of
+    // the way antd table calculates it's scroll height when its
+    // header is sticky
+    height: calc(100% - 56px);
+  }
+
+  .lec-table-view__footer--table-h-scroll {
+    border-top-width: 1px;
+  }
+}
+
+.lec-table-footer {
+  display: flex;
+  width: 100%;
+  height: rem(48px);
+  background-color: $white;
+  border-top: rem(2px) solid $light-grey;
+  align-items: center;
+  justify-content: center;
+
+  &__content-left {
+    display: flex;
+    flex: 1;
+    flex-grow: 1;
+    margin-left: rem(32px);
+  }
+  &__content-center {
+    display: flex;
+    flex: 1;
+    flex-grow: 1;
+    justify-content: center;
+    &--last {
+      justify-content: flex-end;
+      margin-right: rem(32px);
+    }
+  }
+  &__content-right {
+    display: flex;
+    flex: 1;
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+
+  &__action {
+    color: $grey;
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    padding: 1rem 1.875rem;
+    justify-content: flex-end;
+
+    .lec-icon {
+      transition: opacity 0.3s ease-out;
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+
+      .lec-icon {
+        opacity: 0.2;
+      }
+    }
+    &--enabled {
+      .lec-icon {
+        opacity: 0.5;
+      }
+      &:hover {
+        .lec-icon {
+          opacity: 1;
+        }
+      }
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 25%;
+      height: 50%;
+      width: 2px;
+      background-color: $light-grey;
+    }
+  }
+}
+
+.lec-cursor-table-footer {
+  min-height: 3rem;
+  border-top: rem(2px) solid $light-grey;
+
+  .shortBorder {
+    border-top: rem(1.5px) solid $light-grey;
+  }
+}
+
+.lec-cursor-table-button-container {
+  width: rem(66px);
+  height: rem(40px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
+    content: "";
+    width: rem(2px);
+    height: rem(24px);
+    background-color: $light-grey;
+    position: relative;
+    left: rem(-11px);
+  }
+}
+
+// this solves an issue with tooltip and disabled button
+span.lec-cursor-table-button > button,
+button.lec-cursor-table-button {
+  width: rem(40px);
+  height: rem(40px);
+  padding: 0 rem(4px);
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  color: var(--grey-60);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: var(--lighter-grey);
+    border-radius: rem(3px);
+    color: var(--grey);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: var(--grey-20);
+  }
+}
+
+.lec-table-footer-results {
+  font-weight: 500;
+  color: rgba($grey, 0.8);
+
+  & b {
+    font-weight: 700;
+    color: $grey;
+  }
+}

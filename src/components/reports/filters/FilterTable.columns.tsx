@@ -1,10 +1,10 @@
 import React from "react";
-import { ILECTableColumn, ILECTableItem } from "@lansweeper/lecfrontcomponents";
 import { StyledButton, StyledField } from "./FilterTable.styles";
 import { IListItem, InputWrapper, SelectWrapper } from "../../common";
 import { Icon } from "../../common/icon";
+import { ITableColumn, ITableItem } from "../../common/tableView";
 
-export const attributeColumns: ILECTableColumn[] = [
+export const attributeColumns: ITableColumn[] = [
   {
     key: "selectOption",
     name: "Select option",
@@ -60,7 +60,7 @@ export const transformTableItem = (
   handleRemoveRow: (id: string) => void,
   handleAddRow: (id: string) => void,
   numRows: number,
-): ILECTableItem => ({
+): ITableItem => ({
   id,
   attributes: {
     selectOption: {

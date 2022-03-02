@@ -1,6 +1,6 @@
 import React from "react";
 import { attributeColumns, transformTableItem } from "./FilterTable.columns";
-import { StyledLSDTableView } from "./FilterTable.styles";
+import { StyledTableView } from "./FilterTable.styles";
 
 export interface IFilterTable {
   items: string[];
@@ -19,7 +19,7 @@ export const FilterTable: React.FC<IFilterTable> = ({
     transformTableItem(item, handleRemoveRow, handleAddRow, items.length),
   );
   return (
-    <StyledLSDTableView
+    <StyledTableView
       tableProps={{
         items: parsedItems,
         columns: attributeColumns,

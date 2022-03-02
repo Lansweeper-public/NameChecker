@@ -1,7 +1,7 @@
 import styled from "../../../theme";
-import { LECTag } from "@lansweeper/lecfrontcomponents";
 import { Button } from "../../common/button";
 import { Icon } from "../../common/icon";
+import { Tag } from "../../common/tag";
 
 const StyledHeader = styled.div`
   width: 100%;
@@ -49,7 +49,7 @@ const StyledTagList = styled.div`
   margin-bottom: 14px;
 `;
 
-const StyledExpressionTag = styled(LECTag)<{
+const StyledExpressionTag = styled(Tag)<{
   onClick?: () => void;
 }>`
   background-color: var(--lighter-grey-40);

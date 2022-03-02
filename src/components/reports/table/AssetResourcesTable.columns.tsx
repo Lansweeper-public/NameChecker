@@ -1,21 +1,22 @@
 import React from "react";
 import { TooltipAlignConfig } from "antd/lib/tooltip";
-import { ILECTableColumn, LECTooltip } from "@lansweeper/lecfrontcomponents";
+import { TooltipWrapper } from "../../common/tooltip";
+import { ITableColumn } from "../../common/tableView";
 
-export const columns: ILECTableColumn[] = [
+export const columns: ITableColumn[] = [
   {
     key: "verified",
     name: "V",
     fixed: true,
     component: (
-      <LECTooltip
+      <TooltipWrapper
         title="Verified"
         type="info-grey"
         placement="bottomLeft"
         align={{ offset: [-20, -4] } as TooltipAlignConfig}
       >
         <span>V</span>
-      </LECTooltip>
+      </TooltipWrapper>
     ),
     width: "50",
   },

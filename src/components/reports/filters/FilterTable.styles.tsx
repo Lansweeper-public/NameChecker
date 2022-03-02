@@ -1,9 +1,9 @@
 import styled from "../../../theme";
-import { LSDTableView } from "@lansweeper/lecfrontcomponents";
 import { Field } from "react-final-form";
 import { Button } from "../../common/button";
+import { TableView } from "../../common/tableView";
 
-const StyledLSDTableView = styled(LSDTableView)`
+const StyledTableView = styled(TableView)`
   margin-bottom: 12px;
 
   .lsd-table__header-cell-content {
@@ -139,4 +139,4 @@ const StyledButton = styled(Button)`
   }
 `;
 
-export { StyledLSDTableView, StyledButton, StyledField };
+export { StyledTableView, StyledButton, StyledField };

@@ -1,7 +1,7 @@
-import { LECModalBody, LECModalFooter } from "@lansweeper/lecfrontcomponents";
 import React, { ReactNode } from "react";
+import { ModalBody, ModalFooter } from "../../common/modal";
 import { Spin } from "../../common/spin";
-import { ConfirmationButton, StyledLECModal } from "./ConfirmationModal.styles";
+import { ConfirmationButton, StyledModal } from "./ConfirmationModal.styles";
 
 interface IConfirmationModalProps {
   isOpen: boolean;
@@ -29,7 +29,7 @@ export const ConfirmationModal: React.FC<IConfirmationModalProps> = ({
   dataTestId = "",
 }) => {
   return (
-    <StyledLECModal
+    <StyledModal
       wrapProps={{
         "data-test-id": dataTestId,
       }}
@@ -40,10 +40,10 @@ export const ConfirmationModal: React.FC<IConfirmationModalProps> = ({
       width="416px"
       centered={centered}
     >
-      <LECModalBody>
+      <ModalBody>
         {typeof message === "string" ? <span>{message}</span> : message}
-      </LECModalBody>
-      <LECModalFooter>
+      </ModalBody>
+      <ModalFooter>
         <ConfirmationButton secondary={check} onClick={onClose}>
           No
         </ConfirmationButton>
@@ -56,7 +56,7 @@ export const ConfirmationModal: React.FC<IConfirmationModalProps> = ({
         >
           {loading ? <Spin type="ellipsis" /> : "Yes"}
         </ConfirmationButton>
-      </LECModalFooter>
-    </StyledLECModal>
+      </ModalFooter>
+    </StyledModal>
   );
 };

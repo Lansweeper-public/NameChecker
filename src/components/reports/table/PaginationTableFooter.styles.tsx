@@ -1,7 +1,7 @@
-import { LECCursorTableFooter } from "@lansweeper/lecfrontcomponents";
 import styled from "../../../theme";
+import { CursorTableFooter } from "../../common/tableView";
 
-export const StyledLECCursorTableFooter = styled(LECCursorTableFooter)<{
+export const StyledCursorTableFooter = styled(CursorTableFooter)<{
   isHidden: boolean;
 }>`
   position: fixed;

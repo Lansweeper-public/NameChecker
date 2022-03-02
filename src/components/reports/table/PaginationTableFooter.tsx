@@ -1,14 +1,12 @@
 import React, { useEffect, useRef } from "react";
-import { ESizeListOption } from "@lansweeper/lecfrontcomponents";
-import { StyledLECCursorTableFooter } from "./PaginationTableFooter.styles";
+import { StyledCursorTableFooter } from "./PaginationTableFooter.styles";
 import {
   IAssetResourcesPagination,
   IFiltersGroupedInput,
 } from "../../../types";
 import { ITableState } from "../../providers/common";
 import { EPage } from "../../../lib/constants";
-
-export const pageSizeOptions = [10, 25, 50];
+import { SizeLists } from "../../common/tableView";
 
 export interface IChangePageParams {
   page: EPage;
@@ -62,11 +60,10 @@ export const PaginationTableFooter: React.FC<
   }, [siteId]);
 
   return (
-    <StyledLECCursorTableFooter
+    <StyledCursorTableFooter
       numItems={total}
       showPaging={true}
-      forceSizeList={pageSizeOptions}
-      sizeListOption={ESizeListOption.Small}
+      sizeList={SizeLists.Small}
       cursorTable={{
         currentIndex: currentPage,
         hasNext: currentPage * limit < total,
@@ -110,7 +107,7 @@ export const PaginationTableFooter: React.FC<
           fnUpdateAll: updateAll,
         });
       }}
-      sizeListIndex={pageSizeOptions.findIndex(
+      sizeListIndex={SizeLists.Small.findIndex(
         (indLimit) => indLimit === limit,
       )}
       isHidden={isHidden}

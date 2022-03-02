@@ -1,5 +1,5 @@
-import { LECTooltip } from "@lansweeper/lecfrontcomponents";
 import React from "react";
+import { TooltipWrapper } from "../common/tooltip";
 import { Tab, TabContainer } from "./SimpleTabs.styles";
 
 interface ITab {
@@ -30,9 +30,9 @@ export const SimpleTabs: React.FC<ISimpleTabs> = ({
           onClick={() => onSelectTab(tab)}
         >
           {isTabDisabled(tab) ? (
-            <LECTooltip title="Must apply a filter" type="info-grey">
+            <TooltipWrapper title="Must apply a filter" type="info-grey">
               <span>{tab.title}</span>
-            </LECTooltip>
+            </TooltipWrapper>
           ) : (
             <span>{tab.title}</span>
           )}

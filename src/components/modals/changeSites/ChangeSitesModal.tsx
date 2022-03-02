@@ -1,8 +1,8 @@
-import { LECMainModal } from "@lansweeper/lecfrontcomponents";
 import React, { useState } from "react";
 import { SiteList } from "../../authorizedSites/SiteList";
 import { ISite } from "../../../types";
 import { StyledParagraph } from "./ChangeSitesModal.styles";
+import { MainModal } from "../../common/modal";
 
 interface IChangeSitesModalProps {
   currentSiteId: string;
@@ -30,7 +30,7 @@ export const ChangeSitesModal: React.FC<IChangeSitesModalProps> = ({
   };
 
   return (
-    <LECMainModal
+    <MainModal
       title={title}
       open={open}
       primaryBtn={{
@@ -53,6 +53,6 @@ export const ChangeSitesModal: React.FC<IChangeSitesModalProps> = ({
         onSiteClick={onSiteClick}
         siteIdSelected={siteIdSelected}
       />
-    </LECMainModal>
+    </MainModal>
   );
 };

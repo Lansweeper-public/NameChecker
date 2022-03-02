@@ -1,0 +1,163 @@
+.ant-tooltip {
+  max-width: initial;
+}
+
+.lec-tooltip {
+  .ant-tooltip-inner {
+    background-color: var(--grey);
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 0 0 var(--overlay-black-20);
+    color: var(--white);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: -0.00562rem;
+    max-width: 20rem;
+    padding: 0.4375rem 1rem;
+    text-transform: uppercase;
+    word-wrap: break-word;
+    overflow: hidden;
+  }
+  &.lec-tooltip--fixed-width {
+    .ant-tooltip-inner {
+      width: 20rem;
+    }
+  }
+
+  .ant-tooltip-arrow:before {
+    background-color: var(--grey);
+  }
+
+  &.ant-tooltip-placement-left .ant-tooltip-arrow:before,
+  &.ant-tooltip-placement-leftBottom .ant-tooltip-arrow:before,
+  &.ant-tooltip-placement-leftTop .ant-tooltip-arrow:before {
+    right: 1px;
+  }
+
+  &.uniform-padding {
+    .ant-tooltip-inner {
+      padding: 1rem;
+    }
+  }
+}
+
+.lec-tooltip--info {
+  .ant-tooltip-inner {
+    background-color: var(--lighter-grey);
+    border: 1px solid var(--light-grey);
+    color: var(--grey-80);
+    padding: 0.4375 1rem;
+    font-size: 0.875rem;
+    box-shadow: none;
+    text-transform: none;
+    max-width: 24rem;
+  }
+
+  &.lec-tooltip--fixed-width {
+    .ant-tooltip-inner {
+      width: 24rem;
+    }
+  }
+
+  .ant-tooltip-arrow {
+    overflow: visible;
+  }
+
+  &.ant-tooltip-placement-bottom .ant-tooltip-arrow:before,
+  &.ant-tooltip-placement-bottomLeft .ant-tooltip-arrow:before,
+  &.ant-tooltip-placement-bottomRight .ant-tooltip-arrow:before {
+    border-top: 1px solid var(--light-grey);
+    border-left: 1px solid var(--light-grey);
+    clip-path: polygon(0 0, 100% 0, 100% 20%, 20% 100%, 0 100%);
+  }
+
+  &.ant-tooltip-placement-top .ant-tooltip-arrow:before,
+  &.ant-tooltip-placement-topLeft .ant-tooltip-arrow:before,
+  &.ant-tooltip-placement-topRight .ant-tooltip-arrow:before {
+    border-bottom: 1px solid var(--light-grey);
+    border-right: 1px solid var(--light-grey);
+    clip-path: polygon(80% 0, 100% 0, 100% 100%, 0 100%, 0 80%);
+  }
+
+  &.ant-tooltip-placement-left .ant-tooltip-arrow:before,
+  &.ant-tooltip-placement-leftBottom .ant-tooltip-arrow:before,
+  &.ant-tooltip-placement-leftTop .ant-tooltip-arrow:before {
+    border-top: 1px solid var(--light-grey);
+    border-right: 1px solid var(--light-grey);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 80% 100%, 0 20%);
+  }
+
+  &.ant-tooltip-placement-right .ant-tooltip-arrow:before,
+  &.ant-tooltip-placement-rightBottom .ant-tooltip-arrow:before,
+  &.ant-tooltip-placement-rightTop .ant-tooltip-arrow:before {
+    border-bottom: 1px solid var(--light-grey);
+    border-left: 1px solid var(--light-grey);
+    clip-path: polygon(0 0, 20% 0, 100% 80%, 100% 100%, 0 100%);
+  }
+
+  .ant-tooltip-arrow:before {
+    background-color: var(--lighter-grey);
+    box-shadow: none;
+  }
+}
+
+.lec-tooltip--info-long {
+  .ant-tooltip-inner {
+    font-weight: 500;
+  }
+}
+
+.lec-tooltip--info-grey {
+  .ant-tooltip-inner {
+    color: var(--grey);
+  }
+}
+
+.lec-tooltip--info-white {
+  .ant-tooltip-inner {
+    color: var(--grey);
+    font-weight: 500;
+    background-color: var(--white);
+    box-shadow: 0 5px 12px var(--overlay-black-20);
+    padding: 1rem;
+  }
+
+  .ant-tooltip-arrow:before {
+    background-color: var(--white);
+  }
+}
+
+.lec-tooltip--alert {
+  .ant-tooltip-inner {
+    background-color: var(--red);
+  }
+
+  .ant-tooltip-arrow:before {
+    background-color: var(--red);
+    box-shadow: 0 2px 0 0 var(--overlay-black-20);
+  }
+}
+
+.lec-tooltip--popover-white {
+  .ant-tooltip-inner {
+    color: var(--grey);
+    font-weight: 500;
+    background-color: var(--white);
+    box-shadow: 0 5px 12px var(--overlay-black-20);
+    padding: 1rem;
+    text-transform: none;
+  }
+
+  .ant-tooltip-arrow:before {
+    background-color: var(--white);
+  }
+}
+
+.lec-tooltip--no-padding .ant-tooltip-inner {
+  padding: 0;
+}
+
+.lec-tooltip.lec-tooltip--info-white-grey-title {
+  .ant-tooltip-arrow:before {
+    background-color: var(--lighter-grey);
+  }
+}

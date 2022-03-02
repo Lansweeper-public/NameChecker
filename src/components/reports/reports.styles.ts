@@ -1,6 +1,6 @@
-import { LECCursorTableFooter } from "@lansweeper/lecfrontcomponents";
 import { Page, FullPageContent } from "../../components";
 import styled from "../../theme";
+import { CursorTableFooter } from "../common/tableView";
 
 const StyledPage = styled(Page)`
   flex-direction: column;
@@ -73,7 +73,7 @@ const StyledTableContainer = styled.div`
   }
 `;
 
-const StyledLECCursorTableFooter = styled(LECCursorTableFooter)<{
+const StyledCursorTableFooter = styled(CursorTableFooter)<{
   isHidden: boolean;
 }>`
   position: fixed;
@@ -87,5 +87,5 @@ export {
   StyledPage,
   StyledFullPageContent,
   StyledTableContainer,
-  StyledLECCursorTableFooter,
+  StyledCursorTableFooter,
 };

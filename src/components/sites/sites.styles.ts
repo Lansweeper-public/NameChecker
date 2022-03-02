@@ -1,7 +1,7 @@
-import { LECUnderscoredTitle } from "@lansweeper/lecfrontcomponents";
 import Link from "next/link";
 import { Page } from "..";
 import styled from "../../theme";
+import { UnderscoredTitle } from "../common/undescoredTitle";
 
 const StyledMainBox = styled.div`
   flex-direction: column;
@@ -88,7 +88,7 @@ const StyledHeader = styled.div`
   align-items: center;
 `;
 
-const StyledLECUnderscoredTitle = styled(LECUnderscoredTitle)`
+const StyledLECUnderscoredTitle = styled(UnderscoredTitle)`
   margin-bottom: 22px;
   font-weight: bold;
 
