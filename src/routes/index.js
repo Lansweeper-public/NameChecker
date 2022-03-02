@@ -63,6 +63,7 @@ router.get("/api/callback", async (req, res) => {
     refreshToken: credentials.refresh_token,
     appInfo: {
       clientId: process.env.LS_APP_CLIENT_ID,
+      name: process.env.LS_APP_NAME,
     },
   };
 

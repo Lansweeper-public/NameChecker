@@ -1,0 +1,34 @@
+// only browser element default overrides here
+
+// scrollbar
+::-webkit-scrollbar {
+  background-color: $color-background;
+  opacity: 0.5;
+  width: rem($scroll-width);
+  height: rem($scroll-height);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $white;
+  border: rem(3px) solid transparent;
+  border-radius: rem(8px);
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: $color-background;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
+}

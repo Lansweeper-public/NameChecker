@@ -1,6 +1,7 @@
 import React, { RefObject } from "react";
 import { TooltipProps } from "antd/lib/tooltip";
 import { IIconMaker } from "../iconMaker";
+import { IHumanize } from "../humanize";
 
 export type TSortDirection = "ASC" | "DESC" | undefined;
 
@@ -17,6 +18,7 @@ export interface ITableColumn {
   fixed?: boolean;
   width?: string;
   dataTestId?: string;
+  humanize?: IHumanize;
   centerHeader?: boolean;
   noRightPadding?: boolean;
   noLeftPadding?: boolean;

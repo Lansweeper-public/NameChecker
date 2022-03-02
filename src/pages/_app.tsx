@@ -1,5 +1,6 @@
 import { css, Global } from "@emotion/core";
 import antCss from "antd/dist/antd.min.css";
+import "../styles/index.scss";
 import { ThemeProvider } from "emotion-theming";
 import { NextComponentType, NextPageContext } from "next";
 import { AppProps } from "next/app";

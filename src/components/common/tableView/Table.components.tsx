@@ -1,6 +1,7 @@
 import cn from "classnames";
 import React from "react";
 import { CheckboxWrapper } from "../checkbox";
+import { Humanize } from "../humanize";
 import { Icon } from "../icon";
 import { IconMaker } from "../iconMaker";
 import { TooltipWrapper } from "../tooltip";
@@ -337,6 +338,9 @@ const TableCell: React.FC<TableCellProps> = ({
             )}
           </div>
         )}
+        {attr.component ||
+          (column.humanize && <Humanize {...column.humanize} />) ||
+          attr.text}
         {!attr.icon && !attr.text && attr.text !== 0 && !attr.component && (
           <TableEmptyCell />
         )}
