@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import React from "react";
 import { HelperText } from "../helperText";
-import { SelectOption } from "./Select";
+import { SelectOption } from "./SelectInput";
 import { SelectOptionIcon, StyledLECSelect } from "./SelectWrapper.styles";
 
 export interface IListItem {
@@ -55,7 +55,7 @@ export const SelectWrapper = (props) => {
       <StyledLECSelect
         loading={loading}
         required={required}
-        defaultValue={meta.initial ? meta.initial : undefined}
+        defaultValue={meta.initial ? meta.initial : items[0].name}
         onChange={(e) => {
           onChangeInput(e);
           if (onChange) {

@@ -159,7 +159,9 @@ export const FiltersForm: React.FC<IFilterFormProps> = ({
       : undefined;
 
   useEffect(() => {
-    setInitialValues(() => generateInitialValues(filterValues));
+    if (Object.keys(filterValues).length) {
+      setInitialValues(generateInitialValues(filterValues));
+    }
   }, [filterValues]);
 
   useEffect(() => {

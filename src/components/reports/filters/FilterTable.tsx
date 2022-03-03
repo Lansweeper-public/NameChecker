@@ -1,4 +1,5 @@
 import React from "react";
+import { useForm } from "react-final-form";
 import { attributeColumns, transformTableItem } from "./FilterTable.columns";
 import { StyledTableView } from "./FilterTable.styles";
 
@@ -15,8 +16,9 @@ export const FilterTable: React.FC<IFilterTable> = ({
   handleRemoveRow,
   handleAddRow,
 }) => {
+  const form = useForm();
   const parsedItems = items.map((item) =>
-    transformTableItem(item, handleRemoveRow, handleAddRow, items.length),
+    transformTableItem(form, item, handleRemoveRow, handleAddRow, items.length),
   );
   return (
     <StyledTableView

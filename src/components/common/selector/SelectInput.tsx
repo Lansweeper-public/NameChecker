@@ -7,7 +7,7 @@ import { Spin } from "../spin";
 
 const { Option } = Select;
 
-export interface ISelect extends SelectProps {
+export interface ISelectInput extends SelectProps {
   label?: React.ReactNode;
   postLabel?: React.ReactNode;
   required?: boolean;
@@ -28,7 +28,7 @@ const SuffixIcon: React.FC<{ isOpen?: boolean; loading?: boolean }> = ({
   return <Icon icon={isOpen ? "arrow-up" : "arrow-bottom"} />;
 };
 
-export const SelectInput: React.FC<ISelect> = ({
+export const SelectInput: React.FC<ISelectInput> = ({
   required,
   label,
   postLabel,
@@ -79,7 +79,7 @@ export const SelectInput: React.FC<ISelect> = ({
         getPopupContainer={(trigger: HTMLElement) =>
           trigger.parentNode as HTMLElement
         }
-        {...(rest as ISelect)}
+        {...(rest as ISelectInput)}
       >
         {children}
       </Select>

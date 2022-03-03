@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import { IconMaker } from "../iconMaker";
-import { ISelect, SelectInput } from "./Select";
+import { ISelectInput, SelectInput } from "./SelectInput";
 
-export const StyledLECSelect = styled(SelectInput)<ISelect>`
+export const StyledLECSelect = styled(SelectInput)<ISelectInput>`
   .ant-select-selection-selected-value {
     svg {
       position: relative;
