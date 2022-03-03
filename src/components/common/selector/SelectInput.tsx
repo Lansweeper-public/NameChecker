@@ -61,6 +61,7 @@ export const SelectInput: React.FC<ISelectInput> = ({
         loading={loading}
         disabled={disabled || loading}
         data-test-id={dataTestId}
+        getPopupContainer={(triggerNode) => triggerNode.parentElement}
         notFoundContent={
           <div className="lec-select__dropdown__not-found-container">
             <span className="not-found-container__title">
