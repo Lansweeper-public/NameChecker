@@ -19,7 +19,7 @@ COPY ./src src
 
 ENV NODE_ENV=production
 
-RUN yarn install --pure-lockfile  && yarn build
+RUN yarn install  && yarn build
 
 # hadolint ignore=DL3006
 FROM ${NODE_IMAGE}
