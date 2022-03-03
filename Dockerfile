@@ -1,7 +1,6 @@
-ARG node:14.18-buster-slim AS base
+ARG NODE_IMAGE=node:14.18-buster-slim
 
-# hadolint ignore=DL3006
-FROM ${BASE_IMAGE} AS builder
+FROM ${NODE_IMAGE} AS builder
 ARG NPM_TOKEN
 ENV NPM_TOKEN=$NPM_TOKEN
 
@@ -22,8 +21,7 @@ ENV NODE_ENV=production
 
 RUN yarn install --pure-lockfile --production  && yarn build
 
-# hadolint ignore=DL3006
-FROM base
+FROM ${NODE_IMAGE}
 ENV APPDIR=/usr/src/app
 ENV NODE_ENV=production
 
