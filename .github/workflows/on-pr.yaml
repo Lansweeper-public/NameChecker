@@ -19,19 +19,15 @@ jobs:
         run: |
           docker build -t lansweeper-public/namechecker:${{ github.sha }} .
 
-      - name: Install trivy
-        run: |
-          if [[ $EUID == 0 ]]; then export SUDO=""; else export SUDO="sudo"; fi
-          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | $SUDO sh -s -- -b /usr/local/bin
-
       - name: Run Trivy vulnerability scanner
-        run: |
-          trivy image --no-progress --exit-code 1 \
-            --severity HIGH,CRITICAL \
-            --vuln-type os,library \
-            --ignore-unfixed true \
-            --ignorefile .trivyignore \
-            lansweeper-public/namechecker:${{ github.sha }}
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: "lansweeper-public/namechecker:${{ github.sha }}"
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
 
   build-tests:
     name: Build and tests
