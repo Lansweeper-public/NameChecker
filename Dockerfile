@@ -17,9 +17,11 @@ COPY ./tsconfig.json .
 
 COPY ./src src
 
-ENV NODE_ENV=production
 
-RUN yarn install  && yarn build
+RUN yarn install 
+
+ENV NODE_ENV=production
+RUN yarn build
 
 # hadolint ignore=DL3006
 FROM ${NODE_IMAGE}
