@@ -34,7 +34,7 @@ jobs:
             lansweeper-public/namechecker:${{ github.sha }}
 
   build-tests:
-    name: Build, tests and sonar
+    name: Build and tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -47,8 +47,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Lint
         run: yarn lint

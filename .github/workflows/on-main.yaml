@@ -50,8 +50,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Lint
         run: yarn lint
@@ -79,11 +77,23 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "14.17"
+      
+      - name: docker login
+        env:
+          DOCKER_USER: ${{secrets.DOCKER_USER}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+
 
       - name: Install dependencies
         run: yarn
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Release
         run: yarn release
+
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag lansweeper-public/namechecker:${{ github.sha }}
+      
+      - name: Docker Push
+        run: docker push lansweeper-public/namechecker

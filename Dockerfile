@@ -11,7 +11,6 @@ WORKDIR $BUILDDIR
 
 COPY ./package.json .
 COPY ./yarn.lock .
-COPY ./.npmrc .
 COPY ./next.config.js .
 COPY ./.babelrc .
 COPY ./tsconfig.json .
