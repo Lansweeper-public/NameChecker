@@ -12,43 +12,8 @@
   .ant-select {
     width: 100%;
 
-    &-focused {
-      .ant-select-selection {
-        border-color: var(--grey-40);
-        border-right-width: 0;
-        outline: 0;
-        box-shadow: none;
-      }
-    }
-  }
-
-  .ant-select-selection {
-    border-radius: 0px;
-
-    &__rendered {
-      margin-left: 1rem;
-      font-size: rem(15px);
-      color: var(--grey);
-      font-weight: 500;
-      .ant-select-selection-selected-value {
-        position: relative;
-        align-items: center;
-        display: flex;
-        > svg,
-        > .lec-icon-image {
-          margin-right: 0.75rem;
-        }
-        & > span {
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          margin-left: 0px;
-        }
-      }
-    }
-
-    &__clear,
     .ant-select-arrow {
+      font-size: 14px;
       color: var(--grey-60);
       right: 1rem;
       width: 14px;
@@ -60,12 +25,43 @@
         right: 1rem;
       }
     }
+
+    &-focused {
+      .ant-select-selector {
+        border-color: var(--grey-40);
+        border-right-width: 0;
+        outline: 0;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .ant-select-selector {
+    border-radius: 0px;
+    min-height: 38px;
+    font-size: rem(15px);
+    color: var(--grey);
+    font-weight: 500;
+
+    .ant-select-selection-item {
+      position: relative;
+      align-items: center;
+      display: flex;
+      > svg,
+      > .lec-icon-image {
+        margin-right: 0.75rem;
+      }
+      & > span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-left: 0px;
+      }
+    }
+
     &__clear {
       margin-top: -8px;
       font-size: 1rem;
-    }
-    .ant-select-arrow {
-      font-size: 14px;
     }
 
     &:focus,
@@ -82,7 +78,7 @@
     }
   }
 
-  :not(.ant-select-disabled) .ant-select-selection {
+  :not(.ant-select-disabled) .ant-select-selector {
     &__clear,
     .ant-select-arrow {
       cursor: pointer;
@@ -108,7 +104,7 @@
     @extend %input-label;
   }
 
-  .ant-select-selection__placeholder,
+  .ant-select-selector__placeholder,
   .ant-select-search__field__placeholder {
     font-size: rem(15px);
     font-weight: 500;
@@ -229,7 +225,7 @@
     }
   }
   &.lec-mini-dropdown {
-    .ant-select-selection {
+    .ant-select-selector {
       &__rendered {
         margin: 0 rem(11px);
       }

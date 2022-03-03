@@ -102,17 +102,17 @@ const StyledTableView = styled(TableView)`
 `;
 
 const StyledField = styled(Field)`
-  .ant-select-selection-selected-value {
+  .ant-select-selector-selected-value {
     font-size: 16px;
     color: var(--grey);
     font-weight: 500;
   }
 
-  .ant-select-selection__rendered {
+  .ant-select-selector__rendered {
     line-height: 38px;
   }
 
-  .ant-select-selection {
+  .ant-select-selector {
     border-radius: 2px;
     height: initial;
     border: 1px solid var(--light-grey);

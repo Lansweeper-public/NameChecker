@@ -3,7 +3,7 @@ import { IconMaker } from "../iconMaker";
 import { ISelectInput, SelectInput } from "./SelectInput";
 
 export const StyledLECSelect = styled(SelectInput)<ISelectInput>`
-  .ant-select-selection-selected-value {
+  .ant-select-selector-selected-value {
     svg {
       position: relative;
       margin-right: 0.75rem;
