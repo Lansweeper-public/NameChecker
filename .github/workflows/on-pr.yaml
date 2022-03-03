@@ -17,24 +17,20 @@ jobs:
 
       - name: Build an image from Dockerfile
         run: |
-          docker build -t ${{ secrets.AWS_ECR_ACCOUNT_URL}}/lec-integrations-namechecker:${{ github.sha }} .
-
-      - name: Install trivy
-        run: |
-          if [[ $EUID == 0 ]]; then export SUDO=""; else export SUDO="sudo"; fi
-          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | $SUDO sh -s -- -b /usr/local/bin
+          docker build -t lansweeper-public/namechecker:${{ github.sha }} .
 
       - name: Run Trivy vulnerability scanner
-        run: |
-          trivy image --no-progress --exit-code 1 \
-            --severity HIGH,CRITICAL \
-            --vuln-type os,library \
-            --ignore-unfixed true \
-            --ignorefile .trivyignore \
-            ${{ secrets.AWS_ECR_ACCOUNT_URL}}/lec-integrations-namechecker:${{ github.sha }}
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: "lansweeper-public/namechecker:${{ github.sha }}"
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
 
-  build-tests-sonar:
-    name: Build, tests and sonar
+  build-tests:
+    name: Build and tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -47,8 +43,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Lint
         run: yarn lint
@@ -57,12 +51,7 @@ jobs:
         run: yarn build
 
       - name: Tests
-        run: yarn test
-
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: yarn test:ci
 
       - name: E2E tests install cypress and start server
         run: yarn cypress:install && yarn run start &
