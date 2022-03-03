@@ -57,7 +57,7 @@ jobs:
         run: yarn build
 
       - name: Tests
-        run: yarn test
+        run: yarn test:ci
 
       - name: E2E tests install cypress and start server
         run: yarn cypress:install && yarn run start &
