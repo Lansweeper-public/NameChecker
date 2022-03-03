@@ -5,10 +5,6 @@ module.exports = withAntdLess({
   modifyVars: { "@primary-color": "#ff8a00" },
   lessVarsFilePathAppendToEndOfContent: false,
   cssLoaderOptions: {},
-  lessLoaderOptions: {
-    javascriptEnabled: true,
-    importLoaders: 0,
-  },
   webpack(config) {
     return config;
   },

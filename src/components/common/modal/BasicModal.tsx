@@ -33,7 +33,7 @@ export const BasicModal: React.FC<IBasicModal & ModalProps> = ({
   return (
     <Modal
       {...rest}
-      centered={centered === false ? false : true} // cented by default - explicit false needed to override: undefined also resolves to true
+      centered={centered === false ? false : true}
       wrapClassName={cn("lec-modal", className)}
       visible={open}
       footer={null}
