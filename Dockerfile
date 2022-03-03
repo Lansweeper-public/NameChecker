@@ -35,7 +35,6 @@ COPY ./yarn.lock .
 COPY ./public public
 COPY --from=builder /usr/src/app/.next .next
 COPY --from=builder /usr/src/app/node_modules node_modules
-COPY --from=builder /usr/src/app/dist dist
 
 ENV NPM_TOKEN=
 
