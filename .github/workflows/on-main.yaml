@@ -22,19 +22,15 @@ jobs:
         run: |
           docker build -t lansweeper-public/namechecker:${{ github.sha }} .
 
-      - name: Install trivy
-        run: |
-          if [[ $EUID == 0 ]]; then export SUDO=""; else export SUDO="sudo"; fi
-          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | $SUDO sh -s -- -b /usr/local/bin
-
       - name: Run Trivy vulnerability scanner
-        run: |
-          trivy image --no-progress --exit-code 1 \
-            --severity HIGH,CRITICAL \
-            --vuln-type os,library \
-            --ignore-unfixed true \
-            --ignorefile .trivyignore \
-            lansweeper-public/namechecker:${{ github.sha }}
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: "lansweeper-public/namechecker:${{ github.sha }}"
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
 
   build-tests:
     name: Build and tests
@@ -58,7 +54,7 @@ jobs:
         run: yarn build
 
       - name: Tests
-        run: yarn test
+        run: yarn test:ci
 
       - name: E2E tests install cypress and start server
         run: yarn cypress:install && yarn run start &
@@ -69,6 +65,7 @@ jobs:
   release:
     name: Release and push docker image
     runs-on: ubuntu-latest
+    needs: [build-tests, build-docker]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -78,21 +75,26 @@ jobs:
         with:
           node-version: "14.17"
 
-      - name: docker login
-        env:
-          DOCKER_USER: ${{secrets.DOCKER_USER}}
-          DOCKER_PASSWORD: ${{secrets.DOCKER_HUB_TOKEN}}
-        run: |
-          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-
       - name: Install dependencies
         run: yarn
 
       - name: Release
         run: yarn release
 
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag lansweeper-public/namechecker:${{ github.sha }}
+      - name: Get version
+        id: version-step
+        run: |
+          VERSION=$(cat package.json | jq --raw-output '.version')
+          echo '::set-output name=VERSION::${{ VERSION }}'
 
-      - name: Docker Push
-        run: docker push lansweeper-public/namechecker
+      - name: docker login
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USER }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: lansweeper-public/namechecker:${{ steps.version-step.outputs.VERSION }}
