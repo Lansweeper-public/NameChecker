@@ -17,12 +17,12 @@ jobs:
 
       - name: Build an image from Dockerfile
         run: |
-          docker build -t lansweeper-public/namechecker:${{ github.sha }} .
+          docker build -t lansweeperdev/namechecker:${{ github.sha }} .
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "lansweeper-public/namechecker:${{ github.sha }}"
+          image-ref: "lansweeperdev/namechecker:${{ github.sha }}"
           format: "table"
           exit-code: "1"
           ignore-unfixed: true
