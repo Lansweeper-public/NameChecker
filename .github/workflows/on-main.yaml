@@ -84,8 +84,8 @@ jobs:
       - name: Get version
         id: version-step
         run: |
-          VERSION=$(cat package.json | jq --raw-output '.version')
-          echo '::set-output name=VERSION::${{ VERSION }}'
+          version=$(cat package.json | jq --raw-output '.version')
+          echo '::set-output name=VERSION::${{ version }}'
 
       - name: docker login
         uses: docker/login-action@v1
