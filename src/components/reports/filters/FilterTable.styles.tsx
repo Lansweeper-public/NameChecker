@@ -1,8 +1,9 @@
 import styled from "../../../theme";
-import { LECButton, LSDTableView } from "@lansweeper/lecfrontcomponents";
 import { Field } from "react-final-form";
+import { Button } from "../../common/button";
+import { TableView } from "../../common/tableView";
 
-const StyledLSDTableView = styled(LSDTableView)`
+const StyledTableView = styled(TableView)`
   margin-bottom: 12px;
 
   .lsd-table__header-cell-content {
@@ -101,24 +102,24 @@ const StyledLSDTableView = styled(LSDTableView)`
 `;
 
 const StyledField = styled(Field)`
-  .ant-select-selection-selected-value {
+  .ant-select-selector-selected-value {
     font-size: 16px;
     color: var(--grey);
     font-weight: 500;
   }
 
-  .ant-select-selection__rendered {
+  .ant-select-selector__rendered {
     line-height: 38px;
   }
 
-  .ant-select-selection {
+  .ant-select-selector {
     border-radius: 2px;
     height: initial;
     border: 1px solid var(--light-grey);
   }
 `;
 
-const StyledLECButton = styled(LECButton)`
+const StyledButton = styled(Button)`
   min-height: 40px;
   min-width: 40px;
   align-self: flex-end;
@@ -138,4 +139,4 @@ const StyledLECButton = styled(LECButton)`
   }
 `;
 
-export { StyledLSDTableView, StyledLECButton, StyledField };
+export { StyledTableView, StyledButton, StyledField };

@@ -1,0 +1,60 @@
+name: CI-PR
+
+on: [pull_request]
+
+jobs:
+  build-docker:
+    name: Build docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Hadolint
+        uses: hadolint/hadolint-action@v1.6.0
+        with:
+          dockerfile: Dockerfile
+
+      - name: Build an image from Dockerfile
+        run: |
+          docker build -t lansweeper-public/namechecker:${{ github.sha }} .
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: "lansweeper-public/namechecker:${{ github.sha }}"
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
+
+  build-tests:
+    name: Build and tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14.17"
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Build
+        run: yarn build
+
+      - name: Tests
+        run: yarn test:ci
+
+      - name: E2E tests install cypress and start server
+        run: yarn cypress:install && yarn run start &
+
+      - name: Run E2E tests
+        run: yarn run start &

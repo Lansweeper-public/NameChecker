@@ -1,0 +1,622 @@
+[class^="lec-icon-"],
+[class*=" lec-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "lec-font" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lec-icon-asset-type-preview:before {
+  content: "\e9c9";
+}
+.lec-icon-archive-item:before {
+  content: "\e9c8";
+}
+.lec-icon-jobs:before {
+  content: "\e9c7";
+}
+.lec-icon-chevron-breadcrumbs:before {
+  content: "\e9c5";
+}
+.lec-icon-Ellipsis:before {
+  content: "\e9c6";
+}
+.lec-icon-delete-left:before {
+  content: "\e9c2";
+}
+.lec-icon-Pin:before {
+  content: "\e9c3";
+}
+.lec-icon-Sort:before {
+  content: "\e9c4";
+}
+.lec-icon-error:before {
+  content: "\e9c1";
+}
+.lec-icon-action-rate-software:before {
+  content: "\e9be";
+}
+.lec-icon-rate-software:before {
+  content: "\e9bf";
+}
+.lec-icon-schedule-paused:before {
+  content: "\e9c0";
+}
+.lec-icon-report-default:before {
+  content: "\e9bd";
+}
+.lec-icon-export:before {
+  content: "\e9b3";
+}
+.lec-icon-local-installation:before {
+  content: "\e9b4";
+}
+.lec-icon-join-report:before {
+  content: "\e9b5";
+}
+.lec-icon-first-vertical:before {
+  content: "\e9b6";
+}
+.lec-icon-last-vertical:before {
+  content: "\e9b7";
+}
+.lec-icon-pile:before {
+  content: "\e9b8";
+}
+.lec-icon-report-filter:before {
+  content: "\e9b9";
+}
+.lec-icon-report-group:before {
+  content: "\e9ba";
+}
+.lec-icon-switch:before {
+  content: "\e9bb";
+}
+.lec-icon-zoom:before {
+  content: "\e9bc";
+}
+.lec-icon-code:before {
+  content: "\e9b2";
+}
+.lec-icon-lost-local-connectivity:before {
+  content: "\e9b1";
+}
+.lec-icon-cluster:before {
+  content: "\e9b0";
+}
+.lec-icon-pending:before {
+  content: "\e9ae";
+}
+.lec-icon-execute-report:before {
+  content: "\e9af";
+}
+.lec-icon-queued-report:before {
+  content: "\e9ab";
+}
+.lec-icon-run-report:before {
+  content: "\e9ac";
+}
+.lec-icon-spinner:before {
+  content: "\e9ad";
+}
+.lec-icon-action-remove:before {
+  content: "\e9aa";
+}
+.lec-icon-deduplication:before {
+  content: "\e9a9";
+}
+.lec-icon-beta:before {
+  content: "\e9a8";
+}
+.lec-icon-grafana:before {
+  content: "\e9a6";
+}
+.lec-icon-resync-queue:before {
+  content: "\e9a7";
+}
+.lec-icon-resync:before {
+  content: "\e9a5";
+}
+.lec-icon-software-release:before {
+  content: "\e9a4";
+}
+.lec-icon-change:before {
+  content: "\e9a3";
+}
+.lec-icon-pagination-first:before {
+  content: "\e9a1";
+}
+.lec-icon-pagination-last:before {
+  content: "\e9a2";
+}
+.lec-icon-header-action-compatibility:before {
+  content: "\e99f";
+}
+.lec-icon-header-action-software:before {
+  content: "\e9a0";
+}
+.lec-icon-upload:before {
+  content: "\e92a";
+}
+.lec-icon-authentication-site:before {
+  content: "\e99e";
+}
+.lec-icon-open-url:before {
+  content: "\e99d";
+}
+.lec-icon-help:before {
+  content: "\e99c";
+}
+.lec-icon-action-revoke:before {
+  content: "\e99b";
+}
+.lec-icon-send-receive:before {
+  content: "\e999";
+}
+.lec-icon-up:before {
+  content: "\e99a";
+}
+.lec-icon-software:before {
+  content: "\e994";
+}
+.lec-icon-intune:before {
+  content: "\e995";
+}
+.lec-icon-comment:before {
+  content: "\e996";
+}
+.lec-icon-attachments:before {
+  content: "\e997";
+}
+.lec-icon-app:before {
+  content: "\e998";
+}
+.lec-icon-task:before {
+  content: "\e993";
+}
+.lec-icon-widget-chart-report:before {
+  content: "\e992";
+}
+.lec-icon-warning:before {
+  content: "\e988";
+}
+.lec-icon-ungroup-items-small:before {
+  content: "\e989";
+}
+.lec-icon-refresh:before {
+  content: "\e98a";
+}
+.lec-icon-leave:before {
+  content: "\e98b";
+}
+.lec-icon-group-items-small:before {
+  content: "\e98c";
+}
+.lec-icon-expand:before {
+  content: "\e98d";
+}
+.lec-icon-unlink:before {
+  content: "\e98e";
+}
+.lec-icon-ungroup-items:before {
+  content: "\e98f";
+}
+.lec-icon-merge:before {
+  content: "\e990";
+}
+.lec-icon-group-items:before {
+  content: "\e991";
+}
+.lec-icon-scanning-queue-default:before {
+  content: "\e987";
+}
+.lec-icon-duplicate:before {
+  content: "\e986";
+}
+.lec-icon-header-action-unfollow-board:before {
+  content: "\e983";
+}
+.lec-icon-widget-manufacturer:before {
+  content: "\e984";
+}
+.lec-icon-widget-windows-overview:before {
+  content: "\e985";
+}
+.lec-icon-header-action-duplicate-item:before {
+  content: "\e981";
+}
+.lec-icon-action-share:before {
+  content: "\e982";
+}
+.lec-icon-asset-detail-OU:before {
+  content: "\e980";
+}
+.lec-icon-highlight-empty-star:before {
+  content: "\e973";
+}
+.lec-icon-highlight-full-star:before {
+  content: "\e974";
+}
+.lec-icon-relation-backedup:before {
+  content: "\e975";
+}
+.lec-icon-relation-controlledby:before {
+  content: "\e976";
+}
+.lec-icon-relation-forbiddenfor:before {
+  content: "\e977";
+}
+.lec-icon-relation-inside:before {
+  content: "\e978";
+}
+.lec-icon-relation-installedby:before {
+  content: "\e979";
+}
+.lec-icon-relation-locatedin:before {
+  content: "\e97a";
+}
+.lec-icon-relation-neededfor:before {
+  content: "\e97b";
+}
+.lec-icon-relation-orderedfor:before {
+  content: "\e97c";
+}
+.lec-icon-relation-returnedby:before {
+  content: "\e97d";
+}
+.lec-icon-relation-usedby:before {
+  content: "\e97e";
+}
+.lec-icon-relation-usedwith:before {
+  content: "\e97f";
+}
+.lec-icon-widget-assets-overview:before {
+  content: "\e96b";
+}
+.lec-icon-widget-rss:before {
+  content: "\e96c";
+}
+.lec-icon-widget-alert-report:before {
+  content: "\e96d";
+}
+.lec-icon-widget-counter:before {
+  content: "\e96e";
+}
+.lec-icon-widget-iframe:before {
+  content: "\e96f";
+}
+.lec-icon-widget-scanning-status:before {
+  content: "\e970";
+}
+.lec-icon-widgetdata-report:before {
+  content: "\e971";
+}
+.lec-icon-header-action-createrelation:before {
+  content: "\e972";
+}
+.lec-icon-header-action-history:before {
+  content: "\e94a";
+}
+.lec-icon-reorder-item:before {
+  content: "\e96a";
+}
+.lec-icon-header-action-addtogroup:before {
+  content: "\e968";
+}
+.lec-icon-header-action-removefromgroup:before {
+  content: "\e969";
+}
+.lec-icon-header-action-add:before {
+  content: "\e967";
+}
+.lec-icon-notification-mute:before {
+  content: "\e966";
+}
+.lec-icon-all-regions:before {
+  content: "\e960";
+}
+.lec-icon-configuration:before {
+  content: "\e961";
+}
+.lec-icon-date:before {
+  content: "\e962";
+}
+.lec-icon-locked:before {
+  content: "\e963";
+}
+.lec-icon-preview:before {
+  content: "\e964";
+}
+.lec-icon-unlocked:before {
+  content: "\e965";
+}
+.lec-icon-header-action-delete:before {
+  content: "\e95f";
+}
+.lec-icon-asset-tab-xenserver:before {
+  content: "\e95e";
+}
+.lec-icon-minus:before {
+  content: "\e95c";
+}
+.lec-icon-plus:before {
+  content: "\e95d";
+}
+.lec-icon-calendar:before {
+  content: "\e95a";
+}
+.lec-icon-action-change:before {
+  content: "\e95b";
+}
+.lec-icon-menu-whatsnew:before {
+  content: "\e959";
+}
+.lec-icon-asset-detail-toner:before {
+  content: "\e958";
+}
+.lec-icon-header-action-filter:before {
+  content: "\e957";
+}
+.lec-icon-action-scannow:before {
+  content: "\e90f";
+}
+.lec-icon-header-action-disableall:before {
+  content: "\e955";
+}
+.lec-icon-header-action-enableall:before {
+  content: "\e956";
+}
+.lec-icon-asset-detail-processor:before {
+  content: "\e94f";
+}
+.lec-icon-asset-detail-shares:before {
+  content: "\e950";
+}
+.lec-icon-asset-detail-quickfix:before {
+  content: "\e951";
+}
+.lec-icon-asset-detail-memory:before {
+  content: "\e952";
+}
+.lec-icon-asset-detail-autorun:before {
+  content: "\e953";
+}
+.lec-icon-asset-detail-datacenter:before {
+  content: "\e954";
+}
+.lec-icon-header-action-clean:before {
+  content: "\e94b";
+}
+.lec-icon-header-action-save:before {
+  content: "\e94c";
+}
+.lec-icon-asset-tab-macos:before {
+  content: "\e94d";
+}
+.lec-icon-asset-detail-fireware:before {
+  content: "\e94e";
+}
+.lec-icon-asset-tab-system:before {
+  content: "\e948";
+}
+.lec-icon-asset-tab-vmware:before {
+  content: "\e949";
+}
+.lec-icon-asset-detail-feature:before {
+  content: "\e944";
+}
+.lec-icon-asset-detail-google:before {
+  content: "\e945";
+}
+.lec-icon-asset-detail-software:before {
+  content: "\e946";
+}
+.lec-icon-asset-detail-windows:before {
+  content: "\e947";
+}
+.lec-icon-asset-tab-devices:before {
+  content: "\e938";
+}
+.lec-icon-asset-tab-disk:before {
+  content: "\e939";
+}
+.lec-icon-asset-tab-display:before {
+  content: "\e93a";
+}
+.lec-icon-asset-tab-hardware:before {
+  content: "\e93b";
+}
+.lec-icon-asset-tab-ie:before {
+  content: "\e93c";
+}
+.lec-icon-asset-tab-network:before {
+  content: "\e93d";
+}
+.lec-icon-asset-tab-scanned:before {
+  content: "\e93e";
+}
+.lec-icon-asset-tab-user:before {
+  content: "\e93f";
+}
+.lec-icon-asset-tab-windows:before {
+  content: "\e940";
+}
+.lec-icon-asset-detail-component:before {
+  content: "\e941";
+}
+.lec-icon-asset-detail-bus:before {
+  content: "\e942";
+}
+.lec-icon-asset-detail-browser:before {
+  content: "\e943";
+}
+.lec-icon-user:before {
+  content: "\e92e";
+}
+.lec-icon-asset-detail-scanning-info:before {
+  content: "\e92f";
+}
+.lec-icon-counter-newassets:before {
+  content: "\e930";
+}
+.lec-icon-counter-activity:before {
+  content: "\e931";
+}
+.lec-icon-news:before {
+  content: "\e932";
+}
+.lec-icon-tutorial-addgroup:before {
+  content: "\e933";
+}
+.lec-icon-tutorial-adduser:before {
+  content: "\e934";
+}
+.lec-icon-tutorial-createsoftware:before {
+  content: "\e935";
+}
+.lec-icon-tutorial-group:before {
+  content: "\e936";
+}
+.lec-icon-tutorial-inviteuser:before {
+  content: "\e937";
+}
+.lec-icon-close:before {
+  content: "\e92d";
+}
+.lec-icon-action-copy:before {
+  content: "\e92b";
+}
+.lec-icon-action-renew:before {
+  content: "\e92c";
+}
+.lec-icon-asset-detail-antivirus:before {
+  content: "\e929";
+}
+.lec-icon-asset-detail-audio:before {
+  content: "\e927";
+}
+.lec-icon-relation-connected:before {
+  content: "\e928";
+}
+.lec-icon-header-action-duplicate:before {
+  content: "\e924";
+}
+.lec-icon-header-action-export:before {
+  content: "\e925";
+}
+.lec-icon-header-action-share:before {
+  content: "\e926";
+}
+.lec-icon-error-scanning:before {
+  content: "\e923";
+}
+.lec-icon-action-logout:before {
+  content: "\e922";
+}
+.lec-icon-header-action-edit:before {
+  content: "\e90d";
+}
+.lec-icon-header-action-QRcode:before {
+  content: "\e90e";
+}
+.lec-icon-header-action-wakeonlan:before {
+  content: "\e921";
+}
+.lec-icon-info:before {
+  content: "\e91e";
+}
+.lec-icon-action-location:before {
+  content: "\e91f";
+}
+.lec-icon-action-ping:before {
+  content: "\e920";
+}
+.lec-icon-action-download:before {
+  content: "\e902";
+}
+.lec-icon-action-delete:before {
+  content: "\e911";
+}
+.lec-icon-action-export:before {
+  content: "\e912";
+}
+.lec-icon-action-group:before {
+  content: "\e913";
+}
+.lec-icon-action-relations:before {
+  content: "\e914";
+}
+.lec-icon-avatar:before {
+  content: "\e915";
+}
+.lec-icon-check:before {
+  content: "\e916";
+}
+.lec-icon-menu-configuration:before {
+  content: "\e917";
+}
+.lec-icon-menu-dashboard:before {
+  content: "\e918";
+}
+.lec-icon-menu-deployment:before {
+  content: "\e919";
+}
+.lec-icon-menu-inventory:before {
+  content: "\e91a";
+}
+.lec-icon-menu-reports:before {
+  content: "\e91b";
+}
+.lec-icon-menu-scanning:before {
+  content: "\e91c";
+}
+.lec-icon-menu-software:before {
+  content: "\e91d";
+}
+.lec-icon-alert:before {
+  content: "\e910";
+}
+.lec-icon-action-add:before {
+  content: "\e900";
+}
+.lec-icon-action-edit:before {
+  content: "\e901";
+}
+.lec-icon-actions:before {
+  content: "\e903";
+}
+.lec-icon-arrow-bottom:before {
+  content: "\e904";
+}
+.lec-icon-arrow-left:before {
+  content: "\e905";
+}
+.lec-icon-arrow-right:before {
+  content: "\e906";
+}
+.lec-icon-arrow-up:before {
+  content: "\e907";
+}
+.lec-icon-default:before {
+  content: "\e908";
+}
+.lec-icon-inventory-columns:before {
+  content: "\e909";
+}
+.lec-icon-menu-help:before {
+  content: "\e90a";
+}
+.lec-icon-menu-notification:before {
+  content: "\e90b";
+}
+.lec-icon-search:before {
+  content: "\e90c";
+}

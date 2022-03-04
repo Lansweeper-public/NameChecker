@@ -1,12 +1,9 @@
 import styled from "@emotion/styled";
-import {
-  ILECSelect,
-  LECIconMaker,
-  LECSelect,
-} from "@lansweeper/lecfrontcomponents";
+import { IconMaker } from "../iconMaker";
+import { ISelectInput, SelectInput } from "./SelectInput";
 
-export const StyledLECSelect = styled(LECSelect)<ILECSelect>`
-  .ant-select-selection-selected-value {
+export const StyledLECSelect = styled(SelectInput)<ISelectInput>`
+  .ant-select-selector-selected-value {
     svg {
       position: relative;
       margin-right: 0.75rem;
@@ -25,7 +22,7 @@ export const StyledLECSelect = styled(LECSelect)<ILECSelect>`
   }
 `;
 
-export const SelectOptionIcon = styled(LECIconMaker)`
+export const SelectOptionIcon = styled(IconMaker)`
   position: relative;
   margin-right: 0.75rem;
   top: 0.1875rem;

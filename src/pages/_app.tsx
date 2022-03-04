@@ -1,6 +1,6 @@
 import { css, Global } from "@emotion/core";
-import lecCss from "@lansweeper/lecfrontcomponents/dist/index.css";
 import antCss from "antd/dist/antd.min.css";
+import "../styles/index.scss";
 import { ThemeProvider } from "emotion-theming";
 import { NextComponentType, NextPageContext } from "next";
 import { AppProps } from "next/app";
@@ -28,7 +28,6 @@ const App = ({ Component, pageProps }: AppProps) => {
         styles={css`
           ${normalizeCss}
           ${antCss}
-          ${lecCss}
 
           @font-face {
             font-family: "lec-font";

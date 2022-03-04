@@ -1,4 +1,4 @@
-import { TSortDirection } from "@lansweeper/lecfrontcomponents";
+import { TSortDirection } from "../components/common/tableView";
 import { EPage } from "../lib/constants";
 
 export interface IAssetResource {

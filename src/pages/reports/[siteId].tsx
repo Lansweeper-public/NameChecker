@@ -1,5 +1,3 @@
-import { IFiltersGroupedInput } from "@lansweeper/integrations-dataset";
-import { LECEmpty } from "@lansweeper/lecfrontcomponents";
 import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
@@ -22,12 +20,14 @@ import {
   useMatchedAssets,
   useNoMatchAssets,
 } from "../../components";
+import { EmptyWrapper } from "../../components/common/empty";
 import { useCurrentSite } from "../../hooks/useCurrentSite";
 import { usePagination } from "../../hooks/usePagination";
 import { EPage } from "../../lib/constants";
 import { canAccessAndGetUser } from "../../lib/user";
 import { getMe } from "../../services/me";
 import { getSite } from "../../services/sites";
+import { IFiltersGroupedInput } from "../../types";
 import { ISite } from "../../types/site";
 
 export const pageSizeOptions = [10, 25, 50];
@@ -219,7 +219,7 @@ export const ReportsPage: NextPage<IReportsPageProps> = ({
                 filterValues={filterValues}
                 regExps={regExps}
                 empty={
-                  <LECEmpty
+                  <EmptyWrapper
                     title="Please fill in the filters to find matches"
                     subTitle=" "
                     image="no-results"

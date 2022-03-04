@@ -1,13 +1,11 @@
 import React from "react";
-import {
-  ILECTableColumn,
-  ILECTableItem,
-  LECIcon,
-} from "@lansweeper/lecfrontcomponents";
-import { StyledLECButton, StyledField } from "./FilterTable.styles";
+import { StyledButton, StyledField } from "./FilterTable.styles";
 import { IListItem, InputWrapper, SelectWrapper } from "../../common";
+import { Icon } from "../../common/icon";
+import { ITableColumn, ITableItem } from "../../common/tableView";
+import { FormApi } from "final-form";
 
-export const attributeColumns: ILECTableColumn[] = [
+export const attributeColumns: ITableColumn[] = [
   {
     key: "selectOption",
     name: "Select option",
@@ -59,59 +57,72 @@ export const operatorOptions: IListItem[] = [EQUAL_TO, NO_EQUAL_TO].map(
 );
 
 export const transformTableItem = (
+  form: FormApi,
   id: string,
   handleRemoveRow: (id: string) => void,
   handleAddRow: (id: string) => void,
   numRows: number,
-): ILECTableItem => ({
-  id,
-  attributes: {
-    selectOption: {
-      component: (
-        <StyledField
-          name={`selectOption#${id}`}
-          initialValue={BEGINS_WITH}
-          component={SelectWrapper}
-          items={selectOptions}
-        />
-      ),
-    },
-    selectOperator: {
-      component: (
-        <StyledField
-          name={`selectOperator#${id}`}
-          initialValue={EQUAL_TO}
-          component={SelectWrapper}
-          items={operatorOptions}
-        />
-      ),
-    },
-    enterText: {
-      component: (
-        <StyledField
-          name={`enterText#${id}`}
-          component={InputWrapper}
-          required={true}
-        />
-      ),
-    },
-    minus: {
-      component:
-        numRows > 1 ? (
-          <StyledLECButton onClick={() => handleRemoveRow(id)}>
-            <LECIcon icon="minus" />
-          </StyledLECButton>
-        ) : (
-          <div />
+): ITableItem => {
+  const initialValues = form.getState().initialValues;
+
+  return {
+    id,
+    attributes: {
+      selectOption: {
+        component: (
+          <StyledField
+            name={`selectOption#${id}`}
+            initialValue={
+              initialValues[`selectOption#${id}`]
+                ? initialValues[`selectOption#${id}`]
+                : BEGINS_WITH
+            }
+            component={SelectWrapper}
+            items={selectOptions}
+          />
         ),
+      },
+      selectOperator: {
+        component: (
+          <StyledField
+            name={`selectOperator#${id}`}
+            initialValue={
+              initialValues[`selectOperator#${id}`]
+                ? initialValues[`selectOperator#${id}`]
+                : EQUAL_TO
+            }
+            component={SelectWrapper}
+            items={operatorOptions}
+          />
+        ),
+      },
+      enterText: {
+        component: (
+          <StyledField
+            name={`enterText#${id}`}
+            component={InputWrapper}
+            required={true}
+          />
+        ),
+      },
+      minus: {
+        component:
+          numRows > 1 ? (
+            <StyledButton onClick={() => handleRemoveRow(id)}>
+              <Icon icon="minus" />
+            </StyledButton>
+          ) : (
+            <div />
+          ),
+      },
+      plus: {
+        component: (
+          <StyledButton onClick={() => handleAddRow(id)}>
+            <Icon icon="plus" />
+          </StyledButton>
+        ),
+      },
     },
-    plus: {
-      component: (
-        <StyledLECButton onClick={() => handleAddRow(id)}>
-          <LECIcon icon="plus" />
-        </StyledLECButton>
-      ),
-    },
-  },
-  selectionDisabled: false,
-});
+    selectionDisabled: false,
+  };
+};

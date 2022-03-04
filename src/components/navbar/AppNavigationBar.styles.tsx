@@ -1,5 +1,5 @@
 import styled from "../../theme";
-import { LECButton } from "@lansweeper/lecfrontcomponents";
+import { Button } from "../common/button";
 
 const StyledNavigationBar = styled.nav`
   display: flex;
@@ -40,7 +40,7 @@ const StyledLogOutAnchor = styled.a`
   font-weight: 500;
 `;
 
-const StyledLogOutButton = styled(LECButton)`
+const StyledLogOutButton = styled(Button)`
   min-width: 82px;
   width: 82px;
   height: 23px;

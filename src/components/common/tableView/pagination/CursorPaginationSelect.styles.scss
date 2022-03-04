@@ -1,0 +1,109 @@
+.lec-pagination-size__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+}
+
+.lec-pagination-size__label {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 125%;
+  color: var(--grey-80);
+  margin-right: 0.5rem;
+}
+
+.lec-cursor-pagination-select__container {
+  position: relative;
+}
+
+.lec-cursor-pagination-select {
+  cursor: pointer;
+  width: 4.375rem;
+  height: 2.125rem;
+  background-color: var(--white);
+  border: 1px solid var(--light-grey);
+  transition: all 0.3s var(--ease-in-out);
+  border-radius: 2px;
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+
+  &:focus,
+  &:hover {
+    border: 1px solid var(--grey-40);
+  }
+}
+
+.lec-cursor-pagination-select__icon {
+  margin-right: 9px;
+  font-size: 0.75rem;
+  color: var(--grey-60);
+
+  &:hover {
+    color: var(--grey);
+  }
+}
+
+.lec-cursor-pagination-select__options-container {
+  transform: scale(1, 0);
+  transform-origin: bottom;
+  opacity: 0;
+  transition: all 0.2s var(--ease-in-out);
+  position: absolute;
+  bottom: 2.1875rem;
+
+  &--open {
+    transform: scale(1, 1);
+    opacity: 1;
+    z-index: 2;
+  }
+}
+
+.lec-cursor-pagination-select__option {
+  cursor: pointer;
+  width: 4.375rem;
+  height: 2.125rem;
+  background-color: var(--white);
+  border: 1px solid var(--light-grey);
+  border-radius: 2px;
+  outline: none;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: -2px;
+
+  &--active,
+  &:hover {
+    background-color: var(--lighter-grey);
+  }
+
+  &:focus {
+    border: 1px solid var(--grey-40);
+  }
+  &:last-child {
+    border-bottom: 2px solid var(--primary);
+  }
+  &--disabled {
+    background-color: var(--lighter-grey);
+    cursor: not-allowed;
+  }
+}
+
+.lec-cursor-pagination-select__text {
+  margin-left: 0.75rem;
+  margin-right: 0.5rem;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 125%;
+  color: var(--grey);
+
+  &--disabled {
+    color: var(--grey-60);
+  }
+}

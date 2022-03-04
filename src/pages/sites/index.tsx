@@ -1,5 +1,4 @@
 import React from "react";
-import { LECButton } from "@lansweeper/lecfrontcomponents";
 import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import { canAccessAndGetUser } from "../../lib/user";
@@ -11,7 +10,6 @@ import {
   Styledh2,
   StyledImg,
   StyledDiv,
-  StyledPage,
   StyledParagraph,
   StyledMainHeader,
   StyledMainContent,
@@ -23,9 +21,11 @@ import {
   StyledNoStyleLink,
   StyledSiteWrapper,
   SiteList,
+  StyledSitesPage,
 } from "../../components";
 import { useRouter } from "next/router";
 import { StyledLogOutAnchor } from "../../components/navbar/AppNavigationBar.styles";
+import { Button } from "../../components/common/button";
 
 interface ISitesProps {
   authorizedSites: {
@@ -49,7 +49,7 @@ export const SitesPage: NextPage<ISitesProps> = ({
       <Head>
         <title>NameChecker - Select Site</title>
       </Head>
-      <StyledPage>
+      <StyledSitesPage>
         <StyledSiteWrapper>
           <StyledMainBoxContainer>
             {authorizedSites && authorizedSites.sites.length > 0 && (
@@ -87,14 +87,14 @@ export const SitesPage: NextPage<ISitesProps> = ({
         <StyledFooter>
           <StyledActionBox>
             <StyledLogOutAnchor href="/logout">
-              <LECButton secondary>LOG OUT</LECButton>
+              <Button secondary>LOG OUT</Button>
             </StyledLogOutAnchor>
             <StyledNoStyleLink href={lsAuthorizeUrl ?? "/not-access"}>
-              <LECButton secondary={true}>Authorize other sites</LECButton>
+              <Button secondary={true}>Authorize other sites</Button>
             </StyledNoStyleLink>
           </StyledActionBox>
         </StyledFooter>
-      </StyledPage>
+      </StyledSitesPage>
     </>
   );
 };

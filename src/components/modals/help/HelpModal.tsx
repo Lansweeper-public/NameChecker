@@ -1,5 +1,5 @@
 import React from "react";
-import { LECMainModal } from "@lansweeper/lecfrontcomponents";
+import { MainModal } from "../../common/modal";
 import {
   StyledCenteredDiv,
   StyledImage,
@@ -13,7 +13,7 @@ interface IHelpModalProps {
 
 export const HelpModal: React.FC<IHelpModalProps> = ({ onClose, open }) => {
   return (
-    <LECMainModal
+    <MainModal
       width={820}
       centered={true}
       open={open}
@@ -55,6 +55,6 @@ export const HelpModal: React.FC<IHelpModalProps> = ({ onClose, open }) => {
           alt="Results help modal 1"
         />
       </StyledCenteredDiv>
-    </LECMainModal>
+    </MainModal>
   );
 };

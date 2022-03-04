@@ -1,3 +1,4 @@
+import { IFiltersGroupedInput } from "../../../types";
 import {
   BEGINS_WITH,
   END_WITH,
@@ -6,7 +7,6 @@ import {
   INCLUDE,
   NO_EQUAL_TO,
 } from "./FilterTable.columns";
-import { IFiltersGroupedInput } from "@lansweeper/integrations-dataset";
 
 const beginsWithEqual = (text: string) => new RegExp(`^${text}`, "g");
 const beginsWithNotEqual = (text: string) => new RegExp(`^(?!${text})`, "g");

@@ -5,15 +5,15 @@ import { FilterTable } from "./FilterTable";
 import { EQUAL_TO } from "./FilterTable.columns";
 import { buildRegExp } from "./RegExp";
 import {
-  StyledCancelLECButton,
+  StyledCancelButton,
   StyledExpressionTag,
   StyledFilterContainer,
   StyledForm,
   StyledFormFooter,
   StyledHeader,
-  StyledLECButton,
-  StyledLECEditButton,
-  StyledLECIcon,
+  StyledButton,
+  StyledEditButton,
+  StyledIcon,
   StyledTagList,
   StyledTagListContainer,
 } from "./FiltersForm.styles";
@@ -159,7 +159,9 @@ export const FiltersForm: React.FC<IFilterFormProps> = ({
       : undefined;
 
   useEffect(() => {
-    setInitialValues(() => generateInitialValues(filterValues));
+    if (Object.keys(filterValues).length) {
+      setInitialValues(generateInitialValues(filterValues));
+    }
   }, [filterValues]);
 
   useEffect(() => {
@@ -183,7 +185,7 @@ export const FiltersForm: React.FC<IFilterFormProps> = ({
           render={({ handleSubmit, pristine, touched, values, form }) => {
             return (
               <StyledForm onSubmit={handleSubmit}>
-                <StyledLECIcon
+                <StyledIcon
                   icon="help"
                   onClick={() => setShowHelpModal(true)}
                   size={24}
@@ -229,27 +231,27 @@ export const FiltersForm: React.FC<IFilterFormProps> = ({
                   )}
                   <StyledFormFooter isReadMode={isReadMode}>
                     {!isReadMode && areFiltersApplied && (
-                      <StyledCancelLECButton
+                      <StyledCancelButton
                         type="button"
                         secondary
                         onClick={() => handleCancelClick(form)}
                       >
                         Cancel
-                      </StyledCancelLECButton>
+                      </StyledCancelButton>
                     )}
                     {!isReadMode && (
-                      <StyledLECButton
+                      <StyledButton
                         data-test-id="filter-table__apply-button"
                         type="submit"
                         disabled={determineDisable(pristine, touched, values)}
                         loading={false}
                       >
                         Apply
-                      </StyledLECButton>
+                      </StyledButton>
                     )}
                     {isReadMode && (
                       <>
-                        <StyledLECEditButton
+                        <StyledEditButton
                           type="button"
                           onClick={() => {
                             setSelectedRows([]);
@@ -257,21 +259,21 @@ export const FiltersForm: React.FC<IFilterFormProps> = ({
                           }}
                         >
                           Edit
-                        </StyledLECEditButton>
-                        <StyledLECButton
+                        </StyledEditButton>
+                        <StyledButton
                           type="button"
                           secondary
                           onClick={() => onChangeSite()}
                         >
                           Change Site
-                        </StyledLECButton>
-                        <StyledLECButton
+                        </StyledButton>
+                        <StyledButton
                           type="button"
                           secondary
                           onClick={() => setDeleteModalOpen(true)}
                         >
                           Delete All
-                        </StyledLECButton>
+                        </StyledButton>
                       </>
                     )}
                   </StyledFormFooter>

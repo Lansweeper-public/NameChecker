@@ -28,6 +28,7 @@ module.exports = {
     "no-undef": "error",
     "prettier/prettier": 1,
     semi: 2,
+    "react/display-name": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": 0,

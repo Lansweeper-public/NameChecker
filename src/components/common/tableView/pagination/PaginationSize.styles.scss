@@ -1,0 +1,53 @@
+$color-icon: #93969e;
+
+.lec-pagination-size {
+  display: flex;
+  align-items: center;
+  font-size: rem(14px);
+  font-weight: bold;
+
+  &__size-list {
+    margin-left: rem(16px);
+    &__item {
+      position: relative;
+      color: rgba-to-rgb($grey, 0.4);
+      cursor: pointer;
+      user-select: none;
+      &:hover {
+        color: $grey;
+      }
+      &:not(:first-child) {
+        margin-left: rem(12px);
+        &:before {
+          content: "";
+          position: absolute;
+          left: rem(-7px);
+          top: rem(2px);
+          height: rem(14px);
+          width: rem(2px);
+          background-color: $light-grey;
+        }
+      }
+
+      &--active {
+        color: $grey;
+        &:after {
+          content: "";
+          position: absolute;
+          left: calc(50% - 8px);
+          bottom: rem(-4px);
+          height: rem(2px);
+          width: rem(16px);
+          border-radius: 1px;
+          background-color: $primary;
+        }
+      }
+    }
+  }
+  &__size {
+    margin-left: rem(12px);
+    b {
+      color: $black;
+    }
+  }
+}

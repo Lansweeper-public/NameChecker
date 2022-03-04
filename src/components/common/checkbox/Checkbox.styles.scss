@@ -1,0 +1,92 @@
+.lec-checkbox {
+  display: inline-block;
+
+  &__hidden-checkbox {
+    display: none;
+  }
+
+  &__image {
+    margin-right: 16px;
+  }
+
+  .box {
+    border: 1px solid #b0b2b5;
+    width: 1rem;
+    min-width: 1rem;
+    height: 1rem;
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1rem;
+    background-color: $white;
+    position: relative;
+  }
+
+  &__label {
+    vertical-align: middle;
+    user-select: none;
+    font-weight: 500;
+    color: rgba($grey, 0.8);
+    font-size: 15px;
+
+    &:hover {
+      color: $grey;
+    }
+
+    &--checked {
+      vertical-align: middle;
+      color: $grey;
+    }
+  }
+
+  &__check {
+    opacity: 1;
+    position: absolute;
+    bottom: 0;
+    left: 2px;
+    color: $grey;
+    font-size: 17px;
+
+    &__indeterminate {
+      width: 12px;
+      height: 4px;
+      display: block;
+      background-color: $grey;
+      position: relative;
+      top: 5px;
+      left: 1px;
+    }
+  }
+
+  label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    label {
+      cursor: not-allowed;
+    }
+    .lec-checkbox__image {
+      opacity: 0.5;
+    }
+    .lec-checkbox__label {
+      color: rgba-to-rgb($grey, 0.5);
+      &:hover {
+        color: rgba-to-rgb($grey, 0.5);
+      }
+    }
+    .box {
+      background-color: $lighter-grey;
+      border-color: rgba-to-rgb($grey, 0.2);
+    }
+    .lec-checkbox__check {
+      color: rgba-to-rgb($grey, 0.2);
+    }
+    &:hover {
+      color: rgba-to-rgb($grey, 0.5);
+    }
+  }
+}

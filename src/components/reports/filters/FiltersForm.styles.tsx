@@ -1,5 +1,7 @@
 import styled from "../../../theme";
-import { LECButton, LECIcon, LECTag } from "@lansweeper/lecfrontcomponents";
+import { Button } from "../../common/button";
+import { Icon } from "../../common/icon";
+import { Tag } from "../../common/tag";
 
 const StyledHeader = styled.div`
   width: 100%;
@@ -47,7 +49,7 @@ const StyledTagList = styled.div`
   margin-bottom: 14px;
 `;
 
-const StyledExpressionTag = styled(LECTag)<{
+const StyledExpressionTag = styled(Tag)<{
   onClick?: () => void;
 }>`
   background-color: var(--lighter-grey-40);
@@ -58,7 +60,7 @@ const StyledExpressionTag = styled(LECTag)<{
   }
 `;
 
-const StyledLECIcon = styled(LECIcon)`
+const StyledIcon = styled(Icon)`
   &.lec-icon {
     color: var(--grey-80);
     cursor: pointer;
@@ -69,16 +71,16 @@ const StyledLECIcon = styled(LECIcon)`
   z-index: 1001;
 `;
 
-const StyledLECButton = styled(LECButton)`
+const StyledButton = styled(Button)`
   min-width: 104px;
 `;
 
-const StyledLECEditButton = styled(LECButton)`
+const StyledEditButton = styled(Button)`
   min-width: 104px;
   margin-right: 8px;
 `;
 
-const StyledCancelLECButton = styled(StyledLECButton)`
+const StyledCancelButton = styled(Button)`
   width: 104px;
   margin-right: 12px;
 `;
@@ -86,13 +88,13 @@ const StyledCancelLECButton = styled(StyledLECButton)`
 export {
   StyledHeader,
   StyledFilterContainer,
-  StyledLECButton,
-  StyledCancelLECButton,
-  StyledLECEditButton,
+  StyledButton,
+  StyledCancelButton,
+  StyledEditButton,
   StyledFormFooter,
   StyledForm,
   StyledTagList,
   StyledTagListContainer,
   StyledExpressionTag,
-  StyledLECIcon,
+  StyledIcon,
 };

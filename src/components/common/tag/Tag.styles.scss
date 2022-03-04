@@ -1,0 +1,91 @@
+.lec-tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: rem(34px);
+  border-radius: rem(2px);
+  border: solid rem(1px) $light-grey;
+  background-color: $white;
+  padding-left: rem(12px);
+  padding-right: rem(12px);
+
+  .lec-tag__content {
+    display: flex;
+    align-items: center;
+
+    .lec-tag__content__icon {
+      margin-right: rem(15px);
+      display: flex;
+    }
+
+    .lec-tag__content__label {
+      font-weight: 500;
+      font-size: rem(14px);
+      color: $grey;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      margin-bottom: 0;
+    }
+  }
+
+  .lec-tag__close-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    cursor: pointer;
+    padding-left: 16px;
+
+    .lec-icon-close {
+      color: rgba($grey, 0.5);
+      &:hover {
+        color: $grey;
+      }
+    }
+  }
+  .lec-tag__info-tooltip--closable-tag {
+    margin-right: rem(8px);
+  }
+
+  .lec-tag__info-icon {
+    color: rgba($grey, 0.5);
+  }
+}
+
+.lec-tag-disabled {
+  background-color: rgba($lighter-grey, 0.4);
+  cursor: not-allowed;
+}
+
+.lec-tag--grey {
+  @extend .lec-tag;
+
+  background-color: $lighter-grey;
+
+  .lec-tag__info-icon {
+    color: rgba($grey, 0.5);
+  }
+}
+
+.lec-tag--blue {
+  @extend .lec-tag;
+
+  border-color: $blue;
+  background-color: rgba($blue, 0.2);
+
+  .lec-tag__info-icon {
+    color: $blue;
+  }
+}
+
+.lec-tag--alert {
+  @extend .lec-tag;
+
+  border-color: $red;
+  background-color: rgba($red, 0.2);
+
+  .lec-tag__info-icon {
+    color: $red;
+  }
+}

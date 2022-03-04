@@ -1,0 +1,64 @@
+// sass placeholders (not to be confused with ::placeholder)
+%lec-input {
+  padding: rem(8px 16px);
+  padding-right: rem(32px);
+  border-radius: 2px;
+  border: solid rem(1px) $light-grey;
+  font-size: rem(16px);
+  font-weight: 500;
+  line-height: rem(21.5px);
+  color: $grey;
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  /* Firefox */
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
+  &::placeholder {
+    font-size: rem(16px);
+    font-weight: 500;
+    color: rgba-to-rgb($grey, 0.5);
+  }
+
+  &.ant-input-disabled {
+    background-color: $lighter-grey;
+    color: rgba-to-rgb($grey, 0.5);
+    user-select: none;
+  }
+
+  &:hover,
+  &:focus {
+    border: solid rem(1px) rgba-to-rgb($grey, 0.4);
+    box-shadow: none;
+    &.ant-input-disabled {
+      border: solid rem(1px) $light-grey;
+    }
+  }
+}
+
+%lec-input-required {
+  label {
+    color: $grey;
+    font-weight: 700;
+    &:after {
+      content: " *";
+    }
+  }
+}
+
+%input-label {
+  color: rgba-to-rgb($grey, 0.8);
+  font-size: rem(16px);
+  font-weight: 500;
+  margin-bottom: rem(12px);
+  display: block;
+}
+
+%input-disabled {
+  background: white;
+  color: lighten($grey, 50%);
+}

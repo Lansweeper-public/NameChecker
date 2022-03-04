@@ -1,7 +1,7 @@
-ARG node:14.18-buster-slim AS base
+ARG NODE_IMAGE=node:14.18-buster-slim
 
 # hadolint ignore=DL3006
-FROM ${BASE_IMAGE} AS builder
+FROM ${NODE_IMAGE} AS builder
 ARG NPM_TOKEN
 ENV NPM_TOKEN=$NPM_TOKEN
 
@@ -11,21 +11,20 @@ WORKDIR $BUILDDIR
 
 COPY ./package.json .
 COPY ./yarn.lock .
-COPY ./.npmrc .
 COPY ./next.config.js .
 COPY ./.babelrc .
 COPY ./tsconfig.json .
 
 COPY ./src src
 
+
+RUN yarn install 
+
 ENV NODE_ENV=production
-
-RUN yarn install --pure-lockfile --production 
-
 RUN yarn build
 
 # hadolint ignore=DL3006
-FROM base
+FROM ${NODE_IMAGE}
 ENV APPDIR=/usr/src/app
 ENV NODE_ENV=production
 
@@ -36,7 +35,6 @@ COPY ./yarn.lock .
 COPY ./public public
 COPY --from=builder /usr/src/app/.next .next
 COPY --from=builder /usr/src/app/node_modules node_modules
-COPY --from=builder /usr/src/app/dist dist
 
 ENV NPM_TOKEN=
 

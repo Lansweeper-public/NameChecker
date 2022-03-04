@@ -1,0 +1,115 @@
+.lec-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: rem(40px);
+  padding: rem(8px 24px);
+  background-color: $grey;
+  border: solid rem(1px) $dark;
+  border-radius: rem(3px);
+  color: $white;
+  font-size: rem(14px);
+  font-weight: bold;
+  text-transform: uppercase;
+  min-width: rem(152px);
+  cursor: pointer;
+  outline: none;
+  line-height: normal;
+  position: relative;
+
+  @mixin disabled {
+    background-color: $light-grey;
+    border: solid rem(1px) $light-grey;
+    border-radius: rem(2px);
+    color: $white;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: $light-grey;
+    }
+
+    .lec-spin div {
+      background: $white;
+    }
+  }
+
+  .lec-icon,
+  .lec-icon-image {
+    margin-right: 12px;
+  }
+
+  &:hover {
+    background-color: $dark;
+  }
+
+  .lec-spin {
+    &-ellipsis {
+      position: absolute;
+    }
+
+    div {
+      background: $light-grey;
+    }
+  }
+
+  &--xs {
+    height: rem(24px);
+    min-width: 0px;
+    padding: rem(0 8px);
+
+    background-color: $grey;
+    border: solid rem(1px) $dark;
+    color: $white;
+    font-size: 12px;
+  }
+
+  &--alert {
+    background-color: rgba-to-rgb($red, 0.8);
+    border: solid rem(1px) $red;
+    color: $white;
+
+    &:hover {
+      background-color: $red;
+    }
+  }
+
+  &--check {
+    background-color: rgba-to-rgb($green, 0.8);
+    border: solid rem(1px) $green;
+    color: $white;
+
+    &:hover {
+      background-color: $green;
+    }
+  }
+
+  &--secondary {
+    background-color: rgba-to-rgb($lighter-grey, 0.4);
+    border: solid rem(1px) $light-grey;
+    color: rgba-to-rgb($grey, 0.8);
+
+    &:hover {
+      background-color: $lighter-grey;
+      border: solid rem(1px) $light-grey;
+    }
+    &:active {
+      color: rgba-to-rgb($grey, 0.4);
+    }
+  }
+
+  &--disabled {
+    @include disabled;
+  }
+
+  &--min-width {
+    min-width: initial;
+  }
+
+  &--confirmation {
+    min-width: rem(57px);
+    padding: 0;
+  }
+  &--invisible-content {
+    visibility: hidden;
+  }
+}

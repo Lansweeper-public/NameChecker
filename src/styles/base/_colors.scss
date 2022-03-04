@@ -1,0 +1,25 @@
+// only actual colors here - no application specific definitions
+$white: #ffffff;
+
+$lighter-grey: #f2f2f2;
+
+$light-grey: #e4e4e4;
+$light-grey400: #b0b2b5;
+$light-grey500: #a9abaf;
+
+$grey: #393e46;
+$grey-80: lighten($grey, 20%);
+$grey500: #4a505b;
+
+$dark: #222831;
+
+$black: #00171f;
+
+$lightgrey-opaque: rgba(228, 228, 228, 0.8);
+$grey-opaque: rgba(147, 150, 158, 0.3);
+
+$orange: #ff8a00;
+$red: #ff5f3d;
+$light-red: #ef6c57;
+$green: #27c686;
+$blue: #309dd1;

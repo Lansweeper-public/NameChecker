@@ -1,0 +1,57 @@
+$avatar-icon-color: $grey500;
+
+.lec-avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  position: relative;
+
+  &.initials {
+    background-color: rgba-to-rgb($primary, 0.75);
+    border: rem(1px) solid $primary;
+    font-weight: 700;
+  }
+
+  .lec-icon-avatar {
+    color: $avatar-icon-color;
+  }
+
+  .img-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .img-avatar {
+    position: static;
+    display: block;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+  &--dark {
+    &.initials {
+      background-color: $grey;
+      border: 0;
+    }
+  }
+  &--color {
+    &.lec-avatar--orange {
+      background-color: rgba-to-rgb($primary, 0.75);
+      border: rem(1px) solid $primary;
+    }
+
+    &.lec-avatar--blue {
+      background-color: rgba-to-rgb($blue, 0.75);
+      border: rem(1px) solid $blue;
+    }
+
+    &.lec-avatar--green {
+      background-color: rgba-to-rgb($green, 0.75);
+      border: rem(1px) solid $green;
+    }
+  }
+}

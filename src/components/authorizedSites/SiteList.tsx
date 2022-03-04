@@ -7,7 +7,7 @@ import {
   StyledSiteListItemSubtitle,
 } from "./SiteList.styles";
 import { ISite } from "../../types";
-import { LECAvatar } from "@lansweeper/lecfrontcomponents";
+import { Avatar } from "../avatar";
 
 interface ISiteListProps {
   authorizedSites?: ISite[];
@@ -46,7 +46,7 @@ export const SiteList: React.FC<ISiteListProps> = ({
               className={siteIdSelected === site.id ? "selected" : ""}
               data-test-id={`switch-site__site-btn--${index}`}
             >
-              <LECAvatar image={site.logoUrl} name={siteName} mode="color" />
+              <Avatar image={site.logoUrl} name={siteName} mode="color" />
               <StyledSiteListItemContent>
                 <StyledSiteListItemTitle>{siteName}</StyledSiteListItemTitle>
                 <StyledSiteListItemSubtitle>

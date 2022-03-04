@@ -1,15 +1,12 @@
-import {
-  ILECButtonProps,
-  LECButton,
-  LECModal,
-} from "@lansweeper/lecfrontcomponents";
 import styled from "../../../theme";
+import { Button, IButtonProps } from "../../common/button";
+import { BasicModal } from "../../common/modal";
 
-interface IConfirmationButton extends ILECButtonProps {
+interface IConfirmationButton extends IButtonProps {
   loading?: boolean;
 }
 
-export const ConfirmationButton = styled(LECButton)<IConfirmationButton>`
+export const ConfirmationButton = styled(Button)<IConfirmationButton>`
   min-width: auto;
   width: 3.5625rem;
   ${({ loading }) =>
@@ -19,7 +16,7 @@ export const ConfirmationButton = styled(LECButton)<IConfirmationButton>`
     `}
 `;
 
-export const StyledLECModal = styled(LECModal)`
+export const StyledModal = styled(BasicModal)`
   .lec-modal__header__title:after {
     width: 3rem;
   }
