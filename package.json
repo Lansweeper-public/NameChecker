@@ -3,7 +3,7 @@
   "version": "1.15.7",
   "main": "index.js",
   "private": true,
-  "repository": "https://github.com/Lansweeper/LECIntegrationsNameChecker",
+  "repository": "https://github.com/Lansweeper-public/NameChecker.git",
   "license": "MIT",
   "scripts": {
     "develop": "env-cmd node src/server.js",
@@ -66,6 +66,11 @@
     "yarn": "^1.22.17"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.2",
+    "@semantic-release/npm": "^9.0.1",
     "@svgr/webpack": "^6.1.2",
     "@testing-library/cypress": "^8.0.0",
     "@testing-library/jest-dom": "^5.14.1",
