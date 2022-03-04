@@ -3,7 +3,12 @@
   "version": "1.15.7",
   "main": "index.js",
   "private": true,
-  "repository": "https://github.com/Lansweeper-public/NameChecker.git",
+  "repository": "https://github.com/Lansweeper-public/NameChecker",
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
   "license": "MIT",
   "scripts": {
     "develop": "env-cmd node src/server.js",
