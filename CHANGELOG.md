@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/Lansweeper-public/NameChecker/compare/v1.0.0...v1.0.1) (2022-03-07)
+
+
+### :bug:
+
+* adapt nextjs start ([db93f22](https://github.com/Lansweeper-public/NameChecker/commit/db93f221ddd9b4ae5f570b3462b66e7d2280d42a))
+
 # 1.0.0 (2022-03-07)
 
 
