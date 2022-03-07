@@ -1,13 +1,8 @@
 {
   "name": "lec-integrations-namechecker",
-  "version": "1.15.7",
+  "version": "1.0.0",
   "private": true,
   "repository": "https://github.com/Lansweeper-public/NameChecker",
-  "release": {
-    "branches": [
-      "main"
-    ]
-  },
   "license": "MIT",
   "scripts": {
     "develop": "env-cmd node src/server.js",
@@ -95,6 +90,7 @@
     "babel-plugin-emotion": "^10.0.29",
     "babel-plugin-import": "^1.13.0",
     "babel-plugin-inline-import": "^3.0.0",
+    "conventional-changelog-atom": "^2.0.8",
     "core-js": "^3.6.5",
     "cypress": "^8.3.0",
     "cypress-cucumber-preprocessor": "^4.3.1",
