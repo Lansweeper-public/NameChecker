@@ -53,8 +53,14 @@ jobs:
       - name: Tests
         run: yarn test:ci
 
-      - name: E2E tests install cypress and start server
+      - name: E2E tests install cypress
         run: yarn cypress:install && yarn run start &
+
+      - name: Run E2E tests
+        uses: BerniWittmann/background-server-action@latest
+        with:
+          command: yarn cypress:run
+          start: yarn run start
         env:
           CYPRESS_USER: ${{ secrets.E2E_USER }}
           CYPRESS_PASSWORD: ${{ secrets.E2E_USER_PASSWORD }}
@@ -67,6 +73,3 @@ jobs:
           LS_APP_CALLBACK_URI: http://localhost:3000/api/callback
           LS_APP_AUTHORIZE_URI: https://appstag.lansweeper.com/authorize-app/${{ secrets.E2E_LS_APP_CLIENT_ID }}?forceAuthorize=true
           INTEGRATIONS_GATEWAY_HOST: https://apistag.lansweeperdev.com/api/integrations
-
-      - name: Run E2E tests
-        run: yarn cypress:run
