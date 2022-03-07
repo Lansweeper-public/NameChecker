@@ -1,3 +1,20 @@
+## [1.0.3](https://github.com/Lansweeper-public/NameChecker/compare/v1.0.2...v1.0.3) (2022-03-07)
+
+
+### :bug:
+
+* another approach launch cypress ([6733528](https://github.com/Lansweeper-public/NameChecker/commit/673352804a6ba5c4df23e13010c7562b69858efc))
+* cypress env vars ([e315d54](https://github.com/Lansweeper-public/NameChecker/commit/e315d54fe44ecff592d15ece3b9f5135c476145c))
+* missing action version ([40c9f5a](https://github.com/Lansweeper-public/NameChecker/commit/40c9f5ac1cb0f8c5de35c3482831cdbd3690ab03))
+* missing secret ([f303b8e](https://github.com/Lansweeper-public/NameChecker/commit/f303b8ed43ce249f4d031cc81deac262b433d7c4))
+* remove one server start ([366c884](https://github.com/Lansweeper-public/NameChecker/commit/366c884f07d8d5b74f13e8587736fe81b2b00f18))
+* wrong place env ([c95a463](https://github.com/Lansweeper-public/NameChecker/commit/c95a463ac6ed5b7122da40ff243062e63d3c99bd))
+* yaml syntax error ([3b6e80d](https://github.com/Lansweeper-public/NameChecker/commit/3b6e80d5574e83b0616c69d69c89a2a0a31ef47d))
+
+### :recycle:
+
+* new way execute cypress ([3c559d2](https://github.com/Lansweeper-public/NameChecker/commit/3c559d2c3bf93d5bf2b97b3d52a2c611ee44bb92))
+
 ## [1.0.2](https://github.com/Lansweeper-public/NameChecker/compare/v1.0.1...v1.0.2) (2022-03-07)
 
 
