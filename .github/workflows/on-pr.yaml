@@ -57,4 +57,16 @@ jobs:
         run: yarn cypress:install && yarn run start &
 
       - name: Run E2E tests
-        run: yarn run start &
+        run: yarn cypress:run
+        env:
+          CYPRESS_USER: ${{ secrets.E2E_USER }}
+          CYPRESS_PASSWORD: ${{ secrets.E2E_USER_PASSWORD }}
+          CYPRESS_SITE_ONE: ${{ secrets.E2E_SITE_ONE }}
+          CYPRESS_SITE_TWO: ${{ secrets.E2E_SITE_TWO }}
+          DISABLE_REDIS= true
+          LS_APP_NAME=NameChecker
+          LS_APP_CLIENT_ID: ${{ secrets.E2E_LS_APP_CLIENT_ID }}
+          LS_APP_CLIENT_SECRET: ${{ secrets.E2E_LS_APP_CLIENT_SECRET }}
+          LS_APP_CALLBACK_URI: http://localhost:3000/api/callback
+          LS_APP_AUTHORIZE_URI: https://appstag.lansweeper.com/authorize-app/${{ secrets.E2E_LS_APP_CLIENT_ID }}?forceAuthorize=true
+          INTEGRATIONS_GATEWAY_HOST: https://apistag.lansweeperdev.com/api/integrations
