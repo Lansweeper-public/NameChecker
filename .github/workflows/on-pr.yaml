@@ -54,7 +54,7 @@ jobs:
         run: yarn test:ci
 
       - name: E2E tests install cypress
-        run: yarn cypress:install && yarn run start &
+        run: yarn cypress:install
 
       - name: Run E2E tests
         uses: BerniWittmann/background-server-action@v1.0.4
