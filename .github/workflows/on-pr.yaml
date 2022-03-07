@@ -53,19 +53,14 @@ jobs:
       - name: Tests
         run: yarn test:ci
 
-      - name: E2E tests install cypress
+      - name: E2E install cypress
         run: yarn cypress:install
 
-      - name: Run E2E tests
-        uses: BerniWittmann/background-server-action@v1.0.4
-        with:
-          command: yarn cypress:run
-          start: yarn run start
+      - name: E2E Start server in background
+        run: |
+          yarn run start &
+          sleep 5 && curl http://localhost:3000 -I
         env:
-          CYPRESS_USER: ${{ secrets.E2E_USER }}
-          CYPRESS_PASSWORD: ${{ secrets.E2E_USER_PASSWORD }}
-          CYPRESS_SITE_ONE: ${{ secrets.E2E_SITE_ONE }}
-          CYPRESS_SITE_TWO: ${{ secrets.E2E_SITE_TWO }}
           DISABLE_REDIS: true
           LS_APP_NAME: NameChecker
           LS_APP_CLIENT_ID: ${{ secrets.E2E_LS_APP_CLIENT_ID }}
@@ -73,3 +68,12 @@ jobs:
           LS_APP_CALLBACK_URI: http://localhost:3000/api/callback
           LS_APP_AUTHORIZE_URI: https://appstag.lansweeper.com/authorize-app/${{ secrets.E2E_LS_APP_CLIENT_ID }}?forceAuthorize=true
           INTEGRATIONS_GATEWAY_HOST: https://apistag.lansweeperdev.com/api/integrations
+
+      - name: Execute E2E tests
+        run: |
+          yarn cypress:run
+        env:
+          CYPRESS_USER: ${{ secrets.E2E_USER }}
+          CYPRESS_PASSWORD: ${{ secrets.E2E_USER_PASSWORD }}
+          CYPRESS_SITE_ONE: ${{ secrets.E2E_SITE_ONE }}
+          CYPRESS_SITE_TWO: ${{ secrets.E2E_SITE_TWO }}
