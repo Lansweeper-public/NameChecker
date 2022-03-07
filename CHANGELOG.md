@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/Lansweeper-public/NameChecker/compare/v1.0.1...v1.0.2) (2022-03-07)
+
+
+### :bug:
+
+* dockerimage ([0c94b4d](https://github.com/Lansweeper-public/NameChecker/commit/0c94b4d7200f633487f2d1a41d4af61e6cf615e5))
+
 ## [1.0.1](https://github.com/Lansweeper-public/NameChecker/compare/v1.0.0...v1.0.1) (2022-03-07)
 
 
