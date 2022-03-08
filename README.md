@@ -66,21 +66,21 @@ Namechecker is using synchronous queries to Lansweeper API as explained [here](h
 
 ### :people_holding_hands: Me query
 
-In `src/services/me.ts` you can find a query that is getting information related to the user and the sites that has been authorized. It is used in the `src/pages/reports/[siteId].tsx` page in order to show the sites authorized to your Namechecker application.
+In [src/services/me.ts](https://github.com/Lansweeper-public/NameChecker/blob/main/src/services/me.ts) you can find a query that is getting information related to the user and the sites that has been authorized. It is used in the `src/pages/reports/[siteId].tsx` page in order to show the sites authorized to your Namechecker application.
 
 ### :crossed_flags: Sites query
 
-In `src/services/sites.ts` there is an example about how can be retrieved information of a site, providing the siteId obtained in 'authorizedSites' query.
+In [src/services/sites.ts](https://github.com/Lansweeper-public/NameChecker/blob/main/src/services/sites.ts) there is an example about how can be retrieved information of a site, providing the siteId obtained in 'authorizedSites' query.
 
 ### :crossed_swords: Assets query
 
-The last one and most important, how to retrieve assets, it is in `src/services/assetResources.ts`. The first call performed doesn't have page, then Lansweepe's API will provide the first matches without cursor.
+The last one and most important, how to retrieve assets, it is in [src/services/assetResources.ts](https://github.com/Lansweeper-public/NameChecker/blob/main/src/services/assetResources.ts). The first call performed doesn't have page, then Lansweepe's API will provide the first matches without cursor.
 
 Once the user is navigating to next or previous page, it is added to the query using a cursor, the cursor is an identifier obtained in the last query performed to know next or previous element, in this way Namechecker is consuming the API in a paginated way.
 
 ### :lock: Authentication
 
-All the authentication mechanism is done in `src/routes/index.js`. Namechecker is exposing an endpoint in `/api/callback` resource and it will receive the authorization code used in the authorization code authentication flow.
+All the authentication mechanism is done in [src/routes/index.js](https://github.com/Lansweeper-public/NameChecker/blob/main/src/routes/index.js). Namechecker is exposing an endpoint in `/api/callback` resource and it will receive the authorization code used in the authorization code authentication flow.
 
 The first action performed by this route is a POST to Lansweeper API:
 
