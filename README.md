@@ -68,7 +68,7 @@ Namechecker is using synchronous queries to Lansweeper API as is explained [here
 
 In `src/services/me.ts` you can find a query that is getting information related to the user and the sites that has been authorized. It is used in the `src/pages/reports/[siteId].tsx` page in order to show the sites authorized to your Namechecker application.
 
-### :crossed_flag: Sites query
+### :crossed_flags: Sites query
 
 In `src/services/sites.ts` there is an example about how can be retrieved information of a site, providing the siteId obtained in 'authorizedSites' query.
 
