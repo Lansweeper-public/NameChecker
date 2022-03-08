@@ -89,6 +89,7 @@ export const Table = forwardRef<HTMLDivElement | null, TableProps>(
       headerCheckboxId,
       ...rest
     },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     scrollingRef: any,
   ) => {
     const [columnsWidth, setColumnsWidth] = useState<number[]>([]);

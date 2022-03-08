@@ -41,25 +41,31 @@
 }
 
 .lec-tooltip--info {
-  .ant-tooltip-inner {
-    background-color: var(--lighter-grey);
-    border: 1px solid var(--light-grey);
-    color: var(--grey-80);
-    padding: 0.4375 1rem;
-    font-size: 0.875rem;
-    box-shadow: none;
-    text-transform: none;
-    max-width: 24rem;
+  .ant-tooltip-content {
+    .ant-tooltip-arrow {
+      overflow: visible;
+
+      .ant-tooltip-arrow-content {
+        background-color: var(--lighter-grey);
+      }
+    }
+
+    .ant-tooltip-inner {
+      background-color: var(--lighter-grey);
+      border: 1px solid var(--light-grey);
+      color: var(--grey-80);
+      padding: 0.4375 1rem;
+      font-size: 0.875rem;
+      box-shadow: none;
+      text-transform: none;
+      max-width: 24rem;
+    }
   }
 
   &.lec-tooltip--fixed-width {
     .ant-tooltip-inner {
       width: 24rem;
     }
-  }
-
-  .ant-tooltip-arrow {
-    overflow: visible;
   }
 
   &.ant-tooltip-placement-bottom .ant-tooltip-arrow:before,
@@ -92,11 +98,6 @@
     border-bottom: 1px solid var(--light-grey);
     border-left: 1px solid var(--light-grey);
     clip-path: polygon(0 0, 20% 0, 100% 80%, 100% 100%, 0 100%);
-  }
-
-  .ant-tooltip-arrow:before {
-    background-color: var(--lighter-grey);
-    box-shadow: none;
   }
 }
 
