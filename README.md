@@ -1,7 +1,7 @@
 # NameChecker
 
 <p align="center">
-  <img src="https://github.com/Lansweeper-public/NameChecker/blob/main/public/assets/svg/name-checker-logo.svg" alt="Namechecker"/>
+  <img src="https://github.com/Lansweeper-public/NameChecker/blob/main/public/assets/svg/name-checker-logo.svg" alt="Namechecker" width="200px"/>
 </p>
 
 ---
