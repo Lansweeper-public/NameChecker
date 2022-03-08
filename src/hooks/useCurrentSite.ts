@@ -47,8 +47,6 @@ export const useCurrentSite = (
   const firstLoad = useRef(!!currentSite.id);
 
   useEffect(() => {
-    // To ignore load data first time
-    // because we have from currentSite
     if (firstLoad.current) {
       firstLoad.current = false;
       return;

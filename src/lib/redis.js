@@ -67,7 +67,7 @@ const createRedisFactory = (shutdown) => {
 };
 
 exports.initializeRedis = (lightship) => {
-  if (process.env.DISABLE_REDIS !== "true") {
+  if (process.env.REDIS_URL) {
     redisClient = createRedisFactory(
       process.env.REDIS_URL,
       lightship.shutdown,
@@ -76,7 +76,7 @@ exports.initializeRedis = (lightship) => {
 };
 
 exports.disconnectRedis = () => {
-  if (process.env.DISABLE_REDIS !== "true") {
+  if (process.env.REDIS_URL) {
     disconnectRedisClient();
   }
 };
