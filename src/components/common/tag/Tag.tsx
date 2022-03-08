@@ -5,9 +5,9 @@ import { ITooltipWrapper, TooltipWrapper } from "../tooltip";
 
 export interface ITag {
   label?: string | ReactNode;
-  value?: any;
+  value?: string;
   className?: string;
-  onClose?: (key?: any) => void;
+  onClose?: (key?: string) => void;
   style?: React.CSSProperties;
   info?: ITooltipWrapper;
   variant?: "default" | "grey" | "blue" | "alert";

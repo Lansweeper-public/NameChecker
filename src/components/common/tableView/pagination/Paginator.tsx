@@ -16,6 +16,7 @@ const PaginationIcon: PaginationProps["itemRender"] = (
       return <Icon icon="arrow-right" />;
     case "page":
       return (
+        // eslint-disable-next-line jsx-a11y/anchor-is-valid
         <a style={{ width: `${num.toString().length * 8 + 16}px` }}>{num}</a>
       );
     default:
