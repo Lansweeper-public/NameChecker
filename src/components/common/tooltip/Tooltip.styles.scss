@@ -46,6 +46,9 @@
       overflow: visible;
 
       .ant-tooltip-arrow-content {
+        border-bottom: 1px solid var(--light-grey);
+        border-right: 1px solid var(--light-grey);
+        clip-path: polygon(80% 0, 100% 0, 100% 100%, 0 100%, 0 80%);
         background-color: var(--lighter-grey);
       }
     }
@@ -66,38 +69,6 @@
     .ant-tooltip-inner {
       width: 24rem;
     }
-  }
-
-  &.ant-tooltip-placement-bottom .ant-tooltip-arrow:before,
-  &.ant-tooltip-placement-bottomLeft .ant-tooltip-arrow:before,
-  &.ant-tooltip-placement-bottomRight .ant-tooltip-arrow:before {
-    border-top: 1px solid var(--light-grey);
-    border-left: 1px solid var(--light-grey);
-    clip-path: polygon(0 0, 100% 0, 100% 20%, 20% 100%, 0 100%);
-  }
-
-  &.ant-tooltip-placement-top .ant-tooltip-arrow:before,
-  &.ant-tooltip-placement-topLeft .ant-tooltip-arrow:before,
-  &.ant-tooltip-placement-topRight .ant-tooltip-arrow:before {
-    border-bottom: 1px solid var(--light-grey);
-    border-right: 1px solid var(--light-grey);
-    clip-path: polygon(80% 0, 100% 0, 100% 100%, 0 100%, 0 80%);
-  }
-
-  &.ant-tooltip-placement-left .ant-tooltip-arrow:before,
-  &.ant-tooltip-placement-leftBottom .ant-tooltip-arrow:before,
-  &.ant-tooltip-placement-leftTop .ant-tooltip-arrow:before {
-    border-top: 1px solid var(--light-grey);
-    border-right: 1px solid var(--light-grey);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 80% 100%, 0 20%);
-  }
-
-  &.ant-tooltip-placement-right .ant-tooltip-arrow:before,
-  &.ant-tooltip-placement-rightBottom .ant-tooltip-arrow:before,
-  &.ant-tooltip-placement-rightTop .ant-tooltip-arrow:before {
-    border-bottom: 1px solid var(--light-grey);
-    border-left: 1px solid var(--light-grey);
-    clip-path: polygon(0 0, 20% 0, 100% 80%, 100% 100%, 0 100%);
   }
 }
 
