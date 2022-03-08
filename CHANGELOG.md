@@ -1,3 +1,16 @@
+## [1.0.4](https://github.com/Lansweeper-public/NameChecker/compare/v1.0.3...v1.0.4) (2022-03-08)
+
+
+### :bug:
+
+* fixing lint issues ([b2e5c80](https://github.com/Lansweeper-public/NameChecker/commit/b2e5c80417b5114cc11888cae757f7d04f97da07))
+* fixing tooltip styles ([6b1db51](https://github.com/Lansweeper-public/NameChecker/commit/6b1db512e9352821e92fe44de3b5abf34e0034f3))
+
+### :green_heart:
+
+* fix lint issues ([6d4cea2](https://github.com/Lansweeper-public/NameChecker/commit/6d4cea2481ff8e1ae840b26dabf88b2a326239ad))
+* fix lint issues ([c0103ce](https://github.com/Lansweeper-public/NameChecker/commit/c0103ced445133653092b3ac8513fe7f21b8db90))
+
 ## [1.0.3](https://github.com/Lansweeper-public/NameChecker/compare/v1.0.2...v1.0.3) (2022-03-07)
 
 
