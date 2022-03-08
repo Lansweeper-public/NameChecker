@@ -6,7 +6,7 @@
 
 ---
 
-Lansweeper ADP integration to be used as example about how to consumer Lansweeper API. The purpose of this certified application is to be able to check the name of your assets based on a pattern.
+Lansweeper ADP integration to be used as example about how to use Lansweeper's API. The purpose of this certified application is to be able to check the name of your assets based on a pattern.
 
 You can use it as an example about how to build a [Lansweeper cloud application](https://docs.lansweeper.com/docs/api/authenticate#cloud-application). Namechecker is built with [Nextjs](https://nextjs.org/) to provide its interface with server side rendering.
 
@@ -18,7 +18,7 @@ In order to run namechecker locally, please ensure your system accomplish follow
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable)
 - To have a Lansweeper ADP account.
 
-Your first step will be check our [documentation](https://docs.lansweeper.com/docs/api/authenticate#cloud-application) where it is explained how to create a Lansweeper cloud application, you will need that values. For authentication purposes, the `Allowed callback URL` should match with:
+Your first step will be to check our [documentation](https://docs.lansweeper.com/docs/api/authenticate#cloud-application) where it is explained how to create a Lansweeper cloud application, you will need the application details provided after its creation. For authentication purposes, the `Allowed callback URL` should match with:
 
 ```
 http://localhost:3000/api/callback
@@ -26,7 +26,7 @@ http://localhost:3000/api/callback
 
 ## Getting started
 
-After that, you should have a file with your application credentials ("client_id" and "client_secret"), you can start creating your .env file in the root folder, you can create based on env.example file. The file, without the optional values, should be similar to:
+After that, you should have a file with your application credentials ("client_id" and "client_secret"), you can start creating your .env file in the root folder, you can create it based on env.example file. The file, without the optional values, should be similar to:
 
 ```
 NODE_ENV=development
