@@ -1,8 +1,8 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 export interface ISpin {
   className?: string;
-  style?: any;
+  style?: CSSProperties;
   type: "ellipsis" | "circle";
 }
 

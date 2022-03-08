@@ -30,7 +30,7 @@ module.exports = {
     semi: 2,
     "react/display-name": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": "off",
     "react/prop-types": 0,
     "emotion/jsx-import": "off",
     "emotion/no-vanilla": "error",

@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import { Input } from "antd";
-import React from "react";
+import React, { ChangeEventHandler } from "react";
 import { HelperText } from "../helperText";
 
 const isMetaError = (meta) => meta.error || meta.error?.hasError;
@@ -25,7 +25,7 @@ const shouldShowMetaError = (meta, showErrors) =>
 
 const isValidated = (error = false, valid = false): boolean => error || valid;
 
-export const InputWrapper = (props: any) => {
+export const InputWrapper = (props) => {
   const {
     input: { name, onChange, value, ...restInput },
     meta,
@@ -54,7 +54,7 @@ export const InputWrapper = (props: any) => {
         >
           <Input
             {...rest}
-            onChange={(event: any) => {
+            onChange={(event: ChangeEventHandler) => {
               onChange(event);
               if (customOnChange) {
                 customOnChange(event);

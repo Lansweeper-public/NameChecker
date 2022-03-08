@@ -64,41 +64,6 @@ export interface ITableFooterMetadata {
 
 export type ITableSize = "sm" | undefined;
 
-export interface ITableProps {
-  items: ITableItem[];
-  columns: ITableColumn[];
-  className?: string;
-  flexible?: boolean;
-  hoverable?: boolean;
-  selectable?: boolean;
-  capitalize?: boolean;
-  loading?: boolean;
-  empty?: React.ReactNode;
-  emptyMessage?: string;
-  size?: ITableSize;
-  footerMetadata?: ITableFooterMetadata;
-  onSelectChange?: (item: ITableItem, selected: boolean) => void;
-  onSelectAll?: (items: string[]) => void;
-  rowsSelected?: string[];
-  goToRow?: number;
-  onGoToRow?: () => void;
-  sortDisabled?: boolean;
-  sort?: (items: ITableItem[], sortDirection: TSortDirection) => ITableItem[];
-  onSortChanged?: (column?: ITableColumn, direction?: TSortDirection) => void;
-  onScroll?: (
-    top: number,
-    left: number,
-    containerOpts?: IScrollContainerOpts,
-  ) => void;
-  onResize?: (scrollHeight: number, offsetHeight: number) => void;
-  sortByColumn?: ITableColumn | undefined;
-  sortDirection?: TSortDirection;
-  onMouseLeaveItem?: (itemId: string) => void;
-  onMouseEnterItem?: (itemId: string) => void;
-  indeterminate?: boolean;
-  ref?: any;
-}
-
 export interface ITableHandler {
   scrollTo: (scrollTop: number, scrollLeft?: number) => void;
   bodyContentRef: RefObject<HTMLDivElement>;

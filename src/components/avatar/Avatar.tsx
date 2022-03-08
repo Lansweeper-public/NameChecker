@@ -7,6 +7,7 @@ export interface IAvatar {
   id?: string;
   size?: number;
   name?: string;
+  alt?: string;
   image?: string;
   className?: string;
   mode?: "dark" | "color";
@@ -39,11 +40,11 @@ const getContentSize = (size): string => {
     : `${Math.round(defaultSize / 2)}px`;
 };
 
-const getContent = ({ profileImage, size, name }): React.ReactNode => {
+const getContent = ({ profileImage, size, name, alt }): React.ReactNode => {
   if (profileImage) {
     return (
       <div className="img-container">
-        <img className="img-avatar" src={profileImage} />
+        <img className="img-avatar" src={profileImage} alt={alt} />
       </div>
     );
   }
@@ -64,6 +65,7 @@ export const Avatar: React.FC<IAvatar> = ({
   size,
   mode,
   overlay,
+  alt,
   ...rest
 }) => {
   const profileImage = image && image !== "null" ? image : undefined;
@@ -75,7 +77,7 @@ export const Avatar: React.FC<IAvatar> = ({
       {...rest}
     >
       <div className="overlay">{overlay}</div>
-      {getContent({ profileImage, size, name })}
+      {getContent({ profileImage, size, name, alt })}
     </div>
   );
 };
