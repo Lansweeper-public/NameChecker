@@ -6,7 +6,7 @@
 
 ---
 
-Lansweeper ADP integration to be used as example about how to use Lansweeper's API. The purpose of this certified application is to be able to check the name of your assets based on a pattern.
+Lansweeper ADP integration to be used as example about how to use Lansweeper API. The purpose of this certified application is to be able to check the name of your assets based on a pattern.
 
 You can use it as an example about how to build a [Lansweeper cloud application](https://docs.lansweeper.com/docs/api/authenticate#cloud-application). Namechecker is built with [Nextjs](https://nextjs.org/) to provide its interface with server side rendering.
 
@@ -18,7 +18,7 @@ In order to run namechecker locally, please ensure your system accomplish follow
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable)
 - To have a Lansweeper ADP account.
 
-Your first step will be to check our [documentation](https://docs.lansweeper.com/docs/api/authenticate#cloud-application) where it is explained how to create a Lansweeper cloud application, you will need the application details provided after its creation. For authentication purposes, the `Allowed callback URL` should match with:
+Your first step will be to check our [documentation](https://docs.lansweeper.com/docs/api/authenticate#cloud-application) where it is explained how to create a Lansweeper cloud application, which will provide all necessary data for setting up your custom integration.. For authentication purposes, the `Allowed callback URL` should match with:
 
 ```
 http://localhost:3000/api/callback
@@ -26,7 +26,7 @@ http://localhost:3000/api/callback
 
 ## Getting started
 
-After that, you should have a file with your application credentials ("client_id" and "client_secret"), you can start creating your .env file in the root folder, you can create it based on env.example file. The file, without the optional values, should be similar to:
+After that, you should have a file with your application credentials (`client_id` and `client_secret`), you can start creating your `.env` file in the root folder, you can create it based on `env.example` file. The file, without the optional values, should be similar to:
 
 ```
 NODE_ENV=development
@@ -62,7 +62,7 @@ http://localhost:3000
 
 ## API usage
 
-Namechecker is using synchronous queries to Lansweeper API as is explained [here](https://docs.lansweeper.com/docs/api/getting-data#querying). Those queries are in `src/services` folder.
+Namechecker is using synchronous queries to Lansweeper API as explained [here](https://docs.lansweeper.com/docs/api/getting-data#querying). Those queries are in `src/services` folder.
 
 ### :people_holding_hands: Me query
 
@@ -72,9 +72,9 @@ In `src/services/me.ts` you can find a query that is getting information related
 
 In `src/services/sites.ts` there is an example about how can be retrieved information of a site, providing the siteId obtained in 'authorizedSites' query.
 
-### :magic_wand: Assets query
+### :crossed_swords: Assets query
 
-The last one and most important, how to retrieve assets, it is in `src/services/assetResources.ts`. The first call performed doesn't have page, then Lansweeper API will provide the first matches without cursor.
+The last one and most important, how to retrieve assets, it is in `src/services/assetResources.ts`. The first call performed doesn't have page, then Lansweepe's API will provide the first matches without cursor.
 
 Once the user is navigating to next or previous page, it is added to the query using a cursor, the cursor is an identifier obtained in the last query performed to know next or previous element, in this way Namechecker is consuming the API in a paginated way.
 
