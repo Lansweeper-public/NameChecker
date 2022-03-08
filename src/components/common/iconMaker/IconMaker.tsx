@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 import { Icon, IconName, iconNames } from "../icon";
 
@@ -7,7 +7,7 @@ export type IconMakerType = "icons" | "lec-font";
 export interface IIconMaker extends React.HTMLAttributes<HTMLElement> {
   className?: string;
   size?: number;
-  style?: any;
+  style?: CSSProperties;
   type?: IconMakerType;
   name: IconName;
   title?: string;

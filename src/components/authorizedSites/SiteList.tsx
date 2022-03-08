@@ -46,7 +46,12 @@ export const SiteList: React.FC<ISiteListProps> = ({
               className={siteIdSelected === site.id ? "selected" : ""}
               data-test-id={`switch-site__site-btn--${index}`}
             >
-              <Avatar image={site.logoUrl} name={siteName} mode="color" />
+              <Avatar
+                image={site.logoUrl}
+                name={siteName}
+                mode="color"
+                alt="Site image"
+              />
               <StyledSiteListItemContent>
                 <StyledSiteListItemTitle>{siteName}</StyledSiteListItemTitle>
                 <StyledSiteListItemSubtitle>

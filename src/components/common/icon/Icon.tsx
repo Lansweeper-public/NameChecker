@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 export const iconNames = ["help", "minus", "plus"];
 
@@ -7,7 +7,7 @@ export type IconName = typeof iconNames[number];
 export interface IIcon extends React.HTMLAttributes<HTMLElement> {
   className?: string;
   size?: number;
-  style?: any;
+  style?: CSSProperties;
   onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
   icon: IconName;
   dataTestId?: string;

@@ -21,7 +21,7 @@ export interface ICheckboxWrapper extends CheckboxProps {
   indeterminate?: boolean;
   dataTestId?: string;
   dataUserlaneId?: string;
-  onChange?(e: any): void;
+  onChange?(e): void;
   onClick?(e: React.MouseEvent<HTMLElement, MouseEvent>): void;
 }
 

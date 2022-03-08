@@ -9,7 +9,7 @@ export interface IBasicModal {
   title?: string;
   alert?: boolean;
   dataTestId?: string;
-  onClose: () => any;
+  onClose: () => void;
 }
 
 export const BasicModal: React.FC<IBasicModal & ModalProps> = ({
@@ -39,7 +39,7 @@ export const BasicModal: React.FC<IBasicModal & ModalProps> = ({
       footer={null}
       closable={false}
       wrapProps={customProps}
-      onCancel={(e: any) => {
+      onCancel={(e: React.MouseEvent<HTMLElement>) => {
         onClose();
         e.stopPropagation();
       }}
@@ -59,7 +59,7 @@ export const BasicModal: React.FC<IBasicModal & ModalProps> = ({
             icon="close"
             className="lec-modal__header__close-icon"
             data-test-id={dataTestId && `${dataTestId}-modal-close-button`}
-            onClick={(e: any) => {
+            onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => {
               onClose();
               e.stopPropagation();
             }}

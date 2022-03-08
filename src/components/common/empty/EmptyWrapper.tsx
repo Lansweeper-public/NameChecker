@@ -31,7 +31,12 @@ export const EmptyWrapper: React.FC<IEmpty> = ({
   dataTestId,
 }) => {
   const imageComponent: React.ReactNode = !showImage ? null : image ? (
-    <img src={`/assets/svg/${image}.svg`} width={120} height={120} />
+    <img
+      src={`/assets/svg/${image}.svg`}
+      width={120}
+      height={120}
+      alt="Empty"
+    />
   ) : (
     Empty.PRESENTED_IMAGE_SIMPLE
   );
