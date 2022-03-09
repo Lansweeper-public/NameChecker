@@ -1,5 +1,34 @@
 # [1.1.0](https://github.com/Lansweeper-public/NameChecker/compare/v1.0.4...v1.1.0) (2022-03-09)
 
+
+### :bookmark:
+
+* Release 1.1.0 [skip ci] ([a749a60](https://github.com/Lansweeper-public/NameChecker/commit/a749a6024d384b452998cb0653f7ec3e09cfc055))
+* Release 1.1.0 [skip ci] ([fa17dc0](https://github.com/Lansweeper-public/NameChecker/commit/fa17dc05b18d51a6b28d24f12155d6994762699d))
+
+### :bug:
+
+* fix emojis semantic release ([121841a](https://github.com/Lansweeper-public/NameChecker/commit/121841ad7b24b888aaacf3dfb5df3495c8065fc7))
+* fix release protected branch ([4cadd19](https://github.com/Lansweeper-public/NameChecker/commit/4cadd19320a91563b1c166859dc042b0b19b68bf))
+* remove persist credentials ([7044da7](https://github.com/Lansweeper-public/NameChecker/commit/7044da78b45f9937caf40b8e7750f57643a6f252))
+* test ([99e2497](https://github.com/Lansweeper-public/NameChecker/commit/99e2497107136840929a0f4b19ba0fb824998adc))
+
+### :pencil:
+
+* add image ([f45d08d](https://github.com/Lansweeper-public/NameChecker/commit/f45d08d804c6bdf876fdf2309bd03b9ca8babbdf))
+* emoji bug ([7c808a1](https://github.com/Lansweeper-public/NameChecker/commit/7c808a13b2620ef6ea564401526038d63d4f3a4b))
+* fix typo ([16186fb](https://github.com/Lansweeper-public/NameChecker/commit/16186fbcce300a29f0018a2d8c20b833802793de))
+* improve readme ([e3efc35](https://github.com/Lansweeper-public/NameChecker/commit/e3efc3535f113a25a8bd23983c2ab9ea6196efab))
+* readme fixes ([8f2e43d](https://github.com/Lansweeper-public/NameChecker/commit/8f2e43d80eb83375e979a84c0edc8c19763048b5))
+* reduce image size ([cd5fa64](https://github.com/Lansweeper-public/NameChecker/commit/cd5fa645cc353b91a5a6a04e097fbb74e15c7ec3))
+* replace links ([828bc9a](https://github.com/Lansweeper-public/NameChecker/commit/828bc9ad5bf5ece7398c25bf6d430470d88987b6))
+
+### :sparkles:
+
+* protect branch ([02e02c6](https://github.com/Lansweeper-public/NameChecker/commit/02e02c6d73b5492263dea9da84f240f174e13995))
+
+# [1.1.0](https://github.com/Lansweeper-public/NameChecker/compare/v1.0.4...v1.1.0) (2022-03-09)
+
 ### :bookmark:
 
 - Release 1.1.0 [skip ci] ([fa17dc0](https://github.com/Lansweeper-public/NameChecker/commit/fa17dc05b18d51a6b28d24f12155d6994762699d))
