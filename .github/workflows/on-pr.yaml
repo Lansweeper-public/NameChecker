@@ -61,7 +61,6 @@ jobs:
           yarn run start &
           sleep 5 && curl http://localhost:3000 -I
         env:
-          DISABLE_REDIS: true
           SESSION_SECRET: ${{ secrets.E2E_SESSION_SECRET }}
           LS_APP_NAME: NameChecker
           LS_APP_CLIENT_ID: ${{ secrets.E2E_LS_APP_CLIENT_ID }}

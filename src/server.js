@@ -43,15 +43,14 @@ async function main() {
 
   app.use(
     session({
-      store:
-        process.env.DISABLE_REDIS !== "true"
-          ? new RedisStore({
-              client: getRedisClient(),
-              prefix: REDIS_NAMESPACE,
-            })
-          : new MemoryStore({
-              checkPeriod: 86400000, // prune expired entries every 24h
-            }),
+      store: process.env.REDIS_URL
+        ? new RedisStore({
+            client: getRedisClient(),
+            prefix: REDIS_NAMESPACE,
+          })
+        : new MemoryStore({
+            checkPeriod: 86400000, // prune expired entries every 24h
+          }),
       secret: process.env.SESSION_SECRET,
       saveUninitialized: false,
       resave: false,
