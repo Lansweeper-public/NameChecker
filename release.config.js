@@ -22,9 +22,9 @@ module.exports = {
       {
         preset: "atom",
         releaseRules: [
-          ...major.map((emoji) => ({ type: emoji, release: "major" })),
-          ...minor.map((emoji) => ({ type: emoji, release: "minor" })),
-          ...patch.map((emoji) => ({ type: emoji, release: "patch" })),
+          ...major.map((emoji) => ({ emoji, release: "major" })),
+          ...minor.map((emoji) => ({ emoji, release: "minor" })),
+          ...patch.map((emoji) => ({ emoji, release: "patch" })),
         ],
       },
     ],
