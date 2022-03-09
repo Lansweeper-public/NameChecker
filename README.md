@@ -12,13 +12,13 @@ You can use it as an example about how to build a [Lansweeper cloud application]
 
 ## Requirements
 
-In order to run namechecker locally, please ensure your system accomplish following requirements:
+In order to run namechecker locally, please ensure your system accomplishes the following requirements:
 
 - [NodeJS v14.x](https://nodejs.org/download/release/latest-v14.x/)
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable)
-- To have a Lansweeper ADP account.
+- An existing Lansweeper ADP account.
 
-Your first step will be to check our [documentation](https://docs.lansweeper.com/docs/api/authenticate#cloud-application) where it is explained how to create a Lansweeper cloud application, which will provide all necessary data for setting up your custom integration.. For authentication purposes, the `Allowed callback URL` should match with:
+Your first step will be to check our [documentation](https://docs.lansweeper.com/docs/api/authenticate#cloud-application) where it is explained how to create a Lansweeper cloud application, which will provide all necessary data for setting up your custom integration. For authentication purposes, the `Allowed callback URL` should match with:
 
 ```
 http://localhost:3000/api/callback
@@ -34,10 +34,10 @@ PORT=3000
 
 # Lansweeper application settings
 LS_APP_NAME=NameChecker
-LS_APP_CLIENT_ID=<client_id retrieved>
-LS_APP_CLIENT_SECRET=<client_secret retrieved>
+LS_APP_CLIENT_ID=<retrieved client_id>
+LS_APP_CLIENT_SECRET=<retrieved client_secret>
 LS_APP_CALLBACK_URI=http://localhost:3000/api/callback
-LS_APP_AUTHORIZE_URI=<authorization URL retrieved>
+LS_APP_AUTHORIZE_URI=<retrieved authorization URL>
 
 # Lansweeper API endpoint
 INTEGRATIONS_GATEWAY_HOST=https://api.lansweeper.com/api/v2
@@ -52,13 +52,13 @@ Now run:
 yarn && yarn develop
 ```
 
-Congrats, Namechecker is running locally, you can access to the url:
+And that's it! Congrats! Namechecker is running locally and you can access it at the URL:
 
 ```
 http://localhost:3000
 ```
 
-**Note:** _take into account the parameters between <> should be retrieved from application creation process_
+**Note:** _take into account the parameters between <> should be retrieved from the application's creation process_
 
 ## API usage
 
@@ -66,17 +66,17 @@ Namechecker is using synchronous queries to Lansweeper API as explained [here](h
 
 ### :people_holding_hands: Me query
 
-In [src/services/me.ts](https://github.com/Lansweeper-public/NameChecker/blob/main/src/services/me.ts) you can find a query that is getting information related to the user and the sites that has been authorized. It is used in the `src/pages/reports/[siteId].tsx` page in order to show the sites authorized to your Namechecker application.
+In [src/services/me.ts](https://github.com/Lansweeper-public/NameChecker/blob/main/src/services/me.ts) you can find a query that gets information related to the user and the authorized sites. It is used in the `src/pages/reports/[siteId].tsx` page in order to show the sites authorized to your Namechecker application.
 
 ### :crossed_flags: Sites query
 
-In [src/services/sites.ts](https://github.com/Lansweeper-public/NameChecker/blob/main/src/services/sites.ts) there is an example about how can be retrieved information of a site, providing the siteId obtained in 'authorizedSites' query.
+In [src/services/sites.ts](https://github.com/Lansweeper-public/NameChecker/blob/main/src/services/sites.ts) there is an example about how can be retrieved information of a site, providing the `siteId` obtained in `authorizedSites` query.
 
 ### :crossed_swords: Assets query
 
-The last one and most important, how to retrieve assets, it is in [src/services/assetResources.ts](https://github.com/Lansweeper-public/NameChecker/blob/main/src/services/assetResources.ts). The first call performed doesn't have page, then Lansweepe's API will provide the first matches without cursor.
+The last and most powerful one, how to retrieve assets. It is located in [src/services/assetResources.ts](https://github.com/Lansweeper-public/NameChecker/blob/main/src/services/assetResources.ts). The first performed call does not have pagination, so Lansweeper API will provide the first matches without cursor.
 
-Once the user is navigating to next or previous page, it is added to the query using a cursor, the cursor is an identifier obtained in the last query performed to know next or previous element, in this way Namechecker is consuming the API in a paginated way.
+Once the user is navigating to next or previous page, a cursor is added to the query. The cursor is an identifier obtained in the last performed query to know the next or previous element. This way, Namechecker is consuming the API in a paginated way.
 
 ### :lock: Authentication
 
@@ -88,4 +88,4 @@ The first action performed by this route is a POST to Lansweeper API:
  `${process.env.INTEGRATIONS_GATEWAY_HOST}/graphql`
 ```
 
-In the request body, all parameters provided in the `.env` file and the authorization code retrieved in the route are sent, obtaining an `access_token` and a `refresh_token`. With the `access_token` the already explained request will be authenticated until it will expire.
+In the request body, all parameters provided in the `.env` file and the authorization code retrieved in the route are sent, obtaining an `access_token` and a `refresh_token`. With the `access_token` the already explained request will be authenticated until it expires.
