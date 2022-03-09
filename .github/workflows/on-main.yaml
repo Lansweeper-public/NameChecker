@@ -89,6 +89,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ADMIN_GITHUB_PERSONAL_TOKEN }}
 
       - name: Setup node
         uses: actions/setup-node@v2
