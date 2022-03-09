@@ -5,6 +5,19 @@ import { Icon } from "../../common/icon";
 import { ITableColumn, ITableItem } from "../../common/tableView";
 import { FormApi } from "final-form";
 
+const isNumberField = (id, currentValues) => {
+  return Object.entries(currentValues).some(([key, value]) => {
+    return (
+      key === `selectOption#${id}` && value === "Have X number of characters"
+    );
+  });
+};
+
+const parseNumber = (value) => {
+  if (!value) return value;
+  return value.replace(/[^\d]/g, "");
+};
+
 export const attributeColumns: ITableColumn[] = [
   {
     key: "selectOption",
@@ -64,6 +77,7 @@ export const transformTableItem = (
   numRows: number,
 ): ITableItem => {
   const initialValues = form.getState().initialValues;
+  const currentValues = form.getState().values;
 
   return {
     id,
@@ -97,12 +111,15 @@ export const transformTableItem = (
         ),
       },
       enterText: {
-        component: (
+        component: isNumberField(id, currentValues) ? (
           <StyledField
             name={`enterText#${id}`}
             component={InputWrapper}
-            required={true}
+            parse={parseNumber}
+            format={parseNumber}
           />
+        ) : (
+          <StyledField name={`enterText#${id}`} component={InputWrapper} />
         ),
       },
       minus: {
