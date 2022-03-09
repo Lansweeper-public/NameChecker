@@ -101,7 +101,7 @@ jobs:
       - name: Release
         run: yarn release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ADMIN_GITHUB_PERSONAL_TOKEN }}
 
       - name: Extract version from package.json
         uses: sergeysova/jq-action@v2
