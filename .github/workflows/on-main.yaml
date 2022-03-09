@@ -90,7 +90,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.ADMIN_GITHUB_PERSONAL_TOKEN }}
+          persist-credentials: false
 
       - name: Setup node
         uses: actions/setup-node@v2
