@@ -20,6 +20,7 @@ exports.refreshAccessToken = async (refreshToken) => {
     grant_type: "refresh_token",
     refresh_token: refreshToken,
   };
+
   const response = await fetch(
     `${process.env.INTEGRATIONS_GATEWAY_HOST}/oauth/token`,
     {
