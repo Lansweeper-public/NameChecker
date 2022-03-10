@@ -15,6 +15,7 @@ import {
   StyledFullPageContent,
   StyledPage,
   StyledTableContainer,
+  TABS,
   useAllAssets,
   useFilters,
   useMatchedAssets,
@@ -31,12 +32,6 @@ import { IFiltersGroupedInput } from "../../types";
 import { ISite } from "../../types/site";
 
 export const pageSizeOptions = [10, 25, 50];
-
-enum TABS {
-  ALL_ASSETS = "All assets",
-  MATCHED = "Matched",
-  NO_MATCH = "No Match",
-}
 
 interface IReportsPageProps {
   siteSelected: ISite;
@@ -131,8 +126,8 @@ export const ReportsPage: NextPage<IReportsPageProps> = ({
   ) => {
     setRegExps(newRegExps);
     setNoRegExps(newNoRegExps);
-    const filtersGrouped = buildFilter(newRegExps);
-    const noFiltersGrouped = buildFilter(newNoRegExps);
+    const filtersGrouped = buildFilter(newRegExps, "OR");
+    const noFiltersGrouped = buildFilter(newNoRegExps, "AND");
     setFiltersString(JSON.stringify(filtersGrouped));
     setNoFiltersString(JSON.stringify(noFiltersGrouped));
     setFilters(filtersGrouped);
@@ -160,8 +155,8 @@ export const ReportsPage: NextPage<IReportsPageProps> = ({
 
   useEffect(() => {
     if (regExps.length) {
-      const filtersGrouped = buildFilter(regExps);
-      const noFiltersGrouped = buildFilter(noRegExps);
+      const filtersGrouped = buildFilter(regExps, "OR");
+      const noFiltersGrouped = buildFilter(noRegExps, "AND");
       setFiltersString(JSON.stringify(filtersGrouped));
       setNoFiltersString(JSON.stringify(noFiltersGrouped));
       setFilters(filtersGrouped);
@@ -203,6 +198,7 @@ export const ReportsPage: NextPage<IReportsPageProps> = ({
             {Object.values(TABS).map((tab) => (
               <AssetResourcesTable
                 key={`${tab}-table`}
+                tab={tab}
                 {...(tab === TABS.ALL_ASSETS
                   ? { ...allAssets }
                   : tab === TABS.MATCHED
