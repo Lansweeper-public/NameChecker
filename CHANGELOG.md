@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/Lansweeper-public/NameChecker/compare/v1.1.0...v1.1.1) (2022-03-09)
+
+
+### :bug:
+
+* manage empty and number filters ([d437818](https://github.com/Lansweeper-public/NameChecker/commit/d437818fc7b24141c5d9306868c1a6283ef81329))
+
 # [1.1.0](https://github.com/Lansweeper-public/NameChecker/compare/v1.0.4...v1.1.0) (2022-03-09)
 
 
