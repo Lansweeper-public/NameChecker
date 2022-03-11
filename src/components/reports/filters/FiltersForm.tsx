@@ -31,7 +31,6 @@ interface IFormField {
 export type FormFieldMap = Record<string, IFormField>;
 
 const determineDisable = (pristine, values, touched) => {
-  console.log(`touched ${JSON.stringify(touched)}`);
   return (
     (pristine &&
       Object.keys(values).every((key) => {
