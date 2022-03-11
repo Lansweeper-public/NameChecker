@@ -1,3 +1,16 @@
+## [1.1.1](https://github.com/Lansweeper-public/NameChecker/compare/v1.1.0...v1.1.1) (2022-03-11)
+
+
+### :bookmark:
+
+* Release 1.1.1 [skip ci] ([26e46fc](https://github.com/Lansweeper-public/NameChecker/commit/26e46fce412b55915eda918264e3d28143412d9f))
+
+### :bug:
+
+* manage empty and number filters ([d437818](https://github.com/Lansweeper-public/NameChecker/commit/d437818fc7b24141c5d9306868c1a6283ef81329))
+* wrong filter behaviour ([d123ae7](https://github.com/Lansweeper-public/NameChecker/commit/d123ae751407313890254ab48fbaa8fed26a7bc5))
+* wrong filters behaviour ([c1ab2b9](https://github.com/Lansweeper-public/NameChecker/commit/c1ab2b9572117e1a5476691b0ca49bb146c44ada))
+
 ## [1.1.1](https://github.com/Lansweeper-public/NameChecker/compare/v1.1.0...v1.1.1) (2022-03-09)
 
 
