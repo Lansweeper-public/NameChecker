@@ -24,7 +24,7 @@ const isNumberField = (id, currentValues) => {
 
 export const parseNumber = (value) => {
   if (!value) return value;
-  return value.replace(/[^\d]/g, "");
+  return value.substring(0, 4).replace(/[^\d]/g, "");
 };
 
 export const attributeColumns: ITableColumn[] = [
