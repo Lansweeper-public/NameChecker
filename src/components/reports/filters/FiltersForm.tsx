@@ -30,13 +30,20 @@ interface IFormField {
 
 export type FormFieldMap = Record<string, IFormField>;
 
-const determineDisable = (pristine, values) =>
-  pristine ||
-  Object.entries(values)
-    .filter(([key]) => {
-      return key.includes("enterText");
-    })
-    .every(([, value]) => !value);
+const determineDisable = (pristine, values, touched) => {
+  console.log(`touched ${JSON.stringify(touched)}`);
+  return (
+    (pristine &&
+      Object.keys(values).every((key) => {
+        return touched[key] !== undefined;
+      })) ||
+    Object.entries(values)
+      .filter(([key]) => {
+        return key.includes("enterText");
+      })
+      .every(([, value]) => !value)
+  );
+};
 
 const generateInitialValues = (
   filterValues: FormFieldMap,
@@ -185,7 +192,7 @@ export const FiltersForm: React.FC<IFilterFormProps> = ({
         <Form
           initialValues={initialValues}
           onSubmit={onSubmit}
-          render={({ handleSubmit, pristine, values, form }) => {
+          render={({ handleSubmit, pristine, touched, values, form }) => {
             return (
               <StyledForm onSubmit={handleSubmit}>
                 <StyledIcon
@@ -246,7 +253,7 @@ export const FiltersForm: React.FC<IFilterFormProps> = ({
                       <StyledButton
                         data-test-id="filter-table__apply-button"
                         type="submit"
-                        disabled={determineDisable(pristine, values)}
+                        disabled={determineDisable(pristine, values, touched)}
                         loading={false}
                       >
                         Apply
