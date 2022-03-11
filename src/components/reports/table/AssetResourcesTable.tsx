@@ -5,8 +5,15 @@ import { ITableState } from "../../providers";
 import { Icon } from "../../common/icon";
 import { Table } from "../../common/tableView";
 
+export enum TABS {
+  ALL_ASSETS = "All assets",
+  MATCHED = "Matched",
+  NO_MATCH = "No Match",
+}
+
 export interface IAssetResourcesTable {
   items: IAssetResource[];
+  tab: string;
   loading: boolean;
   filterValues: Record<string, unknown>;
   regExps: RegExp[];
@@ -16,9 +23,30 @@ export interface IAssetResourcesTable {
   isHidden?: boolean;
 }
 
+const isCheckByTab = (tab, name, regExps) => {
+  if (tab === TABS.ALL_ASSETS) {
+    return regExps.some((regexp) => name?.match(regexp));
+  }
+
+  if (tab === TABS.MATCHED) {
+    return true;
+  }
+
+  return false;
+};
+
 export const AssetResourcesTable: React.FC<
   IAssetResourcesTable & ITableState
-> = ({ items, loading, filterValues, regExps, empty, assetPos, isHidden }) => {
+> = ({
+  items,
+  loading,
+  filterValues,
+  regExps,
+  tab,
+  empty,
+  assetPos,
+  isHidden,
+}) => {
   const paginatedItems = items.map((asset: IAssetResource) => {
     const { name, type } = asset.assetBasicInfo ?? {};
     const { manufacturer } = asset.assetCustom ?? {};
@@ -29,11 +57,7 @@ export const AssetResourcesTable: React.FC<
         verified: {
           component: Object.keys(filterValues).length ? (
             <Icon
-              icon={
-                regExps.every((regexp) => name?.match(regexp))
-                  ? "check"
-                  : "close"
-              }
+              icon={isCheckByTab(tab, name, regExps) ? "check" : "close"}
             ></Icon>
           ) : (
             ""

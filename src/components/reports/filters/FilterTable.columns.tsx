@@ -4,16 +4,25 @@ import { IListItem, InputWrapper, SelectWrapper } from "../../common";
 import { Icon } from "../../common/icon";
 import { ITableColumn, ITableItem } from "../../common/tableView";
 import { FormApi } from "final-form";
+import { Field } from "react-final-form";
+import { OnChange } from "react-final-form-listeners";
+
+export const BEGINS_WITH = "Begins with";
+export const END_WITH = "End with";
+export const INCLUDE = "Include";
+export const HAVE_X_NUMBER_OF_CHARACTERS = "Have X number of characters";
+export const EQUAL_TO = "Equal to";
+export const NO_EQUAL_TO = "Not equal to";
 
 const isNumberField = (id, currentValues) => {
   return Object.entries(currentValues).some(([key, value]) => {
     return (
-      key === `selectOption#${id}` && value === "Have X number of characters"
+      key === `selectOption#${id}` && value === HAVE_X_NUMBER_OF_CHARACTERS
     );
   });
 };
 
-const parseNumber = (value) => {
+export const parseNumber = (value) => {
   if (!value) return value;
   return value.replace(/[^\d]/g, "");
 };
@@ -51,13 +60,6 @@ export const attributeColumns: ITableColumn[] = [
   },
 ];
 
-export const BEGINS_WITH = "Begins with";
-export const END_WITH = "End with";
-export const INCLUDE = "Include";
-export const HAVE_X_NUMBER_OF_CHARACTERS = "Have X number of characters";
-export const EQUAL_TO = "Equal to";
-export const NO_EQUAL_TO = "Not equal to";
-
 export const selectOptions: IListItem[] = [
   BEGINS_WITH,
   END_WITH,
@@ -84,16 +86,32 @@ export const transformTableItem = (
     attributes: {
       selectOption: {
         component: (
-          <StyledField
-            name={`selectOption#${id}`}
-            initialValue={
-              initialValues[`selectOption#${id}`]
-                ? initialValues[`selectOption#${id}`]
-                : BEGINS_WITH
-            }
-            component={SelectWrapper}
-            items={selectOptions}
-          />
+          <>
+            <Field name={`enterText#${id}`} subscription={{}}>
+              {({ input: { onChange } }) => (
+                <OnChange name={`selectOption#${id}`}>
+                  {() => {
+                    if (
+                      currentValues[`selectOption#${id}`] ===
+                      HAVE_X_NUMBER_OF_CHARACTERS
+                    ) {
+                      onChange(parseNumber(currentValues[`enterText#${id}`]));
+                    }
+                  }}
+                </OnChange>
+              )}
+            </Field>
+            <StyledField
+              name={`selectOption#${id}`}
+              initialValue={
+                initialValues[`selectOption#${id}`]
+                  ? initialValues[`selectOption#${id}`]
+                  : BEGINS_WITH
+              }
+              component={SelectWrapper}
+              items={selectOptions}
+            />
+          </>
         ),
       },
       selectOperator: {

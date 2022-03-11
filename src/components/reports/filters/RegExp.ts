@@ -75,8 +75,13 @@ export const buildRegExp = (items) => {
   };
 };
 
-export const buildFilter = (regexps: RegExp[]): IFiltersGroupedInput => {
-  const filters = {} as IFiltersGroupedInput;
+export const buildFilter = (
+  regexps: RegExp[],
+  conjunction: string,
+): IFiltersGroupedInput => {
+  const filters = {
+    conjunction,
+  } as IFiltersGroupedInput;
   filters.conditions = [];
   regexps.forEach((regexp) =>
     filters?.conditions?.push({
