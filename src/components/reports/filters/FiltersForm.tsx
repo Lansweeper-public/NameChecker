@@ -30,17 +30,60 @@ interface IFormField {
 
 export type FormFieldMap = Record<string, IFormField>;
 
-const determineDisable = (pristine, values, touched) => {
+const getTagLabel = (id: string, filterValues) =>
+  filterValues[id]
+    ? `${filterValues[id].selectOption}${
+        filterValues[id].selectOperator === EQUAL_TO ? "= " : "!= "
+      }${filterValues[id].enterText}`
+    : undefined;
+
+const valuesToFilteredValues = (values, cleanedRowIds, form) => {
+  const keysInValues = Object.keys(values);
+  return keysInValues.reduce((acc, cur, index) => {
+    const [column, id] = cur.split("#");
+    const value = values[keysInValues[index]];
+    if (!cleanedRowIds.includes(id)) {
+      removeRowFromValues(id, form);
+      return acc;
+    }
+    acc[id] = {
+      ...acc[id],
+      [column]: value,
+    };
+    return acc;
+  }, {});
+};
+
+const removeRowsWithoutInputText = (rowIds, values) => {
+  const keysInValues = Object.keys(values);
+  const emptyTextItems = rowIds.filter(
+    (item) => !keysInValues.find((key) => key === `enterText#${item}`),
+  );
+  emptyTextItems.forEach((emptyItem) => {
+    const indexItemWithExpression = rowIds.findIndex(
+      (item) => item === emptyItem,
+    );
+    rowIds.splice(indexItemWithExpression, 1);
+  });
+
+  return rowIds;
+};
+
+const sameValuesThanInitial = (values, initialValues) =>
+  Object.keys(values).length === Object.keys(initialValues).length &&
+  Object.entries(values).every(([key, value]) => initialValues[key] === value);
+
+const allInputTextValuesEmpty = (values) =>
+  Object.entries(values)
+    .filter(([key]) => {
+      return key.includes("enterText");
+    })
+    .every(([, value]) => !value);
+
+const determineDisable = (values, initialValues) => {
   return (
-    (pristine &&
-      Object.keys(values).every((key) => {
-        return touched[key] !== undefined;
-      })) ||
-    Object.entries(values)
-      .filter(([key]) => {
-        return key.includes("enterText");
-      })
-      .every(([, value]) => !value)
+    sameValuesThanInitial(values, initialValues) ||
+    allInputTextValuesEmpty(values)
   );
 };
 
@@ -55,6 +98,22 @@ const generateInitialValues = (
     acc[`selectOperator#${id}`] = filterValues[id].selectOperator;
     return acc;
   }, {});
+
+const removeRowFromValues = (id, form) => {
+  form.change(`enterText#${id}`, undefined);
+  form.change(`selectOption#${id}`, undefined);
+  form.change(`selectOperator#${id}`, undefined);
+};
+
+const resetNewRowsAfterCancel = (form, filterValues) => {
+  Object.keys(form.getState().values)
+    .map((value) => {
+      const [, rowId] = value.split("#");
+      return rowId;
+    })
+    .filter((rowId) => !Object.keys(filterValues).includes(rowId))
+    .forEach((removedRowId) => removeRowFromValues(removedRowId, form));
+};
 
 interface IFilterFormProps {
   loading: boolean;
@@ -112,34 +171,20 @@ export const FiltersForm: React.FC<IFilterFormProps> = ({
     }
   }, [rowIds]);
 
-  const onSubmit = (values) => {
-    const keys = Object.keys(values);
-    const emptyTextItems = rowIds.filter(
-      (item) => !keys.find((key) => key === `enterText#${item}`),
+  const onSubmit = (values, form) => {
+    const cleanedRowIds = removeRowsWithoutInputText(rowIds, values);
+
+    const newFilteredValues = valuesToFilteredValues(
+      values,
+      cleanedRowIds,
+      form,
     );
-    emptyTextItems.forEach((emptyItem) => {
-      const indexItemWithExpression = rowIds.findIndex(
-        (item) => item === emptyItem,
-      );
-      rowIds.splice(indexItemWithExpression, 1);
-    });
-    const columns = keys.reduce((acc, cur, index) => {
-      const [column, id] = cur.split("#");
-      const value = values[keys[index]];
-      if (!rowIds.includes(id)) {
-        return acc;
-      }
-      acc[id] = {
-        ...acc[id],
-        [column]: value,
-      };
-      return acc;
-    }, {});
-    setRowIds(() => [...rowIds]);
-    setFilterValues(columns);
+
+    setRowIds(cleanedRowIds);
+    setFilterValues(newFilteredValues);
     setIsReadMode(true);
     setAreFiltersApplied(true);
-    onFiltersApplied(columns);
+    onFiltersApplied(newFilteredValues);
   };
 
   const handleExpressionTagClick = (item: string) => {
@@ -156,16 +201,12 @@ export const FiltersForm: React.FC<IFilterFormProps> = ({
 
   const handleCancelClick = (form: FormApi) => {
     form.reset();
-    setRowIds((prev) => [...Object.keys(filterValues)]);
+
+    resetNewRowsAfterCancel(form, filterValues);
+
+    setRowIds(Object.keys(filterValues));
     setIsReadMode(true);
   };
-
-  const getTagLabel = (id: string) =>
-    filterValues[id]
-      ? `${filterValues[id].selectOption}${
-          filterValues[id].selectOperator === EQUAL_TO ? "= " : "!= "
-        }${filterValues[id].enterText}`
-      : undefined;
 
   useEffect(() => {
     if (Object.keys(filterValues).length) {
@@ -187,126 +228,136 @@ export const FiltersForm: React.FC<IFilterFormProps> = ({
 
   return (
     <>
-      <StyledHeader>
-        <Form
-          initialValues={initialValues}
-          onSubmit={onSubmit}
-          render={({ handleSubmit, pristine, touched, values, form }) => {
-            return (
-              <StyledForm onSubmit={handleSubmit}>
-                <StyledIcon
-                  icon="help"
-                  onClick={() => setShowHelpModal(true)}
-                  size={24}
-                />
-                <StyledFilterContainer>
-                  {isReadMode ? (
-                    <StyledTagListContainer>
-                      <StyledTagList>
-                        {rowIds &&
-                          rowIds.map((item) => (
-                            <StyledExpressionTag
-                              key={item}
-                              label={getTagLabel(item)}
-                              value={item}
-                              onClick={() => handleExpressionTagClick(item)}
-                              onClose={(key) => {
-                                const newItems = rowIds.filter(
-                                  (rowId) => rowId !== key,
-                                );
-                                setRowIds([...newItems]);
-                                setFilterValues((prev) => {
-                                  delete prev[item];
-                                  return prev;
-                                });
-                                if (newItems.length === 0) {
-                                  setRowIds([generateNewRow()]);
-                                  setIsReadMode(false);
-                                  setAreFiltersApplied(false);
-                                  onDeleteAllTags();
-                                }
-                              }}
-                            />
-                          ))}
-                      </StyledTagList>
-                    </StyledTagListContainer>
-                  ) : (
-                    <FilterTable
-                      items={rowIds}
-                      selectedRows={selectedRows}
-                      handleAddRow={handleAddRow}
-                      handleRemoveRow={handleRemoveRow}
-                    />
-                  )}
-                  <StyledFormFooter isReadMode={isReadMode}>
-                    {!isReadMode && areFiltersApplied && (
-                      <StyledCancelButton
-                        type="button"
-                        secondary
-                        onClick={() => handleCancelClick(form)}
-                      >
-                        Cancel
-                      </StyledCancelButton>
+      <Form
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        render={({ handleSubmit, values, form }) => {
+          return (
+            <>
+              <StyledHeader>
+                <StyledForm onSubmit={handleSubmit}>
+                  <StyledIcon
+                    icon="help"
+                    onClick={() => setShowHelpModal(true)}
+                    size={24}
+                  />
+                  <StyledFilterContainer>
+                    {isReadMode ? (
+                      <StyledTagListContainer>
+                        <StyledTagList>
+                          {rowIds &&
+                            rowIds.map((item) => (
+                              <StyledExpressionTag
+                                key={item}
+                                label={getTagLabel(item, filterValues)}
+                                value={item}
+                                onClick={() => handleExpressionTagClick(item)}
+                                onClose={(key) => {
+                                  const newItems = rowIds.filter(
+                                    (rowId) => rowId !== key,
+                                  );
+                                  removeRowFromValues(key, form);
+                                  setRowIds([...newItems]);
+
+                                  delete filterValues[item];
+                                  setFilterValues(filterValues);
+                                  setInitialValues(
+                                    generateInitialValues(filterValues),
+                                  );
+                                  if (newItems.length === 0) {
+                                    setRowIds([generateNewRow()]);
+                                    setIsReadMode(false);
+                                    setAreFiltersApplied(false);
+                                    onDeleteAllTags();
+                                  }
+                                }}
+                              />
+                            ))}
+                        </StyledTagList>
+                      </StyledTagListContainer>
+                    ) : (
+                      <FilterTable
+                        items={rowIds}
+                        selectedRows={selectedRows}
+                        handleAddRow={handleAddRow}
+                        handleRemoveRow={(id) => {
+                          handleRemoveRow(id);
+                          removeRowFromValues(id, form);
+                        }}
+                      />
                     )}
-                    {!isReadMode && (
-                      <StyledButton
-                        data-test-id="filter-table__apply-button"
-                        type="submit"
-                        disabled={determineDisable(pristine, values, touched)}
-                        loading={false}
-                      >
-                        Apply
-                      </StyledButton>
-                    )}
-                    {isReadMode && (
-                      <>
-                        <StyledEditButton
-                          type="button"
-                          onClick={() => {
-                            setSelectedRows([]);
-                            setIsReadMode(false);
-                          }}
-                        >
-                          Edit
-                        </StyledEditButton>
-                        <StyledButton
+                    <StyledFormFooter isReadMode={isReadMode}>
+                      {!isReadMode && areFiltersApplied && (
+                        <StyledCancelButton
                           type="button"
                           secondary
-                          onClick={() => onChangeSite()}
+                          onClick={() => handleCancelClick(form)}
                         >
-                          Change Site
-                        </StyledButton>
+                          Cancel
+                        </StyledCancelButton>
+                      )}
+                      {!isReadMode && (
                         <StyledButton
-                          type="button"
-                          secondary
-                          onClick={() => setDeleteModalOpen(true)}
+                          data-test-id="filter-table__apply-button"
+                          type="submit"
+                          disabled={determineDisable(values, initialValues)}
+                          loading={false}
                         >
-                          Delete All
+                          Apply
                         </StyledButton>
-                      </>
-                    )}
-                  </StyledFormFooter>
-                </StyledFilterContainer>
-              </StyledForm>
-            );
-          }}
-        />
-      </StyledHeader>
-      <ConfirmationModal
-        loading={loading}
-        dataTestId="delete-filters__confirmation-modal"
-        title="Delete all filters"
-        message="Are you sure you want to remove all filters?"
-        isOpen={deleteModalOpen}
-        onClose={() => setDeleteModalOpen(false)}
-        onConfirm={() => {
-          const item = generateNewRow();
-          setRowIds([item]);
-          setIsReadMode(false);
-          setAreFiltersApplied(false);
-          setFilterValues({});
-          onDeleteAllTags();
-          setDeleteModalOpen(false);
+                      )}
+                      {isReadMode && (
+                        <>
+                          <StyledEditButton
+                            type="button"
+                            onClick={() => {
+                              setSelectedRows([]);
+                              setIsReadMode(false);
+                            }}
+                          >
+                            Edit
+                          </StyledEditButton>
+                          <StyledButton
+                            type="button"
+                            secondary
+                            onClick={() => onChangeSite()}
+                          >
+                            Change Site
+                          </StyledButton>
+                          <StyledButton
+                            type="button"
+                            secondary
+                            onClick={() => setDeleteModalOpen(true)}
+                          >
+                            Delete All
+                          </StyledButton>
+                        </>
+                      )}
+                    </StyledFormFooter>
+                  </StyledFilterContainer>
+                </StyledForm>
+              </StyledHeader>
+
+              <ConfirmationModal
+                loading={loading}
+                dataTestId="delete-filters__confirmation-modal"
+                title="Delete all filters"
+                message="Are you sure you want to remove all filters?"
+                isOpen={deleteModalOpen}
+                onClose={() => setDeleteModalOpen(false)}
+                onConfirm={() => {
+                  rowIds.forEach((rowId) => removeRowFromValues(rowId, form));
+                  const item = generateNewRow();
+                  setRowIds([item]);
+                  setIsReadMode(false);
+                  setAreFiltersApplied(false);
+                  setFilterValues({});
+                  onDeleteAllTags();
+                  setDeleteModalOpen(false);
+                }}
+              />
+            </>
+          );
         }}
       />
       <HelpModal open={showHelpModal} onClose={() => setShowHelpModal(false)} />
