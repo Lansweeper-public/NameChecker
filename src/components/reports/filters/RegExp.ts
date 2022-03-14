@@ -19,7 +19,7 @@ const haveXNumberOfCharactersWithEqual = (num: string) =>
   new RegExp(`^.{${num}}$`, "g");
 const haveXNumberOfCharactersWithNotEqual = (num: string) =>
   new RegExp(
-    `^(.{1, ${isNaN(parseInt(num, 10)) ? 0 : parseInt(num, 10) - 1}}|.{${
+    `^(.{1,${isNaN(parseInt(num, 10)) ? 0 : parseInt(num, 10) - 1}}|.{${
       isNaN(parseInt(num, 10)) ? 0 : parseInt(num, 10) + 1
     },})$`,
     "g",
