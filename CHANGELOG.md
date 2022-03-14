@@ -1,3 +1,13 @@
+## [1.1.2](https://github.com/Lansweeper-public/NameChecker/compare/v1.1.1...v1.1.2) (2022-03-14)
+
+
+### :bug:
+
+* fixing filter behaviour ([3f234a3](https://github.com/Lansweeper-public/NameChecker/commit/3f234a34f3ee3184f9519e1a432a008a29a87855))
+* limit numbers in filter ([aeeab1b](https://github.com/Lansweeper-public/NameChecker/commit/aeeab1b509670d2ea45a7d6019f56f78d0355024))
+* new fix on filters ([e8af74f](https://github.com/Lansweeper-public/NameChecker/commit/e8af74f59bf6e87855fa35d140b09089b92c31ac))
+* remove log ([61bec44](https://github.com/Lansweeper-public/NameChecker/commit/61bec446be912465adf010dbd0fe0c5684b4a9c5))
+
 ## [1.1.1](https://github.com/Lansweeper-public/NameChecker/compare/v1.1.0...v1.1.1) (2022-03-11)
 
 
