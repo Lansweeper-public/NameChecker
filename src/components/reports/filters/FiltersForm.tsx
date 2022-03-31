@@ -208,6 +208,16 @@ export const FiltersForm: React.FC<IFilterFormProps> = ({
     setIsReadMode(true);
   };
 
+  const deleteAllFilters = (rowIds, form) => {
+    rowIds.forEach((rowId) => removeRowFromValues(rowId, form));
+    const item = generateNewRow();
+    setRowIds([item]);
+    setIsReadMode(false);
+    setAreFiltersApplied(false);
+    setFilterValues({});
+    onDeleteAllTags();
+  };
+
   useEffect(() => {
     if (Object.keys(filterValues).length) {
       setInitialValues(generateInitialValues(filterValues));
@@ -256,19 +266,18 @@ export const FiltersForm: React.FC<IFilterFormProps> = ({
                                   const newItems = rowIds.filter(
                                     (rowId) => rowId !== key,
                                   );
-                                  removeRowFromValues(key, form);
-                                  setRowIds([...newItems]);
 
-                                  delete filterValues[item];
-                                  setFilterValues(filterValues);
-                                  setInitialValues(
-                                    generateInitialValues(filterValues),
-                                  );
                                   if (newItems.length === 0) {
-                                    setRowIds([generateNewRow()]);
-                                    setIsReadMode(false);
-                                    setAreFiltersApplied(false);
-                                    onDeleteAllTags();
+                                    deleteAllFilters(rowIds, form);
+                                  } else {
+                                    removeRowFromValues(key, form);
+                                    setRowIds([...newItems]);
+
+                                    delete filterValues[item];
+                                    setFilterValues(filterValues);
+                                    setInitialValues(
+                                      generateInitialValues(filterValues),
+                                    );
                                   }
                                 }}
                               />
@@ -346,13 +355,7 @@ export const FiltersForm: React.FC<IFilterFormProps> = ({
                 isOpen={deleteModalOpen}
                 onClose={() => setDeleteModalOpen(false)}
                 onConfirm={() => {
-                  rowIds.forEach((rowId) => removeRowFromValues(rowId, form));
-                  const item = generateNewRow();
-                  setRowIds([item]);
-                  setIsReadMode(false);
-                  setAreFiltersApplied(false);
-                  setFilterValues({});
-                  onDeleteAllTags();
+                  deleteAllFilters(rowIds, form);
                   setDeleteModalOpen(false);
                 }}
               />
