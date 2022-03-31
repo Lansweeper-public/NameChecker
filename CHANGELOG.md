@@ -1,3 +1,14 @@
+## [1.1.3](https://github.com/Lansweeper-public/NameChecker/compare/v1.1.2...v1.1.3) (2022-03-31)
+
+
+### :bug:
+
+* change docker image upgrade npm packages ([d9169ad](https://github.com/Lansweeper-public/NameChecker/commit/d9169adecc1601498e89327c7d174b3c0666d349))
+* reset filters when last tag removed ([6f909ca](https://github.com/Lansweeper-public/NameChecker/commit/6f909ca9c22acdfb3540042732499f6e21653b30))
+* reset filters when last tag removed ([a520110](https://github.com/Lansweeper-public/NameChecker/commit/a5201104c8263132d8f9c6c9d327cb945f9e7caa))
+* upgrade docker image ([47a7e42](https://github.com/Lansweeper-public/NameChecker/commit/47a7e42be39defad87c28843a184bcb07dcaf9df))
+* upgrade namechecker image ([899b953](https://github.com/Lansweeper-public/NameChecker/commit/899b953ab8cd57bf1a736df46cdaea3755970270))
+
 ## [1.1.2](https://github.com/Lansweeper-public/NameChecker/compare/v1.1.1...v1.1.2) (2022-03-14)
 
 
