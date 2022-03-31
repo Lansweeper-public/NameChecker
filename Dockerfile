@@ -1,4 +1,4 @@
-ARG NODE_IMAGE=node:14.18-stretch-slim
+ARG NODE_IMAGE=node:14.19-stretch-slim
 
 # hadolint ignore=DL3006
 FROM ${NODE_IMAGE} AS builder
@@ -27,8 +27,6 @@ RUN yarn build
 FROM ${NODE_IMAGE}
 ENV APPDIR=/usr/src/app
 ENV NODE_ENV=production
-
-RUN npm install npm@latest -g
 
 WORKDIR $APPDIR
 
