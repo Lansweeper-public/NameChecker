@@ -8,24 +8,49 @@ import {
   NO_EQUAL_TO,
 } from "./FilterTable.columns";
 
-const beginsWithEqual = (text: string) => new RegExp(`^${text}`, "g");
-const beginsWithNotEqual = (text: string) => new RegExp(`^(?!${text})`, "g");
-const endsWithEqual = (text: string) => new RegExp(`.*(${text})$`, "g");
-const endsWithNotEqual = (text: string) => new RegExp(`.*(?<!${text})$`, "g");
-const includeWithEqual = (text: string) => new RegExp(text, "g");
-const includeWithNotEqual = (text: string) =>
-  new RegExp(`^((?!${text}).)*$`, "g");
-const haveXNumberOfCharactersWithEqual = (num: string) =>
-  new RegExp(`^.{${num}}$`, "g");
-const haveXNumberOfCharactersWithNotEqual = (num: string) =>
-  new RegExp(
+type IRegExps = { regexp: RegExp; esregexp: string };
+
+const beginsWithEqual = (text: string): IRegExps => ({
+  regexp: new RegExp(`^${text}`, "g"),
+  esregexp: `${text}.*`,
+});
+const beginsWithNotEqual = (text: string): IRegExps => ({
+  regexp: new RegExp(`^(?!${text})`, "g"),
+  esregexp: `@&~(${text}.+)`,
+});
+const endsWithEqual = (text: string): IRegExps => ({
+  regexp: new RegExp(`.*(${text})$`, "g"),
+  esregexp: `.*${text}`,
+});
+const endsWithNotEqual = (text: string): IRegExps => ({
+  regexp: new RegExp(`.*(?<!${text})$`, "g"),
+  esregexp: `@&~(.+${text})`,
+});
+const includeWithEqual = (text: string): IRegExps => ({
+  regexp: new RegExp(text, "g"),
+  esregexp: `.*${text}.*`,
+});
+const includeWithNotEqual = (text: string): IRegExps => ({
+  regexp: new RegExp(`^((?!${text}).)*$`, "g"),
+  esregexp: `@&~(.*${text}.*)`,
+});
+const haveXNumberOfCharactersWithEqual = (num: string): IRegExps => ({
+  regexp: new RegExp(`^.{${num}}$`, "g"),
+  esregexp: `.{${num}}`,
+});
+const haveXNumberOfCharactersWithNotEqual = (num: string): IRegExps => ({
+  regexp: new RegExp(
     `^(.{1,${isNaN(parseInt(num, 10)) ? 0 : parseInt(num, 10) - 1}}|.{${
       isNaN(parseInt(num, 10)) ? 0 : parseInt(num, 10) + 1
     },})$`,
     "g",
-  );
+  ),
+  esregexp: `(.{1,${isNaN(parseInt(num, 10)) ? 0 : parseInt(num, 10) - 1}}|.{${
+    isNaN(parseInt(num, 10)) ? 0 : parseInt(num, 10) + 1
+  },})`,
+});
 
-type IOperatorRegExpMap = { [x: string]: (text: string) => RegExp };
+type IOperatorRegExpMap = { [x: string]: (text: string) => IRegExps };
 
 const operatorsRegexpMap: IOperatorRegExpMap = {
   [BEGINS_WITH + EQUAL_TO]: beginsWithEqual,
@@ -47,36 +72,44 @@ export const buildRegExp = (items) => {
         items[cur].selectOperator === EQUAL_TO ? NO_EQUAL_TO : EQUAL_TO
       }`;
       if (acc.ops.includes(op)) {
-        const rexexp = operatorsRegexpMap[op](items[cur].enterText as string);
+        const irexexp = operatorsRegexpMap[op](
+          items[cur].enterText?.toLowerCase() as string,
+        );
         acc.regexps[op] = new RegExp(
-          `${rexexp.source}|${acc.regexps[op].source}`,
+          `${irexexp.regexp.source}|${acc.regexps[op].source}`,
           "g",
         );
+        acc.esregexp[op] = `${irexexp.esregexp}|${acc.esregexp[op]}`;
       } else {
-        acc.regexps[op] = operatorsRegexpMap[op](
-          items[cur].enterText as string,
+        const regexps = operatorsRegexpMap[op](
+          items[cur].enterText?.toLowerCase() as string,
         );
+        acc.regexps[op] = regexps.regexp;
+        acc.esregexp[op] = regexps.esregexp;
         acc.ops.push(op);
       }
-      acc.noregexps.push(
-        operatorsRegexpMap[noop](items[cur].enterText as string),
+      acc.noesregexps.push(
+        operatorsRegexpMap[noop](items[cur].enterText?.toLowerCase() as string)
+          .esregexp,
       );
       return acc;
     },
     {
       ops: [] as string[],
+      esregexp: [] as string[],
+      noesregexps: [] as string[],
       regexps: {} as { [key: string]: RegExp },
-      noregexps: [] as RegExp[],
     },
   );
   return {
+    noesmatchers: matchers.noesregexps,
+    esmatchers: Object.values(matchers.esregexp),
     matchers: Object.values(matchers.regexps),
-    nomatchers: matchers.noregexps,
   };
 };
 
-export const buildFilter = (
-  regexps: RegExp[],
+export const buildESFilter = (
+  regexps: string[],
   conjunction: string,
 ): IFiltersGroupedInput => {
   const filters = {
@@ -85,9 +118,9 @@ export const buildFilter = (
   filters.conditions = [];
   regexps.forEach((regexp) =>
     filters?.conditions?.push({
-      operator: "LIKE",
+      operator: "REGEXP",
       path: "assetBasicInfo.name",
-      value: regexp.source,
+      value: regexp,
     }),
   );
   return filters;

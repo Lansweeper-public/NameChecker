@@ -4,19 +4,23 @@ import { FormFieldMap } from "../reports";
 interface IFiltersState {
   filterValues: FormFieldMap;
   regExps: RegExp[];
-  noRegExps: RegExp[];
+  esRegExps: string[];
+  noEsRegExps: string[];
   setFilterValues: (filters: FormFieldMap) => void;
   setRegExps: (filters: RegExp[]) => void;
-  setNoRegExps: (filters: RegExp[]) => void;
+  setEsRegExps: (filters: string[]) => void;
+  setNoEsRegExps: (filters: string[]) => void;
 }
 
 const INITIAL_STATE = {
   filterValues: {},
   regExps: [],
-  noRegExps: [],
+  esRegExps: [],
+  noEsRegExps: [],
   setFilterValues: () => undefined,
   setRegExps: () => undefined,
-  setNoRegExps: () => undefined,
+  setEsRegExps: () => undefined,
+  setNoEsRegExps: () => undefined,
 };
 
 export const FiltersContext = createContext<IFiltersState>(INITIAL_STATE);
@@ -24,7 +28,8 @@ export const FiltersContext = createContext<IFiltersState>(INITIAL_STATE);
 export const FiltersProvider: React.FC = ({ children }) => {
   const [filterValues, setFilterValues] = useState({});
   const [regExps, setRegExps] = useState<RegExp[]>([]);
-  const [noRegExps, setNoRegExps] = useState<RegExp[]>([]);
+  const [esRegExps, setEsRegExps] = useState<string[]>([]);
+  const [noEsRegExps, setNoEsRegExps] = useState<string[]>([]);
 
   const onFilterValues = (filters: FormFieldMap) => {
     setFilterValues(filters);
@@ -34,8 +39,12 @@ export const FiltersProvider: React.FC = ({ children }) => {
     setRegExps(rExps);
   };
 
-  const onNoRegExps = (rExps: RegExp[]) => {
-    setNoRegExps(rExps);
+  const onEsRegExps = (rExps: string[]) => {
+    setEsRegExps(rExps);
+  };
+
+  const onNoEsRegExps = (rExps: string[]) => {
+    setNoEsRegExps(rExps);
   };
 
   return (
@@ -43,10 +52,12 @@ export const FiltersProvider: React.FC = ({ children }) => {
       value={{
         filterValues,
         regExps,
-        noRegExps,
+        esRegExps,
+        noEsRegExps,
         setFilterValues: onFilterValues,
         setRegExps: onRegExps,
-        setNoRegExps: onNoRegExps,
+        setEsRegExps: onEsRegExps,
+        setNoEsRegExps: onNoEsRegExps,
       }}
     >
       {children}

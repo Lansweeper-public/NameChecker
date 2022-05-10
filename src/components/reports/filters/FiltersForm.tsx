@@ -118,7 +118,11 @@ const resetNewRowsAfterCancel = (form, filterValues) => {
 interface IFilterFormProps {
   loading: boolean;
   onChangeSite: () => void;
-  onChangeFilters: (regExps: RegExp[], noRegExps: RegExp[]) => void;
+  onChangeFilters: (
+    regExps: RegExp[],
+    esRegExps: string[],
+    noEsRegExps: string[],
+  ) => void;
   onFiltersApplied: (columns) => void;
   onDeleteAllTags: () => void;
   initialValue: Record<string, IFormField>;
@@ -195,7 +199,11 @@ export const FiltersForm: React.FC<IFilterFormProps> = ({
   useEffect(() => {
     if (isReadMode) {
       const regexps = buildRegExp(filterValues);
-      onChangeFilters(regexps.matchers, regexps.nomatchers);
+      onChangeFilters(
+        regexps.matchers,
+        regexps.esmatchers,
+        regexps.noesmatchers,
+      );
     }
   }, [isReadMode, rowIds, filterValues]);
 
