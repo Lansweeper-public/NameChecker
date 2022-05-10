@@ -34,7 +34,6 @@ COPY ./package.json .
 COPY ./yarn.lock .
 COPY ./public public
 COPY ./src src
-COPY ./.trivyignore .
 COPY --from=builder /usr/src/app/.next .next
 COPY --from=builder /usr/src/app/node_modules node_modules
 
