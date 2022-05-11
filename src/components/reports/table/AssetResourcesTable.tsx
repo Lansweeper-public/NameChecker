@@ -25,7 +25,7 @@ export interface IAssetResourcesTable {
 
 const isCheckByTab = (tab, name, regExps) => {
   if (tab === TABS.ALL_ASSETS) {
-    return regExps.some((regexp) => name?.match(regexp));
+    return regExps.some((regexp) => name?.toLowerCase()?.match(regexp));
   }
 
   if (tab === TABS.MATCHED) {

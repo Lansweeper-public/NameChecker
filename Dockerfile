@@ -1,4 +1,4 @@
-ARG NODE_IMAGE=node:16.14.2-stretch-slim
+ARG NODE_IMAGE=node:16.15.0-stretch-slim
 
 # hadolint ignore=DL3006
 FROM ${NODE_IMAGE} AS builder

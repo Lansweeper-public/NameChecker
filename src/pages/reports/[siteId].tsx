@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import {
   AppNavigationBar,
   AssetResourcesTable,
-  buildFilter,
+  buildESFilter,
   ChangeSitesModal,
   FiltersForm,
   FormFieldMap,
@@ -54,10 +54,12 @@ export const ReportsPage: NextPage<IReportsPageProps> = ({
   const {
     regExps,
     setRegExps,
-    noRegExps,
-    setNoRegExps,
     filterValues,
     setFilterValues,
+    setEsRegExps,
+    esRegExps,
+    setNoEsRegExps,
+    noEsRegExps,
   } = useFilters();
   const allAssets = useAllAssets();
   const noMatchAssets = useNoMatchAssets();
@@ -122,12 +124,14 @@ export const ReportsPage: NextPage<IReportsPageProps> = ({
 
   const handleOnChangeFilters = (
     newRegExps: RegExp[],
-    newNoRegExps: RegExp[],
+    newEsRegExps: string[],
+    newNoEsRegExps: string[],
   ) => {
     setRegExps(newRegExps);
-    setNoRegExps(newNoRegExps);
-    const filtersGrouped = buildFilter(newRegExps, "OR");
-    const noFiltersGrouped = buildFilter(newNoRegExps, "AND");
+    setEsRegExps(newEsRegExps);
+    setNoEsRegExps(newNoEsRegExps);
+    const filtersGrouped = buildESFilter(newEsRegExps, "OR");
+    const noFiltersGrouped = buildESFilter(newNoEsRegExps, "AND");
     setFiltersString(JSON.stringify(filtersGrouped));
     setNoFiltersString(JSON.stringify(noFiltersGrouped));
     setFilters(filtersGrouped);
@@ -155,8 +159,8 @@ export const ReportsPage: NextPage<IReportsPageProps> = ({
 
   useEffect(() => {
     if (regExps.length) {
-      const filtersGrouped = buildFilter(regExps, "OR");
-      const noFiltersGrouped = buildFilter(noRegExps, "AND");
+      const filtersGrouped = buildESFilter(esRegExps, "OR");
+      const noFiltersGrouped = buildESFilter(noEsRegExps, "AND");
       setFiltersString(JSON.stringify(filtersGrouped));
       setNoFiltersString(JSON.stringify(noFiltersGrouped));
       setFilters(filtersGrouped);
