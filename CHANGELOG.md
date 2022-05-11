@@ -1,3 +1,23 @@
+# [1.2.0](https://github.com/Lansweeper-public/NameChecker/compare/v1.1.3...v1.2.0) (2022-05-11)
+
+
+### :bug:
+
+* fix skip dirs folder trivy ([f02a6c5](https://github.com/Lansweeper-public/NameChecker/commit/f02a6c56ae6983ff74aa2beadf42c85d2f4b50eb))
+* fixing vulnerabilities ([b935346](https://github.com/Lansweeper-public/NameChecker/commit/b9353467b97ef5080635918de9acd1ffdfbb1301))
+* node modules should be ignored in trivy ([55cff58](https://github.com/Lansweeper-public/NameChecker/commit/55cff589f1ffd4b4b9a3e269290bd66e76679f4b))
+* remove trivy ignore file ([d3f1bf8](https://github.com/Lansweeper-public/NameChecker/commit/d3f1bf8877f99278d37c13371f528542bcfabb34))
+* remove trivyignore docker ([844b9de](https://github.com/Lansweeper-public/NameChecker/commit/844b9de90d3b255b706b6c5e6c125ce471cbb46c))
+
+### :green_heart:
+
+* add trivyignore file ([9ef073c](https://github.com/Lansweeper-public/NameChecker/commit/9ef073c07bc539b3d5c169c184f0ddc0fdbdc125))
+* skip node modules folder in trivy ([4c25bf1](https://github.com/Lansweeper-public/NameChecker/commit/4c25bf1d012e372e1fad982c0c70a37fe2c69cae))
+
+### :sparkles:
+
+* transform regexp filter into lucene filters ([d94b31a](https://github.com/Lansweeper-public/NameChecker/commit/d94b31ae8bd8e1c381d3fc3aeeb435c197033d45))
+
 ## [1.1.3](https://github.com/Lansweeper-public/NameChecker/compare/v1.1.2...v1.1.3) (2022-03-31)
 
 
