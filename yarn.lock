@@ -5715,10 +5715,10 @@ cypress-cucumber-preprocessor@^4.3.1:
     minimist "^1.2.5"
     through "^2.3.8"
 
-cypress-localstorage-commands@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/cypress-localstorage-commands/-/cypress-localstorage-commands-1.5.0.tgz#53d67c1ce491dcbe39794151749b943227e65cd7"
-  integrity sha512-gl1uKeviYdyJG4dLcZ9hfoUjLciwkkfbaQ3gvRtmipsPxC612ZBJhSjbunnJcUGwkryaM+82VrY9ij0tLSg7LA==
+cypress-localstorage-commands@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/cypress-localstorage-commands/-/cypress-localstorage-commands-2.2.2.tgz#bbecb1d5b7dd3863a5ced4131acc6b878136311c"
+  integrity sha512-mONoaxoMAFOSsF+SIDx30hysD3XOY8kPLxjtORdZWDj3sJs+u03XOddTDETPIbLch0DWy5Dtyw1ou3EsFGYZAQ==
 
 cypress-xpath@^1.6.2:
   version "1.6.2"
