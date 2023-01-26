@@ -1,4 +1,4 @@
-ARG NODE_IMAGE=node:18-bullseye
+ARG NODE_IMAGE=node:18-bullseye-slim
 
 # hadolint ignore=DL3006
 FROM ${NODE_IMAGE} AS builder
