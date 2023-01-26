@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/Lansweeper-public/NameChecker/compare/v1.2.0...v1.3.0) (2023-01-26)
+
+
+### :bug:
+
+* change dockerimage to bullseye slim without vulnerabilities ([5fdd8f5](https://github.com/Lansweeper-public/NameChecker/commit/5fdd8f5ab838db071fd61a300843cc43e438b733))
+* change node base image ([110bd65](https://github.com/Lansweeper-public/NameChecker/commit/110bd6574836d6689a89576af75ce041208a56fd))
+
+### :sparkles:
+
+* upgrade to node 18 ([edf7ec3](https://github.com/Lansweeper-public/NameChecker/commit/edf7ec3f19f5605fef47e6207197ffdc7bbddf1c))
+
 # [1.2.0](https://github.com/Lansweeper-public/NameChecker/compare/v1.1.3...v1.2.0) (2022-05-11)
 
 
