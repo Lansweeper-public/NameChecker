@@ -14,7 +14,7 @@ COPY ./yarn.lock .
 COPY ./next.config.js .
 COPY ./.babelrc .
 COPY ./tsconfig.json .
-
+COPY ./public public
 COPY ./src src
 
 
@@ -30,12 +30,12 @@ ENV NODE_ENV=production
 
 WORKDIR $APPDIR
 
-COPY ./package.json .
-COPY ./yarn.lock .
-COPY ./public public
-COPY ./src src
-COPY --from=builder /usr/src/app/.next .next
-COPY --from=builder /usr/src/app/node_modules node_modules
+ENV NODE_ENV=production
+
+COPY --from=builder /usr/src/app/public ./public
+COPY --from=builder /usr/src/app/package.json ./package.json
+COPY --from=builder /usr/src/app/.next/standalone ./
+COPY --from=builder /usr/src/app/.next/static ./.next/static
 
 ENV NPM_TOKEN=
 
@@ -44,4 +44,4 @@ HEALTHCHECK CMD curl --fail http://localhost:9000/live || exit 1
 EXPOSE 3000
 EXPOSE 9000
 
-CMD [ "node", "src/server.js" ]
+CMD [ "node", "server.js" ]

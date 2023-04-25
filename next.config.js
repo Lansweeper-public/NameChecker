@@ -11,4 +11,7 @@ module.exports = withAntdLess({
   future: {
     webpack5: true,
   },
+  experimental: {
+    outputStandalone: true,
+  },
 });
