@@ -44,4 +44,4 @@ HEALTHCHECK CMD curl --fail http://localhost:9000/live || exit 1
 EXPOSE 3000
 EXPOSE 9000
 
-CMD [ "yarn", "start" ]
+CMD [ "node", "src/server.js" ]
