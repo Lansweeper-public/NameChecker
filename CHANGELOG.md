@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/Lansweeper-public/NameChecker/compare/v1.3.1...v1.3.2) (2023-04-25)
+
+
+### :bug:
+
+* improve dockerfile ([98e78ba](https://github.com/Lansweeper-public/NameChecker/commit/98e78bae4a10430a388052a6eb3ff13aab4f40b0))
+
 ## [1.3.1](https://github.com/Lansweeper-public/NameChecker/compare/v1.3.0...v1.3.1) (2023-04-25)
 
 
