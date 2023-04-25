@@ -14,6 +14,7 @@ COPY ./yarn.lock .
 COPY ./next.config.js .
 COPY ./.babelrc .
 COPY ./tsconfig.json .
+COPY ./tsconfig.server.json .
 COPY ./public public
 COPY ./src src
 
