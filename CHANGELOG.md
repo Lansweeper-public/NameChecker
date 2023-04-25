@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/Lansweeper-public/NameChecker/compare/v1.3.0...v1.3.1) (2023-04-25)
+
+
+### :bug:
+
+* change start dockerfile ([e6d0463](https://github.com/Lansweeper-public/NameChecker/commit/e6d0463b7407199f3bf4de61bc9bcbd5440592b5))
+
 # [1.3.0](https://github.com/Lansweeper-public/NameChecker/compare/v1.2.0...v1.3.0) (2023-01-26)
 
 
