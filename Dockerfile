@@ -34,8 +34,8 @@ ENV NODE_ENV=production
 
 COPY --from=builder /usr/src/app/public ./public
 COPY --from=builder /usr/src/app/package.json ./package.json
-COPY --from=build   /usr/src/app/node_modules node_modules
-COPY --from=build   /usr/src/app/dist/src ./dist
+COPY --from=builder   /usr/src/app/node_modules node_modules
+COPY --from=builder   /usr/src/app/dist/src ./dist
 COPY --from=builder /usr/src/app/.next ./.next
 
 ENV NPM_TOKEN=
