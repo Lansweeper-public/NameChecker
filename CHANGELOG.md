@@ -1,3 +1,12 @@
+## [1.3.3](https://github.com/Lansweeper-public/NameChecker/compare/v1.3.2...v1.3.3) (2023-04-25)
+
+
+### :bug:
+
+* fix dockerfile ([34c52e8](https://github.com/Lansweeper-public/NameChecker/commit/34c52e82c814604e1955644689870193af27b6fb))
+* missing custom server dockerfile ([fda71e9](https://github.com/Lansweeper-public/NameChecker/commit/fda71e9df912ec12ac8121fe58b927bada226e24))
+* missing tsconfig.server.json configuration file ([6b01680](https://github.com/Lansweeper-public/NameChecker/commit/6b01680910ddc97f22b462016522c04bca95b211))
+
 ## [1.3.2](https://github.com/Lansweeper-public/NameChecker/compare/v1.3.1...v1.3.2) (2023-04-25)
 
 
