@@ -1,6 +1,6 @@
 const express = require("express");
 const { GraphQLClient } = require("graphql-request");
-const { requestMiddleware } = require("./lib/serverUtils");
+const { requestMiddleware } = require("../lib/serverUtils");
 
 const router = express.Router();
 
