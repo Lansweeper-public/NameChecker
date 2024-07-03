@@ -3,7 +3,7 @@ import { GraphQLClient } from "graphql-request";
 import config from "../lib/config";
 import { APPLICATION_JSON_CONTENT_TYPE, EPage } from "../lib/constants";
 import { getSession } from "../lib/session";
-import { isServer } from "../lib/utils";
+import { isServer, requestMiddleware } from "../lib/utils";
 import { IAssetsResourceResponse } from "../types/assets";
 import { IncomingMessage } from "http";
 import { IFiltersGroupedInput } from "../types";
@@ -47,6 +47,7 @@ export const getAssetResources = async (
     const session = getSession(req as express.Request);
     const graphQLClient = new GraphQLClient(
       config.services.INTEGRATIONS_GATEWAY_API_URL,
+      { headers: {}, requestMiddleware },
     );
     graphQLClient.setHeader("authorization", `Bearer ${session?.accessToken}`);
     return graphQLClient.request<IAssetsResourceResponse>(query, {
