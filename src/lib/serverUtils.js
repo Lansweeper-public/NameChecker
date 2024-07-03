@@ -7,10 +7,17 @@ const loggerConfig = {};
 if (process.env.NODE_ENV !== "production") {
   loggerConfig.prettyPrint = { colorize: true, translateTime: true };
 }
-
-exports.logger = pino(loggerConfig);
+const logger = pino(loggerConfig);
+exports.logger = logger;
 
 exports.closeGracefully = (server) => {
   const stoppableServer = stoppable(server);
   return promisify(stoppableServer.close).bind(stoppableServer)();
+};
+
+exports.requestMiddleware = (request) => {
+  logger.info("Request:", request);
+  logger.info("Headers:", request.headers);
+  logger.info("Cookies:", request.cookies);
+  return request;
 };
