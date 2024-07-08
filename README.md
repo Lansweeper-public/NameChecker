@@ -21,8 +21,10 @@ In order to run namechecker locally, please ensure your system accomplishes the 
 Your first step will be to check our [documentation](https://docs.lansweeper.com/docs/api/authenticate#cloud-application) where it is explained how to create a Lansweeper cloud application, which will provide all necessary data for setting up your custom integration. For authentication purposes, the `Allowed callback URL` should match with:
 
 ```
-http://localhost:3000/api/callback
+http://<my.domain>:3000/api/callback
 ```
+
+For development purposes in local environment you cannot use `localhost` then you are going to need to use a non existing domain and modify your host file to redirect the domain to fill in `<my.domain>` to point to `127.0.0.1`.
 
 ## Getting started
 
