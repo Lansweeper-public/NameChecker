@@ -55,7 +55,7 @@ jobs:
         run: yarn test:ci
 
       - name: Add hosts to /etc/hosts
-        un: |
+        run: |
           sudo echo "127.0.0.1 my.cypress.test.com" | sudo tee -a /etc/hosts
 
       - name: E2E install cypress
