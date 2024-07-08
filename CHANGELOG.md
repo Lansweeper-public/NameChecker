@@ -1,3 +1,12 @@
+## [1.3.4](https://github.com/Lansweeper-public/NameChecker/compare/v1.3.3...v1.3.4) (2024-07-08)
+
+
+### :bug:
+
+* add logger namechecker and empty headers to debug the issue ([7fb49f7](https://github.com/Lansweeper-public/NameChecker/commit/7fb49f77624c40e1738c696131fa10cd1b5f0db4))
+* omit cypress due to cannot redirect localhost WAF rules ([5f729bc](https://github.com/Lansweeper-public/NameChecker/commit/5f729bc74c93fca65134a06c723d29de5e991c51))
+* wrong path server utils ([e93d5d0](https://github.com/Lansweeper-public/NameChecker/commit/e93d5d0bff9239c9d2bd479a7127d786d2520269))
+
 ## [1.3.3](https://github.com/Lansweeper-public/NameChecker/compare/v1.3.2...v1.3.3) (2023-04-25)
 
 
