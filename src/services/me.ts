@@ -4,14 +4,13 @@ import { IncomingMessage } from "http";
 import fetch from "isomorphic-unfetch";
 import config from "../lib/config";
 import { getSession } from "../lib/session";
-import { isServer, requestMiddleware } from "../lib/utils";
+import { isServer } from "../lib/utils";
 import { IMeContext, IMeResponse } from "../types/me";
 import { APPLICATION_JSON_CONTENT_TYPE } from "../lib/constants";
 
 export const getMe = async (req: IncomingMessage): Promise<IMeContext> => {
   const graphQLClient = new GraphQLClient(
     config.services.INTEGRATIONS_GATEWAY_API_URL,
-    { headers: {}, requestMiddleware },
   );
   const query = `query {
         me {

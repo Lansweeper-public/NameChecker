@@ -1,6 +1,5 @@
 const express = require("express");
 const { GraphQLClient } = require("graphql-request");
-const { requestMiddleware } = require("../lib/serverUtils");
 
 const router = express.Router();
 
@@ -30,7 +29,6 @@ router.post("/api", express.json(), async (req, res) => {
   try {
     const graphQLClient = new GraphQLClient(
       `${process.env.INTEGRATIONS_GATEWAY_HOST}/graphql`,
-      { headers: {}, requestMiddleware },
     );
     graphQLClient.setHeader("Content-Type", "application/json");
     graphQLClient.setHeader(

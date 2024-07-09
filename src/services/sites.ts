@@ -4,7 +4,6 @@ import { IncomingMessage } from "http";
 import config from "../lib/config";
 import { getSession } from "../lib/session";
 import { ISiteContext } from "../types/site";
-import { requestMiddleware } from "../lib/utils";
 
 export const getSitesQuery = (siteId: string) => `
     query {
@@ -21,7 +20,6 @@ export const getSite = async (
 ): Promise<ISiteContext> => {
   const graphQLClient = new GraphQLClient(
     config.services.INTEGRATIONS_GATEWAY_API_URL,
-    { headers: {}, requestMiddleware },
   );
 
   const session = getSession(req as express.Request);

@@ -14,10 +14,3 @@ exports.closeGracefully = (server) => {
   const stoppableServer = stoppable(server);
   return promisify(stoppableServer.close).bind(stoppableServer)();
 };
-
-exports.requestMiddleware = (request) => {
-  logger.info("Request:", request);
-  logger.info("Headers:", request.headers);
-  logger.info("Cookies:", request.cookies);
-  return request;
-};
