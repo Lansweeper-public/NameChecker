@@ -2,6 +2,8 @@ import { Given } from "cypress-cucumber-preprocessor/steps";
 
 Given("I login", () => {
   cy.visit(`http://localhost:3000`, { timeout: 30000 });
+  cy.log(Cypress.env("SITE_ONE"));
+  cy.log(Cypress.env("SITE_TWO"));
   cy.get(".lec-button--content").click();
 
   cy.waitSpin(10000);

@@ -20,7 +20,7 @@
     "type-check": "tsc watch",
     "cypress:open": "cypress open",
     "cypress:open:dev": "env-cmd cypress open",
-    "cypress:run": "cypress run --headed --spec 'cypress/integration/_regression/**/*.feature'",
+    "cypress:run": "cypress run --verbose --headed --spec 'cypress/integration/_regression/**/*.feature'",
     "cypress:run:dev": "env-cmd cypress run --headed --spec 'cypress/integration/_regression/**/*.feature'",
     "cypress:install": "cypress install"
   },
