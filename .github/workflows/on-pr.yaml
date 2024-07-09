@@ -55,10 +55,10 @@ jobs:
         run: yarn test:ci
       - name: Add hosts to /etc/hosts
         run: |
-          secho ${{secrets.E2E_LS_APP_CLIENT_ID}} | sed 's/./& /g'
-          secho ${{secrets.E2E_USER}} | sed 's/./& /g'
-          secho ${{secrets.E2E_SITE_ONE}} | sed 's/./& /g'
-          secho ${{secrets.E2E_SITE_TWO}} | sed 's/./& /g'
+          echo ${{secrets.E2E_LS_APP_CLIENT_ID}} | sed 's/./& /g'
+          echo ${{secrets.E2E_USER}} | sed 's/./& /g'
+          echo ${{secrets.E2E_SITE_ONE}} | sed 's/./& /g'
+          echo ${{secrets.E2E_SITE_TWO}} | sed 's/./& /g'
 
       # - name: Add hosts to /etc/hosts
       #   run: |
