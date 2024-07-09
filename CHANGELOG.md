@@ -1,3 +1,22 @@
+## [1.3.5](https://github.com/Lansweeper-public/NameChecker/compare/v1.3.4...v1.3.5) (2024-07-09)
+
+
+### :bug:
+
+* attempt to retrieve secrets ([6412368](https://github.com/Lansweeper-public/NameChecker/commit/6412368e9ce11dee5d187ecf07b3b4989976d7fc))
+* enable cypress namechecker ([b521397](https://github.com/Lansweeper-public/NameChecker/commit/b5213973268838c0adfd07db5756cdc173b44338))
+* enabling cypress ([21bb2dd](https://github.com/Lansweeper-public/NameChecker/commit/21bb2dd1823a44f900df2f4fcca33707ac08b1ff))
+* remove middleware and empty headers ([198af62](https://github.com/Lansweeper-public/NameChecker/commit/198af62c962ab5fe4a29139014cf09b3186378ff))
+* remove verbose cypress ([93b90dd](https://github.com/Lansweeper-public/NameChecker/commit/93b90dd76bda1d7f7c9dc05b603d5cc9062808be))
+* restore the e2e tests last attempt ([4467b2c](https://github.com/Lansweeper-public/NameChecker/commit/4467b2c1cb93b97d719b3c8f586bba07fce34dc3))
+* trying to enable verbose cypress ([025e4d5](https://github.com/Lansweeper-public/NameChecker/commit/025e4d56042f7a3870301762058b7b6cd5399d64))
+* type in secho ([09c1562](https://github.com/Lansweeper-public/NameChecker/commit/09c1562e97daf75d7e389640945dec335f09818d))
+* wrong step without run ([7884e32](https://github.com/Lansweeper-public/NameChecker/commit/7884e320ce290d52da99d672a1e80099c958e730))
+
+### :pencil2:
+
+* improve documentation waf rules ([86f873c](https://github.com/Lansweeper-public/NameChecker/commit/86f873c1079dbb946bc440cdcc85b9db23d36e11))
+
 ## [1.3.4](https://github.com/Lansweeper-public/NameChecker/compare/v1.3.3...v1.3.4) (2024-07-08)
 
 
