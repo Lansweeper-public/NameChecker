@@ -40,10 +40,3 @@ export const resolvePage = (
       return prev === total / limit ? prev : prev + 1;
   }
 };
-
-export const requestMiddleware = (request) => {
-  console.log("Request:", request);
-  console.log("Headers:", request.headers);
-  console.log("Cookies:", request.cookies);
-  return request;
-};
