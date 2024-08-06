@@ -8,6 +8,14 @@ Given("I login", () => {
   cy.get("body").then(($body) => {
     if ($body.find("input[name=email]").length) {
       cy.get("input[name=email]").type(Cypress.env("USER"));
+      cy.get("button[value=pwd]").click();
+      // cy.get("input[name=password]").type(Cypress.env("PASSWORD"));
+      // cy.get("button[type=submit]").click();
+    }
+  });
+
+  cy.get("body").then(($body) => {
+    if ($body.find("input[name=email]").length) {
       cy.get("input[name=password]").type(Cypress.env("PASSWORD"));
       cy.get("button[type=submit]").click();
     }
