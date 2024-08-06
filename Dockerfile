@@ -31,15 +31,21 @@ ENV NODE_ENV=production
 
 WORKDIR $APPDIR
 
+RUN addgroup -gid 10002 userapp \
+  && adduser -uid 10003 --no-create-home --ingroup userapp --shell /bin/false userapp 
+
 ENV NODE_ENV=production
 
-COPY --from=builder /usr/src/app/public ./public
-COPY --from=builder /usr/src/app/package.json ./package.json
-COPY --from=builder   /usr/src/app/node_modules node_modules
-COPY --from=builder   /usr/src/app/dist/src ./dist
-COPY --from=builder /usr/src/app/.next ./.next
+RUN chown userapp:userapp ${APPDIR}
+COPY --from=builder --chown=userapp:userapp /usr/src/app/public ./public
+COPY --from=builder --chown=userapp:userapp /usr/src/app/package.json ./package.json
+COPY --from=builder --chown=userapp:userapp /usr/src/app/node_modules node_modules
+COPY --from=builder --chown=userapp:userapp /usr/src/app/dist/src ./dist
+COPY --from=builder --chown=userapp:userapp /usr/src/app/.next ./.next
 
 ENV NPM_TOKEN=
+
+USER userapp
 
 HEALTHCHECK CMD curl --fail http://localhost:9000/live || exit 1
 
