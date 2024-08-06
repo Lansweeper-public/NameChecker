@@ -1,3 +1,12 @@
+## [1.3.6](https://github.com/Lansweeper-public/NameChecker/compare/v1.3.5...v1.3.6) (2024-08-06)
+
+
+### :bug:
+
+* add non root user ([c686242](https://github.com/Lansweeper-public/NameChecker/commit/c686242005fc112f4eaf07139dda87388f657d69))
+* change login temporally ([22ba3b7](https://github.com/Lansweeper-public/NameChecker/commit/22ba3b71499f4e0bf95c6a05548b54308c99ffbf))
+* remove comments previous version ([83310f4](https://github.com/Lansweeper-public/NameChecker/commit/83310f4d57158c5073f9e53fbd8418fefa3f6f94))
+
 ## [1.3.5](https://github.com/Lansweeper-public/NameChecker/compare/v1.3.4...v1.3.5) (2024-07-09)
 
 
